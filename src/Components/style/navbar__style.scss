@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+.body.dark{
+	transition: 0.3s;
+	background: #1A1A1A;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+  position: relative;
+  height: 3.6rem;
+  justify-content: space-between;
+  .logo-wrapper {
+    gap: 10px;
+    display: inherit;
+    align-items: inherit;
+    font-weight: 900;
+    cursor: pointer;
+    font-size: 1.5rem;
+    background: -webkit-linear-gradient(45deg, #ff00b8, #0e01a9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    .logo {
+      width: 50px;
+      height: 50px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .settings__stick {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60px;
+    cursor: pointer;
+    height: 50px;
+    padding: 7px 5px;
+    justify-content: space-around;
+    .stick-wrapper {
+      width: 100%;
+      height: 6px;
+      position: relative;
+      background: linear-gradient(to right, #ff00b8, #0e01a9);
+      border-radius: 20px;
+      &::before {
+        content: "";
+        position: absolute;
+        background: linear-gradient(#ff00b8, #0e01a9) padding-box,
+          linear-gradient(to right, #ff00b8, #0e01a9) border-box;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        transform: translateY(-4px);
+        border: 5px solid transparent;
+      }
+      //toggler 1
+      &.one.toggled::before {
+        right: 0;
+      }
+      //toggler 2
+      &.two::before {
+        right: 0;
+      }
+      &.two.toggled::before {
+        left: 0;
+      }
+    }
+  }
+  .dropped__menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    gap: 10px;
+    width: 200px;
+    right: 0;
+    height: 180px;
+    padding: 10px 5px;
+    border-radius: 10px 0 10px 10px;
+    border: 1px solid #000;
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(14, 1, 169, 0.3) 10px 10px,
+      rgba(240, 46, 170, 0.2) 15px 15px, rgba(14, 1, 169, 0.1) 20px 20px,
+      rgba(240, 46, 170, 0.05) 25px 25px;
+    transform: translate(-40px, 125px);
+		&.dark{
+			border: 1px solid #ff00b8;
+		}
+    .menu__button {
+      width: 100%;
+      font-size: 1.1rem;
+      height: 50px;
+      border-radius: 7px;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+			&.dark{
+				color: #FFF;
+			}
+      transition: 0.2s;
+      &:hover {
+				background: linear-gradient(to right, #ff00b8, #0e01a9);
+        color: #fff;
+      }
+    }
+    .dark-theme__toggler-btn {
+			width: 70px;
+      height: 30px;
+      position: relative;
+      border-radius: 50px;
+      background: #373737;
+			cursor: pointer;
+			.menu-icon{
+				position: absolute;
+				width: 20px;
+				top: 0;
+				z-index: 10;
+				&.moon{
+					left: 0;
+					transform: translate(5px, 7px);
+					width: 15px;
+					&.hidden{
+						display: none;
+					}
+				}
+				&.sun{
+					right: 0;
+					transform: translate(-4px, 5px);
+					&.hidden{
+						display: none;
+					}
+				}
+			}
+      .theme-dragger {
+        width: 35px;
+        height: 35px;
+        background: #fff;
+				transition: 0.3s;
+        border-radius: 50%;
+        box-shadow: 2px 0 10px #ff00b8, -2px 0 10px #0e01a9;
+        transform: translate(-2px, -3px);
+				&.true{
+					transform: translate(40px, -3px);
+				}
+      }
+    }
+  }
+}

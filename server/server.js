@@ -1,5 +1,10 @@
+const express = require("express")
+const app = express()
 const {socketIoConfig} = require("./config")
-const io = require('socket.io')(3000, socketIoConfig)
+
+const port = 3000
+
+const io = require('socket.io')(port, socketIoConfig)
 
 io.on("connection", socket => {
 	socket.on("send-message", (msg, room) => {
@@ -9,4 +14,8 @@ io.on("connection", socket => {
 			socket.to(room).emit("receive", msg)
 		}
 	})
+})
+
+app.listen(port, () => {
+	console.log("Server launched on", port);
 })
