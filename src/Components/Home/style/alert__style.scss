@@ -1,0 +1,81 @@
+@import "./_variables.scss";
+
+.alert-container {
+  @include Center(center, center);
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  padding: 0 20px;
+  top: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(5.5px);
+  -webkit-backdrop-filter: blur(5.5px);
+  .alert-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    height: 200px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    @media screen and(max-width: 350px) {
+      padding: 20px 0;
+      height: 280px;
+    }
+    &.dark {
+      background: $dark__theme;
+      box-shadow: -4px 0 10px $gradient__color-one,
+        4px 0 10px $gradient__color-two, 0 4px 10px #ff007b;
+    }
+    .alert__text {
+      @include Center(center, center);
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      color: #fff;
+			&.dark{
+				color: #000;
+			}
+    }
+    .btns-wrapper {
+      @include Center(center, center);
+      width: 100%;
+      min-height: 100px;
+
+      @media screen and(max-width: 350px) {
+        flex-direction: column;
+        gap: 10px;
+      }
+      button {
+        @include gradient__bg($gradient__color-one, $gradient__color-two);
+        cursor: pointer;
+        color: #fff;
+        width: 100px;
+        margin: 0 20px;
+        height: 40px;
+        border-radius: 50px;
+        transition: ease all 0.1s;
+        border: none;
+        &:hover {
+          font-size: 1.02rem;
+        }
+      }
+    }
+  }
+}
+
+
+.img_modal{
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  background: #FFF;
+  z-index: 15;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

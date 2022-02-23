@@ -21,8 +21,9 @@ nav {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 9;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 1.2rem;
   position: relative;
   height: 3.6rem;
   -webkit-box-pack: justify;
@@ -43,6 +44,12 @@ nav .logo-wrapper {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+@media screen and (max-width: 417px) {
+  nav .logo-wrapper {
+    font-size: 1.2rem;
+  }
 }
 
 nav .logo-wrapper .logo {
@@ -125,6 +132,7 @@ nav .dropped__menu {
   height: 180px;
   padding: 10px 5px;
   border-radius: 10px 0 10px 10px;
+  background: #FFF;
   border: 1px solid #000;
   -webkit-box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(14, 1, 169, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(14, 1, 169, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
           box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(14, 1, 169, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(14, 1, 169, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
@@ -133,6 +141,7 @@ nav .dropped__menu {
 }
 
 nav .dropped__menu.dark {
+  background: #1a1a1a;
   border: 1px solid #ff00b8;
 }
 

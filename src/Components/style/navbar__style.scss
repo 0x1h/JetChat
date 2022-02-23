@@ -16,8 +16,9 @@
 nav {
   display: flex;
   align-items: center;
+  z-index: 9;
   width: 100%;
-  padding: 0 20px;
+  padding: 0 1.2rem;
   position: relative;
   height: 3.6rem;
   justify-content: space-between;
@@ -28,6 +29,9 @@ nav {
     font-weight: 900;
     cursor: pointer;
     font-size: 1.5rem;
+    @media screen and(max-width: 417px){
+			font-size: 1.2rem;
+		}
     background: -webkit-linear-gradient(45deg, #ff00b8, #0e01a9);
     -webkit-background-clip: text;
     background-clip: text;
@@ -90,12 +94,14 @@ nav {
     height: 180px;
     padding: 10px 5px;
     border-radius: 10px 0 10px 10px;
+    background: #FFF;
     border: 1px solid #000;
     box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(14, 1, 169, 0.3) 10px 10px,
       rgba(240, 46, 170, 0.2) 15px 15px, rgba(14, 1, 169, 0.1) 20px 20px,
       rgba(240, 46, 170, 0.05) 25px 25px;
     transform: translate(-40px, 125px);
 		&.dark{
+      background: #1a1a1a;
 			border: 1px solid #ff00b8;
 		}
     .menu__button {

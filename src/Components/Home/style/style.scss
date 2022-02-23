@@ -1,0 +1,54 @@
+@import "./_variables.scss";
+
+main{
+	width: 100%;
+	min-height: 100vh;
+	top: 0;
+	position: absolute;
+	@include Center(center, center); 
+	flex-direction: column;
+	padding: 0 20px;
+	h1{
+		background: -webkit-linear-gradient(45deg, $gradient__color-one, $gradient__color-two);
+    -webkit-background-clip: text;
+		font-size: 5.6rem;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+		text-align: center;
+		@media screen and(max-width: 417px){
+			font-size: 4rem;
+		}
+		@media screen and(max-width: 300px){
+			font-size: 3rem;
+		}
+	}
+	.btns-wrapper{
+		width: 600px;
+		min-height: 100px;
+		display: flex;
+		justify-content: space-between;
+		margin-top: 50px;
+		@media screen and(max-width: 615px){
+			flex-direction: column;
+			width: 100%;
+			align-items: center;
+			gap: 20px;
+		}
+		button{
+			@include gradient__bg($gradient__color-one, $gradient__color-two);
+			width: 270px;
+			border-radius: 50px;
+			height: 100px;
+			font-size: 1.6em;
+			font-weight: 900;
+			color: #FFF;
+			border: none;
+			cursor: pointer;
+			@media screen and(max-width: 417px){
+				width: 210px;
+				height: 90px;
+				font-size: 1.2em;
+			}
+		}
+	}
+}

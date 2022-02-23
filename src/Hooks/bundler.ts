@@ -1,6 +1,12 @@
 import { themeReducer } from "./themeReducer";
-import {combineReducers} from "redux"
+import { loginReducer } from "./loginReducer";
+import { signReducer } from "./signReducer";
+import { combineReducers } from "redux"
+import { modalReducer } from "./modalsReducer";
 
 export const allReducers = combineReducers({
-	themeReducer: themeReducer
+	themeReducer: themeReducer,
+	loginReducer: loginReducer,
+	signReducer: signReducer,
+	modalReducer: modalReducer
 })

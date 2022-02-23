@@ -1,0 +1,13 @@
+$dark__theme: #1a1a1a;
+$gradient__color-one: #FA00FF;
+$gradient__color-two: #161955;
+
+@mixin gradient__bg($one, $two){
+	background: linear-gradient(to right, $one, $two);
+}
+
+@mixin Center($align, $justify) {    
+	display: flex;
+	align-items: $align; 
+	justify-content: $justify;	
+}

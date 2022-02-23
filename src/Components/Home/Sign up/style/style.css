@@ -1,0 +1,145 @@
+.sign__up-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 400px;
+  height: 530px;
+  background: #FFF;
+  position: relative;
+  color: #000;
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.sign__up-form.dark {
+  background: #1a1a1a;
+  -webkit-box-shadow: -4px 0 10px #FA00FF, 4px 0 10px #161955, 0 4px 10px #ff007b;
+          box-shadow: -4px 0 10px #FA00FF, 4px 0 10px #161955, 0 4px 10px #ff007b;
+  color: #FFF;
+}
+
+.sign__up-form .btn-wrapper {
+  position: absolute;
+  bottom: 0;
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+}
+
+.sign__up-form .btn-wrapper button {
+  background: -webkit-gradient(linear, left top, right top, from(#FA00FF), to(#161955));
+  background: linear-gradient(to right, #FA00FF, #161955);
+  border: none;
+  width: 150px;
+  border-radius: 50px;
+  margin: 0 10px;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 1.1rem;
+  height: 40px;
+}
+
+.sign__up-form .btn-wrapper button:nth-child(1) {
+  background: transparent;
+  color: #000;
+  border: 2px solid #000;
+}
+
+.sign__up-form .btn-wrapper button:nth-child(1):hover {
+  background: #000;
+  color: #FFF;
+}
+
+.sign__up-form .btn-wrapper button:nth-child(1).dark {
+  border: 2px solid #FFF;
+  color: #FFF;
+}
+
+.sign__up-form .btn-wrapper button:nth-child(1).dark:hover {
+  background: #FFF;
+  color: #000;
+}
+
+.sign__up-form .sign__input {
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  outline: none;
+  border: 2px solid #FA00FF;
+  background: transparent;
+  color: #000;
+  padding: 0 5px;
+  margin-top: 20px;
+}
+
+.sign__up-form .sign__input.dark {
+  color: #FFF;
+}
+
+.sign__up-form .avatar-frame {
+  background: -webkit-gradient(linear, left top, right top, from(#FA00FF), to(#161955));
+  background: linear-gradient(to right, #FA00FF, #161955);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.sign__up-form .avatar-frame .avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+  font-size: 0.8em;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  padding: 0 20px;
+  height: 100%;
+  background: #FFF;
+  border-radius: 50%;
+}
+
+.sign__up-form .avatar-frame .avatar .camera-icon {
+  width: 70px;
+}
+
+.sign__up-form .avatar-frame .avatar .profile-pic {
+  width: auto;
+  height: 100%;
+}
+
+.sign__up-form .avatar-frame .avatar.dark {
+  background: #1a1a1a;
+}
+/*# sourceMappingURL=style.css.map */
