@@ -1,6 +1,5 @@
 import Router from "./Router/Router"
 import {createStore} from "redux"
-
 import { allReducers } from "./Hooks/bundler"
 import {Provider} from "react-redux"
 

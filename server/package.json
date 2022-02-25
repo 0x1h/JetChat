@@ -4,7 +4,6 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
   "keywords": [],
@@ -13,7 +12,10 @@
   "dependencies": {
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "hcaptcha": "^0.1.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.3",
     "socket.io": "^4.4.1"
   },

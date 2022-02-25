@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState, ChangeEvent } from "react";
+import { useEffect, useRef, useState, ChangeEvent, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { State } from "../../../Hooks/signReducer";
 import { useSelector, useDispatch } from "react-redux";
 import ProfilePicture from "./ProfilePicture";
 import Inputs from "./Inputs";
 import "./style/style.css";
+import axios from "axios"
 
 export type Input = ChangeEvent<HTMLInputElement>;
 
@@ -18,6 +19,7 @@ const SignUp = () => {
   //modal state
   const [appear, setAppear] = useState<boolean>(false);
   const signRef = useRef<HTMLFormElement>(null);
+  const [allowRequest, setAllowRequest] = useState<boolean>(false)
   const dispatch = useDispatch();
 
   //animation config
@@ -52,6 +54,10 @@ const SignUp = () => {
   const handleClickOutside = (event: any): void => {
     if (signRef.current && !signRef.current!.contains(event.target)) {
       dispatch({ type: "SIGN_UP", payload: false });
+      dispatch({type: "INPUT_FIELD", payload: {
+        key: "isVerified",
+        value: ""
+      }})
     }
   };
 
@@ -63,6 +69,54 @@ const SignUp = () => {
     };
   });
 
+  const submitHandler = (e: FormEvent) => {
+    e.preventDefault()
+
+    if(!allowRequest) return 
+  
+    axios.post("http://localhost:3001/signup", form)
+    .then(data => {
+      const {username, profile_src, client_id, authToken} = data.data
+
+      localStorage.setItem('client_id', JSON.stringify(client_id))
+      sessionStorage.setItem("s_t", JSON.stringify(authToken))
+    })
+    .catch(err => {
+      if(err.response.status === 406){
+        return alert(`User ${form.username} already exists`)
+      }
+
+      if(err.response.data.err === 'invalid argument'){
+        return alert("IP banned user")
+      }
+
+      if(err.response.data.err === 'captcha failed'){
+        return alert("refresh page and re-complete captcha")
+      }
+    })
+  }
+
+  
+  useEffect(() => {
+    const clearPhotoField = {
+      a: form.username,
+      b: form.repeat_password,
+      c: form.password,
+      d: form.isVerified
+    }
+
+    const objValues: string[] = Object.values(clearPhotoField)
+
+    for(let i =0; i < objValues.length; i++){
+      if(!objValues[i].trim()) return setAllowRequest(false) 
+    }
+
+    if(form.password !== form.repeat_password) return setAllowRequest(false)
+    
+    setAllowRequest(true)
+  },[form])
+  
+
   return (
     <div className="alert-container sign__up">
       <motion.form
@@ -72,6 +126,7 @@ const SignUp = () => {
         animate="visible"
         transition={{ ease: "easeOut" }}
         initial="hidden"
+        onSubmit={submitHandler}
       >
         <ProfilePicture />
         <Inputs form={form} inputHandler={inputHandler} darkTheme={darkTheme} />
@@ -82,7 +137,7 @@ const SignUp = () => {
           >
             Cancel
           </button>
-          <button>Sign up</button>
+          <button className={!allowRequest ? "sign-up-btn unverfied" : "sign-up-btn"} disabled={!allowRequest}>Sign up</button>
         </div>
       </motion.form>
     </div>

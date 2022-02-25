@@ -2,14 +2,16 @@ export type State = {
 	profile_src: string,
 	username: string,
 	password: string,
-	repeat_password: string
+	repeat_password: string,
+	isVerified: string
 }
 
 const defaultState: State = {
 	username: '',
 	profile_src: '',
 	password: '',
-	repeat_password: ''
+	repeat_password: '',
+	isVerified: ''
 }
 
 type Action = {

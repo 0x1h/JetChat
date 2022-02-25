@@ -13,7 +13,7 @@
       -ms-flex-direction: column;
           flex-direction: column;
   width: 400px;
-  height: 530px;
+  height: 630px;
   background: #FFF;
   position: relative;
   color: #000;
@@ -50,6 +50,11 @@
   height: 40px;
 }
 
+.sign__up-form .btn-wrapper button.sign-up-btn.unverfied {
+  background: #353535;
+  cursor: not-allowed;
+}
+
 .sign__up-form .btn-wrapper button:nth-child(1) {
   background: transparent;
   color: #000;
@@ -81,6 +86,10 @@
   color: #000;
   padding: 0 5px;
   margin-top: 20px;
+}
+
+.sign__up-form .sign__input:nth-child(5) {
+  margin-bottom: 15px;
 }
 
 .sign__up-form .sign__input.dark {
