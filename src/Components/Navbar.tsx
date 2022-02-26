@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import Moon_icon from "./style/icons/moon-icon.png";
 import Sun_icon from "./style/icons/sun-icon.png";
 import "./style/navbar__style.css";
+import axios from "axios"
 
 const Navbar = () => {
   const [toggleSettings, setToggleSettings] = useState<boolean>(false);
   const darkTheme = useSelector((state: {themeReducer: boolean}) => state.themeReducer);
   const settingsRef = useRef<HTMLDivElement>(null);
+  const [signed, setSigned] = useState<boolean>(false)
 
   const dispatch = useDispatch();
 
@@ -33,6 +35,14 @@ const Navbar = () => {
 
     if (client_id !== null || secret_token !== null) {
       dispatch({ type: "USER_LOGINED" });
+    }else{
+      axios.post(`http://localhost:3001/user/${JSON.parse(client_id!)}`, {
+        authToken: JSON.parse(secret_token!),
+        requestor: JSON.parse(client_id!)
+    })
+      .then(data => {
+        console.log(data.data);
+      })
     }
 
     //Creating localStorage if dark theme doesn't exist
@@ -82,7 +92,11 @@ const Navbar = () => {
           className={!darkTheme ? "dropped__menu" : "dropped__menu dark"}
           ref={settingsRef}
         >
-          <button className={darkTheme ? "menu__button dark" : "menu__button"}>
+          <button className={darkTheme ? "menu__button dark" : "menu__button"}
+          onClick={() => {
+            dispatch({ type: "LOG_IN", payload: true })
+            setToggleSettings(false)
+            }}>
             Log in
           </button>
           <button

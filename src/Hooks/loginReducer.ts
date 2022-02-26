@@ -1,28 +1,32 @@
-type State = {
-	isLogined: boolean,
+export type State = {
 	username: string,
-	user_picture: string
+	password: string
 }
 
 type Action = {
 	type: string,
-	payload: State
+	payload: {
+		key: keyof State,
+		value: string
+	}
 }
 
 const defaultState: State = {
-	isLogined: false,
 	username: "",
-	user_picture: ""
+	password: ""
 }
 
 export const loginReducer = (state: State = defaultState, action: Action): State => {
 	switch(action.type){
-		case "USER_LOGINED": {
+		case "LOGIN_FILL": {
+			const {key, value} = action.payload
+
 			return {
 				...state,
-				isLogined: true
+				[key]: value
 			}
 		}
+		
 		default: return state
 	}
 }

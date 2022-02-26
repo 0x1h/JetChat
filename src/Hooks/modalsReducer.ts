@@ -4,18 +4,20 @@ export type State = {
 	signUp: boolean
 	noUserAlert: boolean
 	privateRoom: boolean
-	imageModal: boolean
+	imageModal: boolean,
+	login: boolean
 }
 
 const defaultState: State = {
 	signUp: false,
 	noUserAlert: false,
 	privateRoom: false,
-	imageModal: false
+	imageModal: false,
+	login: false
 }
 
 type Action = {
-	type: "SIGN_UP" | "NO_USER_ALERT" | "PRIVATE_ROOM",
+	type: "SIGN_UP" | "NO_USER_ALERT" | "PRIVATE_ROOM" | "LOG_IN",
 	payload: boolean
 } 
 
@@ -37,6 +39,12 @@ export const modalReducer = (state: State = defaultState, action: Action): State
 			return {
 				...state,
 				privateRoom: action.payload
+			}
+		}
+		case "LOG_IN": {
+			return {
+				...state,
+				login: action.payload
 			}
 		}
 		default: 

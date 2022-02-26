@@ -1,4 +1,4 @@
-import { useEffect, FC, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import Typewriter from "typewriter-effect";
@@ -74,6 +74,7 @@ const AlertBox = () => {
             dispatch({type: "SIGN_UP", payload: true})
           }}>Sign up</button>
           <button onClick={() => {
+            dispatch({ type: "LOG_IN", payload: true })
             dispatch({type: "NO_USER_ALERT", payload: false})
           }}>Log in</button>
         </div>

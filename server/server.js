@@ -3,12 +3,14 @@ require('dotenv').config()
 const express = require("express")
 const app = express()
 const http = require('http')   
+const mongoose = require("mongoose")
 const port = 3001
 const server = http.createServer(app);
-const mongoose = require("mongoose")
 const Signup = require("./routes/SignupUser")
+const UserData  = require("./routes/UserData")
 const cors = require('cors')
- 
+const Login = require("./routes/LoginUser") 
+
 app.use(express.json())
 app.use(cors())
 
@@ -21,8 +23,10 @@ mongoose
   })
   .catch((err) => console.log(err))
 
-server.listen(port, () => {
-	console.log('server is running on', port)
-});
+app.listen(port, () => {
+  console.log("Server is running on", port);
+})
 
 app.use("/", Signup)
+app.use("/", Login)
+app.use("/user", UserData)

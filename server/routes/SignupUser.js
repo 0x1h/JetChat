@@ -55,6 +55,7 @@ router.post("/signup", async (req, res) => {
             profile_src: save.profile_src,
             client_id: save._id,
             authToken: save.authToken,
+            createdAt: save.createdAt
           });
         })
         .catch((err) => {

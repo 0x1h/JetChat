@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import AlertBox from './AlertBox'
 import SignUp from "./Sign up/SignUp";
 import "./style/style.css"
+import Login from "./Login/Login";
 
 const Home = () => {
   const modals = useSelector((state: {modalReducer: State}) => state.modalReducer);
@@ -15,10 +16,12 @@ const Home = () => {
     if(client_id === null || secret_token === null){
       dispatch({type: "NO_USER_ALERT", payload: true})
     }
+  
   }
 
   return (
 	<>
+  {modals.login && <Login />}
   {modals.signUp && <SignUp />}
   {modals.noUserAlert && <AlertBox />}
   <main>

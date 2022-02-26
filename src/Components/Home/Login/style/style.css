@@ -1,0 +1,171 @@
+.login__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  min-height: 280px;
+}
+
+@media screen and (max-width: 400px) {
+  .login__wrapper {
+    height: 330px;
+  }
+}
+
+.login-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  min-height: 280px;
+  background: #FFF;
+  position: relative;
+  border-radius: 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 10px;
+}
+
+@media screen and (max-width: 400px) {
+  .login-wrapper {
+    height: 330px;
+  }
+}
+
+.login-wrapper.dark {
+  background: #1a1a1a;
+  -webkit-box-shadow: -4px 0 10px #FA00FF, 4px 0 10px #161955, 0 4px 10px #ff007b;
+          box-shadow: -4px 0 10px #FA00FF, 4px 0 10px #161955, 0 4px 10px #ff007b;
+  color: #FFF;
+}
+
+.login-wrapper .warn {
+  width: 100%;
+  min-height: 60px;
+  background: #ff5b5b;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.login-wrapper .login_input {
+  margin: 10px 0;
+  background: transparent;
+  border: 2px solid #FA00FF;
+  color: #000;
+  width: 100%;
+  padding: 0 5px;
+  font-size: 1.1em;
+  outline: none;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.login-wrapper .login_input.dark {
+  color: #FFF;
+}
+
+.login-wrapper .login_text {
+  position: absolute;
+  top: 0;
+  color: #000;
+  -webkit-transform: translateY(20px);
+          transform: translateY(20px);
+}
+
+.login-wrapper .login_text.dark {
+  color: #FFF;
+}
+
+.login-wrapper .btn-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 60px;
+}
+
+@media screen and (max-width: 400px) {
+  .login-wrapper .btn-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 10px;
+    height: 120px;
+  }
+}
+
+.login-wrapper .btn-wrapper button {
+  background: -webkit-gradient(linear, left top, right top, from(#FA00FF), to(#161955));
+  background: linear-gradient(to right, #FA00FF, #161955);
+  border: none;
+  width: 150px;
+  border-radius: 50px;
+  margin: 0 10px;
+  color: #FFF;
+  cursor: pointer;
+  font-size: 1.1rem;
+  height: 40px;
+}
+
+.login-wrapper .btn-wrapper button.sign-up-btn.unverfied {
+  background: #353535;
+  cursor: not-allowed;
+}
+
+.login-wrapper .btn-wrapper button:nth-child(1) {
+  background: transparent;
+  color: #000;
+  border: 2px solid #000;
+}
+
+.login-wrapper .btn-wrapper button:nth-child(1):hover {
+  background: #000;
+  color: #FFF;
+}
+
+.login-wrapper .btn-wrapper button:nth-child(1).dark {
+  border: 2px solid #FFF;
+  color: #FFF;
+}
+
+.login-wrapper .btn-wrapper button:nth-child(1).dark:hover {
+  background: #FFF;
+  color: #000;
+}
+/*# sourceMappingURL=style.css.map */
