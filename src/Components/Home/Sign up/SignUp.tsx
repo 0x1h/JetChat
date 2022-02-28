@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, ChangeEvent, FormEvent, useCallback } from "react";
+import { useEffect, useRef, useState, ChangeEvent, FormEvent, useCallback, FC } from "react";
 import { motion } from "framer-motion";
 import { State } from "../../../Hooks/signReducer";
 import Loader from "../../Loader";
@@ -11,7 +11,7 @@ import Confirm from "../../Confirm";
 
 export type Input = ChangeEvent<HTMLInputElement>;
 
-const SignUp = () => {
+const SignUp: FC<{runTada: (arg: boolean) => void}> = ({ runTada }) => {
   const darkTheme = useSelector(
     (state: { themeReducer: boolean }) => state.themeReducer
   );
@@ -108,6 +108,7 @@ const SignUp = () => {
       dispatch({type: "DEFAULT"})
       setAccept(true)
       closeAccept()
+      runTada(true)
       dispatch({
           type: "FILL_USER",
           payload: {
