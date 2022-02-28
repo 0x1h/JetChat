@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,eAAe,CAAA;ECOd,OAAO,EAAE,IAAI;EACb,WAAW,EDPK,MAAM;ECQtB,eAAe,EDRS,MAAM;EAC9B,cAAc,EAAE,MAAM;EACtB,UAAU,ECLG,OAAO;EDMpB,aAAa,EAAE,IAAI;EACnB,KAAK,EAAE,IAAI;EACX,SAAS,EAAE,KAAK;EAChB,UAAU,EAAE,KAAK;EACjB,aAAa,EAAE,IAAI;CASnB;;AAjBD,AASC,eATc,CASd,GAAG,CAAA;EACF,KAAK,EAAE,KAAK;CACZ;;AAXF,AAYC,eAZc,CAYd,CAAC,CAAA;EACA,KAAK,EAAE,IAAI;EACX,UAAU,EAAE,IAAI;EAChB,UAAU,EAAE,MACb;CAAC",
+    "sources": [
+        "confirm.scss",
+        "../Home/style/_variables.scss"
+    ],
+    "names": [],
+    "file": "confirm.css"
+}

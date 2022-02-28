@@ -1,19 +1,19 @@
 export type State = {
 	username: string,
-	password: string
+	password: string,
 }
 
 type Action = {
 	type: string,
 	payload: {
 		key: keyof State,
-		value: string
+		value: string | boolean
 	}
 }
 
 const defaultState: State = {
 	username: "",
-	password: ""
+	password: "",
 }
 
 export const loginReducer = (state: State = defaultState, action: Action): State => {

@@ -9,8 +9,9 @@
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
+  padding: 0 20px;
   max-width: 400px;
-  min-height: 280px;
+  min-height: 300px;
 }
 
 @media screen and (max-width: 400px) {
@@ -31,7 +32,7 @@
           justify-content: center;
   width: 100%;
   max-width: 400px;
-  min-height: 280px;
+  min-height: 350px;
   background: #FFF;
   position: relative;
   border-radius: 10px;
@@ -46,7 +47,7 @@
 
 @media screen and (max-width: 400px) {
   .login-wrapper {
-    height: 330px;
+    height: 380px;
   }
 }
 
@@ -97,6 +98,7 @@
   color: #000;
   -webkit-transform: translateY(20px);
           transform: translateY(20px);
+  font-size: 2.2rem;
 }
 
 .login-wrapper .login_text.dark {
@@ -126,7 +128,7 @@
         -ms-flex-direction: column;
             flex-direction: column;
     gap: 10px;
-    height: 120px;
+    height: 110px;
   }
 }
 

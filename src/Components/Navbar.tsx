@@ -1,15 +1,21 @@
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import {State} from "../Hooks/userDataHandler"
 import Moon_icon from "./style/icons/moon-icon.png";
 import Sun_icon from "./style/icons/sun-icon.png";
 import "./style/navbar__style.css";
-import axios from "axios"
+import axios from "axios";
+
 
 const Navbar = () => {
   const [toggleSettings, setToggleSettings] = useState<boolean>(false);
-  const darkTheme = useSelector((state: {themeReducer: boolean}) => state.themeReducer);
+  const darkTheme = useSelector(
+    (state: { themeReducer: boolean }) => state.themeReducer
+  );
+  const userData = useSelector(
+    (state: { userData: State }) => state.userData
+  );
   const settingsRef = useRef<HTMLDivElement>(null);
-  const [signed, setSigned] = useState<boolean>(false)
 
   const dispatch = useDispatch();
 
@@ -27,6 +33,23 @@ const Navbar = () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
   });
+  
+
+  const logOutHandle = () => {
+    localStorage.removeItem("client_id")
+    sessionStorage.removeItem("s_t")
+  
+    dispatch({
+      type: "FILL_USER",
+      payload: {
+        username: '',
+        client_id: '',
+        createdAt: '',
+        profile_src: '',
+        isLogined: false
+      },
+    });
+  }
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -34,15 +57,33 @@ const Navbar = () => {
     const secret_token = sessionStorage.getItem("s_t");
 
     if (client_id !== null || secret_token !== null) {
-      dispatch({ type: "USER_LOGINED" });
-    }else{
-      axios.post(`http://localhost:3001/user/${JSON.parse(client_id!)}`, {
-        authToken: JSON.parse(secret_token!),
-        requestor: JSON.parse(client_id!)
-    })
-      .then(data => {
-        console.log(data.data);
-      })
+      axios
+        .post(`http://localhost:3001/user/${JSON.parse(client_id!)}`, {
+          authToken: JSON.parse(secret_token!),
+          requestor: JSON.parse(client_id!),
+        })
+        .then((data) => {
+          const { profile_src, createdAt, username, client_id } = data.data;
+
+          dispatch({
+            type: "FILL_USER",
+            payload: {
+              username: username,
+              client_id: client_id,
+              createdAt: createdAt,
+              profile_src: profile_src,
+              isLogined: true
+            },
+          });
+        })
+        .catch(error => {
+          const {err} = error.response.data
+
+          if(err === "User not found" || err === "Invalid Authentiction" || err==="Invalid arguments"){
+            localStorage.removeItem("client_id")
+            sessionStorage.removeItem("s_t")
+          }
+        })
     }
 
     //Creating localStorage if dark theme doesn't exist
@@ -92,26 +133,43 @@ const Navbar = () => {
           className={!darkTheme ? "dropped__menu" : "dropped__menu dark"}
           ref={settingsRef}
         >
-          <button className={darkTheme ? "menu__button dark" : "menu__button"}
-          onClick={() => {
-            dispatch({ type: "LOG_IN", payload: true })
-            setToggleSettings(false)
-            }}>
-            Log in
-          </button>
-          <button
+          {
+            userData.isLogined ?
+            <div className="menu__profile">
+              <div className="profile-wrapper">
+                <img src={userData.profile_src} alt="" />
+              </div>
+              <p className={darkTheme ? "menu__username dark" : "menu__username"}>
+                {userData.username.length > 10 ? `${userData.username.slice(0, 10)}...`: userData.username}
+              </p>
+            </div> :
+            <button
             className={darkTheme ? "menu__button dark" : "menu__button"}
             onClick={() => {
-              dispatch({ type: "SIGN_UP", payload: true })
-              setToggleSettings(false)
+              dispatch({ type: "LOG_IN", payload: true });
+              setToggleSettings(false);
+            }}
+          >
+            Log in
+          </button>
+          }
+          {
+            userData.isLogined ?
+            <button className="menu__logout" onClick={logOutHandle}>Log out</button> :
+            <button
+            className={darkTheme ? "menu__button dark" : "menu__button"}
+            onClick={() => {
+              dispatch({ type: "SIGN_UP", payload: true });
+              setToggleSettings(false);
             }}
           >
             Sign up
           </button>
+          }
           <div
             className="dark-theme__toggler-btn"
             onClick={() => {
-              dispatch({ type: darkTheme ? "LIGHT" : "DARK" })
+              dispatch({ type: darkTheme ? "LIGHT" : "DARK" });
             }}
           >
             <div className={`theme-dragger ${darkTheme}`} />

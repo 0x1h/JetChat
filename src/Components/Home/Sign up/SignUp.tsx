@@ -1,12 +1,13 @@
-import { useEffect, useRef, useState, ChangeEvent, FormEvent } from "react";
+import { useEffect, useRef, useState, ChangeEvent, FormEvent, useCallback } from "react";
 import { motion } from "framer-motion";
 import { State } from "../../../Hooks/signReducer";
-import { State as UserState } from "../../../Hooks/userDataHandler";
+import Loader from "../../Loader";
 import { useSelector, useDispatch } from "react-redux";
 import ProfilePicture from "./ProfilePicture";
 import Inputs from "./Inputs";
 import "./style/style.css";
 import axios from "axios";
+import Confirm from "../../Confirm";
 
 export type Input = ChangeEvent<HTMLInputElement>;
 
@@ -17,14 +18,18 @@ const SignUp = () => {
   const form = useSelector(
     (state: { signReducer: State }) => state.signReducer
   );
-  // const userData = useSelector(
-  //   (state: { userData: UserState }) => state.userData
-  // );
+  const loadErrHandler = useSelector(
+		(state: {loadErrHandler: {
+			status: "isLoading" | "isError" | "default"
+		msg: string
+		}}) => state.loadErrHandler
+	)
 
   //modal state
   const [appear, setAppear] = useState<boolean>(false);
-  const signRef = useRef<HTMLFormElement>(null);
   const [allowRequest, setAllowRequest] = useState<boolean>(false);
+  const [accept, setAccept] = useState<boolean>(false)
+  const signRef = useRef<HTMLFormElement>(null);
   const dispatch = useDispatch();
 
   //animation config
@@ -32,6 +37,14 @@ const SignUp = () => {
     visible: { opacity: appear ? 1 : 0, y: appear ? 0 : 50 },
     hidden: { opacity: 0, y: appear ? 0 : -200 },
   };
+
+  const closeAccept = useCallback(() => {
+   setTimeout(() => {
+        setAccept(false)
+        dispatch({ type: "SIGN_UP", payload: false })
+    }, 2000)
+    
+}, [accept])
 
   const inputHandler = (e: Input) => {
     const name = e.target.name;
@@ -79,29 +92,37 @@ const SignUp = () => {
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
+    dispatch({type: "LOAD"})
 
     if (!allowRequest) return;
 
     axios
-      .post("http://localhost:3001/signup", form)
-      .then((data) => {
-        const { username, profile_src, client_id, authToken, createdAt } =
-          data.data;
-
-        localStorage.setItem("client_id", JSON.stringify(client_id));
-        sessionStorage.setItem("s_t", JSON.stringify(authToken));
-
-        dispatch({
+    .post("http://localhost:3001/signup", form)
+    .then((data) => {
+      const { username, profile_src, client_id, authToken, createdAt } =
+      data.data;
+      
+      localStorage.setItem("client_id", JSON.stringify(client_id));
+      sessionStorage.setItem("s_t", JSON.stringify(authToken));
+      
+      dispatch({type: "DEFAULT"})
+      setAccept(true)
+      closeAccept()
+      dispatch({
           type: "FILL_USER",
           payload: {
             username: username,
             client_id: client_id,
             createdAt: createdAt,
             profile_src: profile_src,
+            isLogined: true
           },
         });
+
       })
       .catch((err) => {
+        dispatch({type: "DEFAULT"})
+
         if (err.response.status === 406) {
           return alert(`User ${form.username} already exists`);
         }
@@ -111,8 +132,6 @@ const SignUp = () => {
         }
       });
   };
-
-  console.log();
 
   useEffect(() => {
     const clearPhotoField = {
@@ -135,7 +154,12 @@ const SignUp = () => {
 
   return (
     <div className="alert-container sign__up">
-      <motion.form
+      {
+        loadErrHandler.status === "isLoading" ?
+        <Loader /> : 
+        accept ? 
+        <Confirm msg={`Welcome on JetChat ${form.username.toLowerCase()}`}/> :
+        <motion.form
         className={darkTheme ? "sign__up-form dark" : "sign__up-form"}
         ref={signRef}
         variants={variants}
@@ -163,6 +187,7 @@ const SignUp = () => {
           </button>
         </div>
       </motion.form>
+      }
     </div>
   );
 };

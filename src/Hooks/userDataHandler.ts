@@ -3,6 +3,7 @@ export type State = {
 	client_id: string,
 	createdAt: string,
 	profile_src: string,
+	isLogined: boolean
 }
 
 type Action = {
@@ -12,6 +13,7 @@ type Action = {
 		client_id: string,
 		createdAt: string,
 		profile_src: string,
+		isLogined: boolean
 	}
 }
 
@@ -20,19 +22,21 @@ const defaultState: State = {
 	client_id: '',
 	createdAt: '',
 	profile_src: '',
+	isLogined: false
 }
 
 export const userDataHandler = (state: State = defaultState, action: Action): State => {
 	switch(action.type){
 		
 		case "FILL_USER": {
-			const {username, client_id, createdAt, profile_src} = action.payload
+			const {username, client_id, createdAt, profile_src, isLogined} = action.payload
 
 			return {
 				username: username,
 				client_id: client_id,
 				createdAt: createdAt,
 				profile_src: profile_src,
+				isLogined: isLogined
 			}
 		}
 		default: return state

@@ -6,11 +6,16 @@ const { verify } = require("hcaptcha");
 
 router.post("/signup", async (req, res) => {
   const { username, profile_src, password, isVerified } = req.body;
-  let captchaFailHandler = false
   
   try {
     
-    if (!username.trim() || !password.trim()) {
+    if (!username || !password) {
+      return res.status(403).send({
+        err: "invalid argument",
+      });
+    }
+
+    if(!username.trim() || !password.trim()){
       return res.status(403).send({
         err: "invalid argument",
       });
@@ -30,8 +35,7 @@ router.post("/signup", async (req, res) => {
             err: "captcha failed",
           });
         }
-  
-        captchaFailHandler = true
+
       })
       .catch(err => {   
         return

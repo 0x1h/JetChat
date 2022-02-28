@@ -1,0 +1,20 @@
+@import "../Home/style/variables";
+
+.accept-wrapper{
+	@include Center(center, center);
+	flex-direction: column;
+	background: $dark__theme;
+	border-radius: 20px;
+	width: 100%;
+	max-width: 400px;
+	min-height: 300px;
+	border-radius: 20px;
+	img{
+		width: 100px;
+	}
+	p{
+		color: #FFF;
+		margin-top: 20px;
+		text-align: center
+	}
+}

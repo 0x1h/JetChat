@@ -1,10 +1,13 @@
-import "./style/style.css";
 import { motion } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
 import { State } from "../../../Hooks/loginReducer";
-import { useEffect, useState, useRef, FormEvent } from "react";
+import { useEffect, useState, useRef, FormEvent, useCallback } from "react";
 import axios from "axios";
 import Loader from "../../Loader";
+import Checkbox from "./Checkbox";
+import LoginInputs from "./LoginInputs";
+import Confirm from "../../Confirm";
+import "./style/style.css";
 
 const Login = () => {
   const darkTheme = useSelector(
@@ -19,16 +22,19 @@ const Login = () => {
 		msg: string
 		}}) => state.loadErrHandler
 	)
+  
   const dispatch = useDispatch();
   const [appear, setAppear] = useState<boolean>(false);
   const [allowRequest, setAllowRequest] = useState<boolean>(false);
   const loginRef = useRef<HTMLDivElement>(null);
 	const [accept, setAccept] = useState<boolean>(false)
+  const [showPassword, setShowPassword] = useState<boolean>(false)
 
   const variants = {
     visible: { opacity: appear ? 1 : 0, y: appear ? 0 : 50 },
     hidden: { opacity: 0, y: appear ? 0 : -200 },
   };
+  
 
   //fire animation when modal boolean is true
   useEffect(() => {
@@ -39,11 +45,22 @@ const Login = () => {
     return () => clearTimeout(timeout);
   }, []);
 
+  const closeAccept = useCallback(() => {
+      let timeout = setTimeout(() => {
+        setAccept(false)
+        dispatch({ type: "LOG_IN", payload: false })
+      }, 2000)
+    
+      return () => clearTimeout(timeout)
+
+  }, [accept])
+
   const handleClickOutside = (event: any): void => {
     if (loginRef.current && !loginRef.current!.contains(event.target)) {
       dispatch({ type: "LOG_IN", payload: false });
     }
   };
+  
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside, true);
@@ -70,8 +87,37 @@ const Login = () => {
 			password: loginReducer.password
 		})
 		.then(data => {
-			console.log(data.data);
-			dispatch({type: "DEFAULT"})
+      const {profile_src, createdAt, username, client_id, authToken} = data.data
+      
+      localStorage.setItem("client_id", JSON.stringify(client_id))
+      sessionStorage.setItem("s_t", JSON.stringify(authToken))
+      
+      setAccept(true)
+      closeAccept()
+      dispatch({type: "DEFAULT"})
+
+      dispatch({type: "FILL_USER", payload: {
+        username: username,
+	      client_id: client_id,
+	      createdAt: createdAt,
+	      profile_src: profile_src,
+        isLogined: true
+      }})
+      
+      dispatch({
+        type: "LOGIN_FILL",
+        payload: {
+          key: "password",
+          value: '',
+        },
+      });
+      dispatch({
+        type: "LOGIN_FILL",
+        payload: {
+          key: "username",
+          value: '',
+        },
+      });
 		})
 		.catch((error: any) => {
 			const {err} = error.response.data
@@ -100,7 +146,7 @@ const Login = () => {
 					loadErrHandler.status === "isLoading"
 					? <Loader /> :
 					accept ? 
-					<div></div> 
+					<Confirm msg="Successfully Logged in"/>
 					:
 					<motion.form
           className={darkTheme ? "login-wrapper dark" : "login-wrapper"}
@@ -119,60 +165,8 @@ const Login = () => {
 									{loadErrHandler.msg}
 							</div>
 					}
-          <input
-            type="text"
-            className={!darkTheme ? "login_input" : "login_input dark"}
-            value={loginReducer.username}
-            placeholder="Username"
-            onChange={(e) => {
-              dispatch({
-                type: "LOGIN_FILL",
-                payload: {
-                  key: "username",
-                  value: e.target.value,
-                },
-              });
-							dispatch({
-								type: "DEFAULT"
-							})
-            }}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={loginReducer.password}
-            className={!darkTheme ? "login_input" : "login_input dark"}
-            onChange={(e) => {
-              dispatch({
-                type: "LOGIN_FILL",
-                payload: {
-                  key: "password",
-                  value: e.target.value,
-                },
-              });
-							dispatch({
-								type: "DEFAULT"
-							})
-            }}
-          />
-          <div className="btn-wrapper">
-            <button
-              className={darkTheme ? "dark" : ""}
-              onClick={() => dispatch({ type: "LOG_IN", payload: false })}
-							type="button"
-            >
-              Cancel
-            </button>
-            <button
-              className={
-                !allowRequest ? "sign-up-btn unverfied" : "sign-up-btn"
-              }
-              disabled={!allowRequest}
-							type="submit"
-            >
-              Log in
-            </button>
-          </div>
+            <LoginInputs allowRequest={allowRequest} showPassword={showPassword}/>
+            <Checkbox stateChange={() => setShowPassword((prev) => !prev)}/>
         </motion.form>
 				}
       </div>

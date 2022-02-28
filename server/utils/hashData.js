@@ -8,7 +8,7 @@ const CryptoJS = require("crypto-js");
 
 const hashData = (data) => {
 	const hashPassword = CryptoJS.AES.encrypt(JSON.stringify(data), process.env.PASSWORD_HASH).toString()
-	return hashPassword
+	return hashPassword;
 }
 
 module.exports = { hashData }

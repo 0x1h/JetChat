@@ -3,8 +3,9 @@
 .login__wrapper{
 	@include Center(center, center);
 	width: 100%;
+	padding: 0 20px;
 	max-width: 400px;
-	min-height: 280px;
+	min-height: 300px;
 	@media screen and(max-width: 400px){
 		height: 330px;
 	}	
@@ -14,7 +15,7 @@
 	@include Center(center, center);
 	width: 100%;
 	max-width: 400px;
-	min-height: 280px;
+	min-height: 350px;
 	background: #FFF;
 	position: relative;
 	border-radius: 10px;
@@ -24,7 +25,7 @@
 	flex-direction: column;
 	padding: 0 10px;
 	@media screen and(max-width: 400px){
-		height: 330px;
+		height: 380px;
 	}
 	&.dark{
 		background: $dark__theme;
@@ -60,6 +61,7 @@
 		top: 0;
 		color: #000;
 		transform: translateY(20px);
+		font-size: 2.2rem;
 		&.dark{
 			color: #FFF;
 		}
@@ -73,7 +75,7 @@
 		@media screen and(max-width: 400px){
 			flex-direction: column;
 			gap: 10px;
-			height: 120px;
+			height: 110px;
 		}
 		button{
 			@include gradient__bg($gradient__color-one, $gradient__color-two);

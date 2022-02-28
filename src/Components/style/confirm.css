@@ -1,0 +1,32 @@
+.accept-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #1a1a1a;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  min-height: 300px;
+  border-radius: 20px;
+}
+
+.accept-wrapper img {
+  width: 100px;
+}
+
+.accept-wrapper p {
+  color: #FFF;
+  margin-top: 20px;
+  text-align: center;
+}
+/*# sourceMappingURL=confirm.css.map */
