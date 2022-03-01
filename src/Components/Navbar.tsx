@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {State} from "../Hooks/userDataHandler"
+import { useNavigate } from "react-router-dom";
 import Moon_icon from "./style/icons/moon-icon.png";
 import Sun_icon from "./style/icons/sun-icon.png";
 import "./style/navbar__style.css";
@@ -17,6 +18,7 @@ const Navbar = () => {
   );
   const settingsRef = useRef<HTMLDivElement>(null);
 
+  const navigate = useNavigate()
   const dispatch = useDispatch();
 
   //detect if user clicks outside of settings <div>
@@ -110,7 +112,7 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className="logo-wrapper">
+      <div className="logo-wrapper" onClick={() => navigate("/")}>
         <div className="logo">
           <img src="/assets/jetchat-icon.png" alt="" />
         </div>

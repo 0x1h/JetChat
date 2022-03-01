@@ -19,17 +19,14 @@
     height: 200px;
     background: #fff;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    @include Shadow;
     @media screen and(max-width: 350px) {
       padding: 20px 0;
       height: 280px;
     }
     &.dark {
       background: $dark__theme;
-      box-shadow: -4px 0 10px $gradient__color-one,
-        4px 0 10px $gradient__color-two, 0 4px 10px #ff007b;
+      @include DarkShadow;
     }
     .alert__text {
       @include Center(center, center);
@@ -67,8 +64,6 @@
     }
   }
 }
-
-
 .img_modal{
   position: absolute;
   width: 500px;

@@ -7,7 +7,7 @@ main{
 	position: absolute;
 	@include Center(center, center); 
 	flex-direction: column;
-	padding: 0 20px;
+	padding: 0 20px; 
 	h1{
 		background: -webkit-linear-gradient(45deg, $gradient__color-one, $gradient__color-two);
     -webkit-background-clip: text;

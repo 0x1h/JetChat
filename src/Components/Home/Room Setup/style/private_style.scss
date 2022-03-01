@@ -1,0 +1,99 @@
+@import "../../style/variables";
+
+.private_create__modal{
+	@include Center(center, none);
+	width: 100%;
+	flex-direction: column;
+	position: relative;
+	padding: 10px;
+	height: 600px;
+	.create__header{
+		text-align: center;
+		width: 100%;
+		height: 40px;
+		color: #000;
+		&.dark{
+			color: #FFF
+		}
+		p{
+			position: absolute;
+			font-size: 0.7rem;
+			cursor: pointer;
+			transform: translateY(5px);
+			&:hover{
+				text-decoration: underline;
+			}
+		}
+	}
+	.avatar-frame{
+		@include gradient__bg($gradient__color-one, $gradient__color-two);
+		@include Center(center, center);
+		cursor: pointer;
+		width: 180px;
+		height: 180px;
+		border-radius: 50%;
+		padding: 5px;
+		.avatar{
+			@include Center(center, center);
+			overflow: hidden;
+			font-size: 0.8em;
+			width: 100%;
+			flex-direction: column;
+			text-align: center;
+			padding: 0 20px;
+			height: 100%;
+			background: #FFF;
+			border-radius: 50%;
+			.camera-icon{
+				width: 70px;
+			}
+			.profile-pic{
+				width: auto;
+				height: 100%;
+			}
+			&.dark{
+				background: $dark__theme;
+				color: #FFF
+			}
+		}
+	}
+	.room__create-btn{
+		margin-top: 10px;
+		align-self: flex-end;
+		cursor: not-allowed;
+		border: none;
+		color: #FFF;
+		width: 120px;
+		height: 40px;
+		border-radius: 50px;
+		background: #353535;
+		&.accept{
+			@include gradient__bg($gradient__color-one, $gradient__color-two);
+			cursor: pointer;
+		}
+	}
+	.room_inputs{
+		width: 100%;
+		height: 40px;
+		border-radius: 8px;
+		outline: none;
+		border: 2px solid $gradient__color-one;
+		background: transparent;
+		color: #000;
+		padding: 0 5px;
+		margin-top: 20px;
+		&.dark{
+			color: #FFF
+		}
+	}
+	.room-code-wrapper{
+		width: 100%;
+	}
+	hr{
+		width: 100%;
+		margin-top: 20px;
+		background-color: #353535;
+		border: none;
+		height: 1px;
+	}
+}

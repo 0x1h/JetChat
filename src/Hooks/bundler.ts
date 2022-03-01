@@ -1,10 +1,11 @@
 import { themeReducer } from "./themeReducer";
 import { loginReducer } from "./loginReducer";
 import { signReducer } from "./signReducer";
-import { combineReducers } from "redux"
 import { modalReducer } from "./modalsReducer";
+import { createRoomReducer } from "./createRoomReducer";
 import { userDataHandler } from "./userDataHandler";
 import { loadErrHandler } from "./loadErrorHandle";
+import { combineReducers } from "redux"
 
 export const allReducers = combineReducers({
 	themeReducer: themeReducer,
@@ -12,5 +13,6 @@ export const allReducers = combineReducers({
 	signReducer: signReducer,
 	modalReducer: modalReducer,
 	userData: userDataHandler,
-	loadErrHandler: loadErrHandler
+	loadErrHandler: loadErrHandler,
+	roomState: createRoomReducer
 })

@@ -2,6 +2,8 @@ $dark__theme: #1a1a1a;
 $gradient__color-one: #FA00FF;
 $gradient__color-two: #161955;
 
+$drk-blue: #147ec1;
+
 @mixin gradient__bg($one, $two){
 	background: linear-gradient(to right, $one, $two);
 }
@@ -10,4 +12,30 @@ $gradient__color-two: #161955;
 	display: flex;
 	align-items: $align; 
 	justify-content: $justify;	
+}
+
+@mixin Shadow {
+	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+	rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+	rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+@mixin DarkShadow {
+	box-shadow: -4px 0 10px $gradient__color-one,
+	4px 0 10px $gradient__color-two, 0 4px 10px #ff007b;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+input[type="password"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
 }

@@ -1,0 +1,31 @@
+@import "../../style/variables";
+
+
+.room_container{
+	padding: 0 20px;
+	.room__modal{
+		@include Center(center, center);
+		width: 100%;
+		flex-direction: column;
+		max-width: 400px;
+		min-height: 300px;
+		background: #FFF;
+		border-radius: 15px;
+		@include Shadow;
+		&.dark{
+			background: $dark__theme;
+			@include DarkShadow;
+		}
+		.room-option__btn{
+			width: 200px;
+			height: 80px;
+			border-radius: 50px;
+			@include gradient__bg($gradient__color-one, $gradient__color-two);
+			margin: 10px 0;
+			border: none;
+			cursor: pointer;
+			font-size: 1.4em;
+			color: #FFF;
+		}
+	}
+}

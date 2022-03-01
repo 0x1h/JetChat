@@ -1,0 +1,64 @@
+input[type="text"]:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+input[type="password"]:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+button:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
+}
+
+.room_container {
+  padding: 0 20px;
+}
+
+.room_container .room__modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 400px;
+  min-height: 300px;
+  background: #FFF;
+  border-radius: 15px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.room_container .room__modal.dark {
+  background: #1a1a1a;
+  -webkit-box-shadow: -4px 0 10px #FA00FF, 4px 0 10px #161955, 0 4px 10px #ff007b;
+          box-shadow: -4px 0 10px #FA00FF, 4px 0 10px #161955, 0 4px 10px #ff007b;
+}
+
+.room_container .room__modal .room-option__btn {
+  width: 200px;
+  height: 80px;
+  border-radius: 50px;
+  background: -webkit-gradient(linear, left top, right top, from(#FA00FF), to(#161955));
+  background: linear-gradient(to right, #FA00FF, #161955);
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4em;
+  color: #FFF;
+}
+/*# sourceMappingURL=style.css.map */
