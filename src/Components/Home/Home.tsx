@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { State } from "../../Hooks/modalsReducer"
+import { State } from "../../Hooks/Client/modalsReducer"
 import { useSelector, useDispatch } from "react-redux";
 import CreateRoom from "./Room Setup/CreateRoom";
 import AlertBox from './AlertBox'

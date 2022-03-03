@@ -1,0 +1,9 @@
+@import "../../../Home/style/variables";
+
+.current_online_users{
+	width: 100%;
+	max-width: 400px;
+	border: 1px solid red;
+	height: calc(100% - 70px);
+	align-self: flex-end;
+}

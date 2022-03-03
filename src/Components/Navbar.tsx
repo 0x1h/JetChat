@@ -1,8 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {State} from "../Hooks/userDataHandler"
+import {State} from "../Hooks/Client/userDataHandler"
 import { useNavigate } from "react-router-dom";
 import Moon_icon from "./style/icons/moon-icon.png";
+import hostConfig from "../utils/hostconfig.json"
 import Sun_icon from "./style/icons/sun-icon.png";
 import "./style/navbar__style.css";
 import axios from "axios";
@@ -52,6 +53,7 @@ const Navbar = () => {
       },
     });
   }
+  
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");
@@ -60,7 +62,7 @@ const Navbar = () => {
 
     if (client_id !== null || secret_token !== null) {
       axios
-        .post(`http://localhost:3001/user/${JSON.parse(client_id!)}`, {
+        .post(`${hostConfig.host}/user/${JSON.parse(client_id!)}`, {
           authToken: JSON.parse(secret_token!),
           requestor: JSON.parse(client_id!),
         })
@@ -98,15 +100,14 @@ const Navbar = () => {
   }, []);
 
   useEffect(() => {
-    const body = document.querySelector(".body");
+    const body = document.querySelector(".body") as HTMLBodyElement
 
     if (darkTheme) {
       localStorage.setItem("theme", JSON.stringify(true));
-      body?.classList.add("dark");
-      return;
+      return body.classList.add("dark"); 
     }
 
-    body?.classList.remove("dark");
+    body.classList.remove("dark");
     localStorage.setItem("theme", JSON.stringify(false));
   }, [darkTheme]);
 

@@ -1,0 +1,51 @@
+@import "../../../../Home/style/variables";
+
+.just-message{
+	width: 100%;
+	min-height: 80px;
+	border-radius: 8px;
+	display: flex;
+	&:hover{
+		background: #252525;
+	}
+	.profile-picture{
+		@include Center(none, center);
+		height: 100%;
+		min-height: 80px;
+		width: 80px;
+		padding-top: 10px;
+		.profile-picture__wrapper{
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			overflow: hidden;
+			img{
+				width: auto;
+				height: 100%
+			}
+		}
+	}
+	.main-content{
+		width: 100%;
+		height: 100%;
+		padding: 0 20px;
+		min-height: 80px;
+		display: flex;
+		flex-direction: column;
+		.time_username-wrapper{
+			width: 100%;
+			height: 35px;
+			color: rgb(131, 131, 131);
+			@include Center(center, none);
+		}
+		.actual__messsage{
+			width: 100%;
+			height: 100%;
+			min-height: 45px;
+			color: #000;
+			&.dark{
+				color: #FFF
+			}
+		}
+	}
+}

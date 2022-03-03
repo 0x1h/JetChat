@@ -1,0 +1,118 @@
+input[type="text"]:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+input[type="password"]:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+button:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
+}
+
+.messages_container {
+  width: 100%;
+  height: calc(100% - 70px);
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.client__input-form {
+  width: 100%;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  height: 50px;
+}
+
+.client__input-form .client__input {
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border: 2px solid #FA00FF;
+  border-radius: 5px;
+  font-size: 1.002rem;
+  padding: 0 5px;
+}
+
+.client__input-form .client__input.dark {
+  color: #FFF;
+}
+
+.sent_messages__container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  padding: 60px 10px 0 10px;
+}
+
+.room-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 50px;
+  right: 0;
+  top: 70px;
+  width: 100%;
+  position: fixed;
+  border-radius: 0 0 8px 8px;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 8px 0px 16px -8px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 8px 0px 16px -8px;
+  background: #f1f1f1;
+}
+
+.room-header.dark {
+  background: #363636;
+}
+
+.room-header .room__info {
+  width: 100%;
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.room-header .room__info .img-frame {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.room-header .room__info .img-frame img {
+  width: auto;
+  height: 100%;
+}
+
+.room-header .room__info .room-name {
+  margin-left: 20px;
+  color: #000;
+}
+
+.room-header .room__info .room-name.dark {
+  color: #FFF;
+}
+
+.room-header .active__users-side {
+  max-width: 400px;
+  width: 100%;
+}
+/*# sourceMappingURL=messages.css.map */

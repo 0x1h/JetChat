@@ -1,0 +1,27 @@
+input[type="text"]:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+input[type="password"]:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+button:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
+}
+
+.current_online_users {
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid red;
+  height: calc(100% - 70px);
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+/*# sourceMappingURL=dashboard.css.map */

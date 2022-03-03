@@ -96,4 +96,39 @@
 		border: none;
 		height: 1px;
 	}
+	.join-room-btns{
+		@include Center(center, center);
+		width: 100%;
+		height: 60px;
+		.result-btns{
+			margin: 0 10px;
+			width: 200px;
+			height: 40px;
+			border-radius: 50px;
+			border: none;
+			transition: 0.2s ease;
+			cursor: pointer;
+			color: #FFF;
+			&:nth-child(1){
+				background: transparent;
+				border: 2px solid #000;
+				color: #000;
+				&:hover{
+					background: #000;
+					color: #fff
+				}
+				&.dark{
+					border: 2px solid #FFF;
+					color:#FFF;
+					&:hover{
+						background: #FFF;
+						color: #000
+					}
+				}
+			}
+			&:nth-child(2){
+			@include gradient__bg($gradient__color-one, $gradient__color-two);
+			}
+		}
+	}
 }

@@ -1,0 +1,78 @@
+@import "../../../Home/style/_variables";
+
+.messages_container{
+	width: 100%;
+	height: calc(100% - 70px); 
+	align-self: flex-end;
+	display: flex;
+	flex-direction: column;
+}
+
+.client__input-form{
+	width: 100%;
+	align-self: flex-end;
+	height: 50px;
+	.client__input{
+		height: 100%;
+		width: 100%;
+		background: transparent;
+		border: none;
+		border: 2px solid $gradient__color-one;
+		border-radius: 5px;
+		font-size: 1.002rem;
+		padding: 0 5px;
+		&.dark{
+			color: #FFF
+		}
+	}
+}
+
+.sent_messages__container{
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	position: relative;
+	padding: 60px 10px 0 10px;
+}
+
+.room-header{
+	display: flex;
+	height: 50px;
+	right: 0;
+	top: 70px;
+	width: 100%;
+	position: fixed;
+	border-radius: 0 0 8px 8px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 8px 0px 16px -8px;
+	background: #f1f1f1;
+	&.dark{
+		background: #363636;
+	}
+	.room__info{
+		width: 100%;
+		padding: 0 10px;
+		display: flex;
+		align-items: center;
+		.img-frame{
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			overflow: hidden;
+			img{
+				width: auto;
+				height: 100%;
+			}
+		}
+		.room-name{
+			margin-left: 20px;
+			color: #000;
+			&.dark{
+				color: #FFF;
+			}
+		}
+	}
+	.active__users-side{
+		max-width: 400px;
+		width: 100%;
+	}
+}

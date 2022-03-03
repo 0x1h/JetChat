@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { State } from "../../../Hooks/loginReducer";
+import { State } from "../../../Hooks/Client/loginReducer";
 import { FC } from "react";
 
 const LoginInputs: FC<{allowRequest: boolean, showPassword: boolean}> = ({allowRequest, showPassword}) => {

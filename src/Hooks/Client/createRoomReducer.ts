@@ -5,7 +5,7 @@ export type State = {
 }
 
 type Action = {
-	type: "ROOM_OPTIONS",
+	type: "ROOM_OPTIONS" | "CLEAR_ROOM_OPTIONS",
 	payload: {
 		key: keyof State,
 		value: string
@@ -25,6 +25,13 @@ export const createRoomReducer = (state: State = room, action: Action): State =>
 			return {
 				...state,
 				[key]: value
+			}
+		}
+		case "CLEAR_ROOM_OPTIONS": {
+			return {
+				room_name: "",
+				room_icon: "",
+				room_code: "",
 			}
 		}
 		default: return state

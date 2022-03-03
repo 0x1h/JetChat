@@ -16,7 +16,21 @@ button:focus {
           box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
 }
 
-.accept-wrapper {
+.chatting-playground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.modals-container__warn_load {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -26,42 +40,10 @@ button:focus {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding: 0 50px;
-  background: #1a1a1a;
-  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  height: 100vh;
   width: 100%;
-  max-width: 400px;
-  min-height: 300px;
-  border-radius: 20px;
 }
-
-.accept-wrapper img {
-  width: 100px;
-}
-
-.accept-wrapper p {
-  color: #FFF;
-  margin-top: 20px;
-  text-align: center;
-}
-
-.accept-wrapper button {
-  width: 140px;
-  height: 50px;
-  -webkit-transform: translateY(10px);
-          transform: translateY(10px);
-  border-radius: 50px;
-  cursor: pointer;
-  border: none;
-  background: #ff4646;
-  color: #FFF;
-}
-
-.accept-wrapper button:hover {
-  background: #d65858;
-}
-/*# sourceMappingURL=confirm.css.map */
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,99 @@
+input[type="text"]:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+input[type="password"]:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+button:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
+}
+
+.just-message {
+  width: 100%;
+  min-height: 80px;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.just-message:hover {
+  background: #252525;
+}
+
+.just-message .profile-picture {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: none;
+      -ms-flex-align: none;
+          align-items: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  min-height: 80px;
+  width: 80px;
+  padding-top: 10px;
+}
+
+.just-message .profile-picture .profile-picture__wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.just-message .profile-picture .profile-picture__wrapper img {
+  width: auto;
+  height: 100%;
+}
+
+.just-message .main-content {
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  min-height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.just-message .main-content .time_username-wrapper {
+  width: 100%;
+  height: 35px;
+  color: #838383;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
+}
+
+.just-message .main-content .actual__messsage {
+  width: 100%;
+  height: 100%;
+  min-height: 45px;
+  color: #000;
+}
+
+.just-message .main-content .actual__messsage.dark {
+  color: #FFF;
+}
+/*# sourceMappingURL=style.css.map */

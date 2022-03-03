@@ -1,4 +1,4 @@
-import { State } from "../../../Hooks/createRoomReducer";
+import { State } from "../../../Hooks/Client/createRoomReducer";
 import { useSelector, useDispatch } from "react-redux";
 import EmptyIcon from "./Icon/server-icon.png";
 

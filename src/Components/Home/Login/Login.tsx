@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
-import { State } from "../../../Hooks/loginReducer";
+import { State } from "../../../Hooks/Client/loginReducer";
 import { useEffect, useState, useRef, FormEvent, useCallback } from "react";
+import hostConfig from "../../../utils/hostconfig.json"
 import axios from "axios";
 import Loader from "../../Loader";
 import Checkbox from "./Checkbox";
@@ -82,7 +83,7 @@ const Login = () => {
     e.preventDefault();
 		dispatch({type: "LOAD"})
 		
-		axios.post("http://localhost:3001/login", {
+		axios.post(`${hostConfig.host}/login`, {
 			username: loginReducer.username,
 			password: loginReducer.password
 		})

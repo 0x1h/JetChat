@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, ChangeEvent, FormEvent, useCallback, FC } 
 import { motion } from "framer-motion";
 import { State } from "../../../Hooks/signReducer";
 import Loader from "../../Loader";
+import hostConfig from "../../../utils/hostconfig.json"
 import { useSelector, useDispatch } from "react-redux";
 import ProfilePicture from "./ProfilePicture";
 import Inputs from "./Inputs";
@@ -97,7 +98,7 @@ const SignUp: FC<{runTada: (arg: boolean) => void}> = ({ runTada }) => {
     if (!allowRequest) return;
 
     axios
-    .post("http://localhost:3001/signup", form)
+    .post(`${hostConfig.host}/signup`, form)
     .then((data) => {
       const { username, profile_src, client_id, authToken, createdAt } =
       data.data;

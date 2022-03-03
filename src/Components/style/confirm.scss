@@ -3,6 +3,7 @@
 .accept-wrapper{
 	@include Center(center, center);
 	flex-direction: column;
+	padding: 0 50px;
 	background: $dark__theme;
 	border-radius: 20px;
 	width: 100%;
@@ -16,5 +17,18 @@
 		color: #FFF;
 		margin-top: 20px;
 		text-align: center
+	}
+	button{
+		width: 140px;
+		height: 50px;
+		transform: translateY(10px);
+		border-radius: 50px;
+		cursor: pointer;
+		border: none;
+		background: #ff4646;
+		color: #FFF;
+		&:hover{
+			background: #d65858;
+		}
 	}
 }

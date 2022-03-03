@@ -1,11 +1,14 @@
-import { themeReducer } from "./themeReducer";
-import { loginReducer } from "./loginReducer";
-import { signReducer } from "./signReducer";
-import { modalReducer } from "./modalsReducer";
-import { createRoomReducer } from "./createRoomReducer";
-import { userDataHandler } from "./userDataHandler";
-import { loadErrHandler } from "./loadErrorHandle";
+import { themeReducer } from "./Client/themeReducer";
+import { loginReducer } from "./Client/loginReducer";
+import { signReducer } from "./Client/signReducer";
+import { modalReducer } from "./Client/modalsReducer";
+import { createRoomReducer } from "./Client/createRoomReducer";
+import { userDataHandler } from "./Client/userDataHandler";
+import { loadErrHandler } from "./Client/loadErrorHandle";
+import { clientReducer } from "./Chat/ClientReducer";
+import { allMessages } from "./Chat/ChatMessages";
 import { combineReducers } from "redux"
+
 
 export const allReducers = combineReducers({
 	themeReducer: themeReducer,
@@ -14,5 +17,7 @@ export const allReducers = combineReducers({
 	modalReducer: modalReducer,
 	userData: userDataHandler,
 	loadErrHandler: loadErrHandler,
-	roomState: createRoomReducer
+	roomState: createRoomReducer,
+	chatData: clientReducer,
+	sentMessages: allMessages
 })
