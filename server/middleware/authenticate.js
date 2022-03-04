@@ -1,4 +1,4 @@
-const UserScheme = require("../models/UserScheme");
+const UserScheme = require("../models/UserSchema");
 
 const authenticateUser = async (req, res, next) => {  
   const { requestor, authToken } = req.body;

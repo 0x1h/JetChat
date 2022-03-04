@@ -1,4 +1,4 @@
-const UserScheme = require("../models/UserScheme");
+const UserScheme = require("../models/UserSchema");
 const router = require("express").Router();
 const { hashData } = require("../utils/hashData");
 const { tokenGenerator } = require("../utils/tokenGenerator");
@@ -35,7 +35,6 @@ router.post("/signup", async (req, res) => {
             err: "captcha failed",
           });
         }
-
       })
       .catch(err => {   
         return
