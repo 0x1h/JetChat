@@ -1,78 +1,123 @@
 @import "../../../Home/style/_variables";
 
-.messages_container{
-	width: 100%;
-	height: calc(100% - 70px); 
-	align-self: flex-end;
-	display: flex;
-	flex-direction: column;
+.messages_container {
+  width: 100%;
+  height: calc(100% - 70px);
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
 }
 
-.client__input-form{
-	width: 100%;
-	align-self: flex-end;
-	height: 50px;
-	.client__input{
-		height: 100%;
-		width: 100%;
-		background: transparent;
-		border: none;
-		border: 2px solid $gradient__color-one;
-		border-radius: 5px;
-		font-size: 1.002rem;
-		padding: 0 5px;
-		&.dark{
-			color: #FFF
-		}
-	}
+.client__input-form {
+  width: 100%;
+  align-self: flex-end;
+  margin-bottom: 10px;
+  height: 50px;
+  .client__input {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border: 2px solid $gradient__color-one;
+    border-radius: 5px;
+    font-size: 1.002rem;
+    padding: 0 5px;
+    font-family: "Poppins", sans-serif;
+    &.dark {
+      color: #fff;
+    }
+  }
 }
 
-.sent_messages__container{
-	width: 100%;
-	height: 100%;
-	overflow-y: auto;
-	position: relative;
-	padding: 60px 10px 0 10px;
+.sent_messages__container {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  padding: 60px 10px 0 10px;
 }
 
-.room-header{
-	display: flex;
-	height: 50px;
-	right: 0;
-	top: 70px;
-	width: 100%;
-	position: fixed;
-	border-radius: 0 0 8px 8px;
-	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 8px 0px 16px -8px;
-	background: #f1f1f1;
-	&.dark{
-		background: #363636;
+.room-header {
+  display: flex;
+  height: 50px;
+  right: 0;
+  top: 70px;
+  width: 100%;
+  z-index: 6;
+  position: fixed;
+  border-radius: 0 0 8px 8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 8px 0px 16px -8px;
+  background: #f1f1f1;
+  &.dark {
+    background: #363636;
+  }
+  .room__info {
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    .img-frame {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      img {
+        width: auto;
+        height: 100%;
+      }
+    }
+    .room-name {
+      margin-left: 20px;
+      color: #000;
+      &.dark {
+        color: #fff;
+      }
+    }
+  }
+  .active__users-side {
+    max-width: 400px;
+    width: 100%;
+  }
+}
+
+@keyframes skeleton-load {
+  0% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(200px);
+  }
+}
+
+.skeleton {
+  width: 200px;
+	overflow: hidden;
+  background: rgba(255, 255,255, 0.2);
+  margin-left: 20px;
+  border-radius: 50px;
+  height: 25px;
+  overflow: hidden;
+  position: relative;
+	&.room-icon{
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		margin-left: 0;
 	}
-	.room__info{
-		width: 100%;
-		padding: 0 10px;
-		display: flex;
-		align-items: center;
-		.img-frame{
-			width: 40px;
-			height: 40px;
-			border-radius: 50%;
-			overflow: hidden;
-			img{
-				width: auto;
-				height: 100%;
-			}
-		}
-		.room-name{
-			margin-left: 20px;
-			color: #000;
-			&.dark{
-				color: #FFF;
-			}
-		}
-	}
-	.active__users-side{
-		max-width: 400px;
-		width: 100%;
-	}
+  &:before {
+    content: "";
+    width: 6px;
+    position: absolute;
+    background: #fff;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+    height: 100%;
+    animation-name: skeleton-load;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+  }
 }

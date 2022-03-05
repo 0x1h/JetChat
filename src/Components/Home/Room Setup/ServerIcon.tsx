@@ -9,7 +9,7 @@ const ServerIcon = () => {
   const darkTheme = useSelector(
     (state: { themeReducer: boolean }) => state.themeReducer
   );
-
+  
   const dispatch = useDispatch()
 
   return (

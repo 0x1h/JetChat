@@ -72,7 +72,7 @@ const CreateRoom: FC<{ closeModal: () => void }> = ({ closeModal }) => {
         ) : roomOption === "create" ? (
           <PrivateCreate goBack={() => setRoomOption("default")}/>
         ) : (
-          <JoinRoom />
+          <JoinRoom goBack={() => setRoomOption("default")}/>
         )}
       </motion.div>
     </div>

@@ -6,6 +6,7 @@ export type State = {
     sentAt: string; //Date format,
     messageText: string; //client sent data,
     client_profile: string; //client profile picture URL
+    message_id: string
     reply?: {
       mentioned: string; //replying username
       mentioned_user_profile: string; //replying user profile source
@@ -24,6 +25,7 @@ type Action = {
       sentAt: string; //Date format,
       messageText: string; //client sent data
       client_profile: string; //client profile picture URL
+      message_id: string
       reply?: {
         mentioned: string; //replying username
         mentioned_user_profile: string; //replying user profile source
@@ -49,7 +51,7 @@ export const allMessages = (
 ): State[] => {
   switch (action.type) {
     case "MESSAGE": {
-      const { sentBy, username, sentAt, messageText, client_profile } =
+      const { sentBy, username, sentAt, messageText, client_profile, message_id } =
       action.payload.message;
 
       return [
@@ -57,6 +59,7 @@ export const allMessages = (
         {
           type: "MESSAGE",
           message: {
+            message_id: message_id,
             sentAt: sentAt,
             username: username,
             sentBy: sentBy,

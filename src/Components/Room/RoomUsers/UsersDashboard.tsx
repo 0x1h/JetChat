@@ -3,7 +3,8 @@ import "./style/dashboard.css"
 
 const UsersDashboard = () => {
 	return (
-		<div className='current_online_users'></div>
+		<div className='current_online_users'>
+		</div>
 	)
 }
 

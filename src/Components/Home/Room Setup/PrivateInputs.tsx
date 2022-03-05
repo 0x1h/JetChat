@@ -9,6 +9,7 @@ interface PrivateInputProps {
   roomForm: State;
   createRoom: () => void
   disconnect: () => void
+  isLoading: boolean
 }
 
 const PrivateInputs: FC<PrivateInputProps> = ({
@@ -16,7 +17,8 @@ const PrivateInputs: FC<PrivateInputProps> = ({
   darkTheme,
   roomForm,
   createRoom,
-  disconnect
+  disconnect,
+  isLoading
 }) => {
   const navigate = useNavigate()
 
@@ -46,7 +48,9 @@ const PrivateInputs: FC<PrivateInputProps> = ({
         disabled={!roomForm.room_name.trim()}
         onClick={createRoom}
       >
-        Create
+        {
+          isLoading ? <span className="loaderr"></span> : "Create"
+        }
       </button>
       <hr className="line" />
       <div className="room-code-wrapper">

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, ChangeEvent, FormEvent, useCallback, FC } from "react";
 import { motion } from "framer-motion";
-import { State } from "../../../Hooks/signReducer";
+import { State } from "../../../Hooks/Client/signReducer";
 import Loader from "../../Loader";
 import hostConfig from "../../../utils/hostconfig.json"
 import { useSelector, useDispatch } from "react-redux";

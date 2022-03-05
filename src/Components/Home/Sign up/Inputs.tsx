@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { State } from "../../../Hooks/signReducer";
+import { State } from "../../../Hooks/Client/signReducer";
 import { Input } from "./SignUp";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import captchaConfig from "../captcha.json";

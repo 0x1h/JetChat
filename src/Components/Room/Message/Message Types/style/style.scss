@@ -4,9 +4,16 @@
 	width: 100%;
 	min-height: 80px;
 	border-radius: 8px;
+	margin-bottom: 10px;
+	position: relative;
 	display: flex;
 	&:hover{
-		background: #252525;
+		background: #e2e2e2;
+	}
+	&.dark{
+		&:hover{
+			background: #252525;
+		}
 	}
 	.profile-picture{
 		@include Center(none, center);
@@ -14,11 +21,15 @@
 		min-height: 80px;
 		width: 80px;
 		padding-top: 10px;
+		cursor: pointer;
 		.profile-picture__wrapper{
 			width: 60px;
 			height: 60px;
 			border-radius: 50%;
 			overflow: hidden;
+			&:hover{
+				box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+			}
 			img{
 				width: auto;
 				height: 100%
@@ -31,20 +42,81 @@
 		padding: 0 20px;
 		min-height: 80px;
 		display: flex;
+		position: relative;
 		flex-direction: column;
 		.time_username-wrapper{
 			width: 100%;
 			height: 35px;
 			color: rgb(131, 131, 131);
 			@include Center(center, none);
+			time{
+				font-size: .8em;
+				margin-left: 10px;
+				color: #474747;
+				transform: translateY(1px);
+			}	
 		}
 		.actual__messsage{
 			width: 100%;
 			height: 100%;
 			min-height: 45px;
 			color: #000;
+			overflow-wrap: anywhere;
 			&.dark{
 				color: #FFF
+			}
+		}
+	}
+}
+
+.message_option{
+	@include Center(center, center);
+	width: 200px;
+	background: #FFF;
+	z-index: 8;
+	min-height: 100px;
+	flex-direction: column;
+	border-radius: 6px;
+	top: 0;
+	left: 0;
+	position: absolute;
+	&.dark{
+		background: #3f3f3f;
+	}
+	.options-config-btn{
+		width: 100%;
+		background: transparent;
+		border: none;
+		height: 30px;
+		color: #000;
+		outline: none;
+		box-shadow: none;
+		border-radius: 3px;
+		background: #e2e2e2;
+		cursor: pointer;
+		// deletebtn
+		&.delete-btn{
+			background: #e2e2e2;
+			color: #000;
+			&.dark{
+				&:hover{
+					background: #ff5c5c;
+				}
+			}
+			&:hover{
+				color: #FFF;
+				background: #ff5c5c;
+			}
+		}
+		//other-btns
+		&:hover{
+			background: #919191;
+		}
+		&.dark{
+			color:#FFF;
+			background:transparent;
+			&:hover{
+				background: #252525;
 			}
 		}
 	}

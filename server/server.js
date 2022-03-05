@@ -21,16 +21,25 @@ const limiter = rateLimit({
 const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http, socketIoConfig);
-const connect = require("./socket/connect")
 
-connect(io)
+io.on("connection", socket => {
+  console.log('Yay, connection was recorded')
+
+	socket.on("send-message", (msg, room) => {
+    socket.join(room)
+    socket.to(room).emit("receive", msg)
+  })
+
+  socket.on('disconnect', () => {
+    console.log("user disconnected");
+  });
+
+})
 
 http.listen(process.env.PORT || port, () => {
   const port = http.address().port;
   console.log("App listening at", port);
 });
-
-
 
 app.use(express.json());
 app.use(cors());

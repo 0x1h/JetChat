@@ -3,7 +3,11 @@
 .current_online_users{
 	width: 100%;
 	max-width: 400px;
-	border: 1px solid red;
+	min-width: 400px;
+	background: #1b1b1b;
 	height: calc(100% - 70px);
 	align-self: flex-end;
+	@media screen and(max-width: 1000px){
+		display: none;
+	}
 }

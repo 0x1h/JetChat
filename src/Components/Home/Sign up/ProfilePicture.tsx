@@ -1,4 +1,4 @@
-import { State } from "../../../Hooks/signReducer";
+import { State } from "../../../Hooks/Client/signReducer";
 import { useSelector, useDispatch } from "react-redux";
 import CameraIcon from "./icons/camera-icon.png";
 

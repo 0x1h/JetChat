@@ -7,6 +7,9 @@ import { userDataHandler } from "./Client/userDataHandler";
 import { loadErrHandler } from "./Client/loadErrorHandle";
 import { clientReducer } from "./Chat/ClientReducer";
 import { allMessages } from "./Chat/ChatMessages";
+import { optionModal } from "./Chat/optionsModal";
+import { roomInfo } from "./Chat/RoomData";
+import {optionsHandle} from "./Chat/optionsHandle"
 import { combineReducers } from "redux"
 
 
@@ -19,5 +22,8 @@ export const allReducers = combineReducers({
 	loadErrHandler: loadErrHandler,
 	roomState: createRoomReducer,
 	chatData: clientReducer,
-	sentMessages: allMessages
+	sentMessages: allMessages,
+	roomData: roomInfo,
+	optionModal: optionModal,
+	optionsHandle: optionsHandle
 })

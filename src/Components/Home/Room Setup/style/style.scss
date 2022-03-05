@@ -1,31 +1,119 @@
 @import "../../style/variables";
 
+@mixin btn {
+  width: 200px;
+  height: 80px;
+  border-radius: 50px;
+  @include gradient__bg($gradient__color-one, $gradient__color-two);
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4em;
+  color: #fff;
+}
 
-.room_container{
-	padding: 0 20px;
-	.room__modal{
-		@include Center(center, center);
-		width: 100%;
-		flex-direction: column;
-		max-width: 400px;
-		min-height: 300px;
-		background: #FFF;
-		border-radius: 15px;
-		@include Shadow;
+.room_container {
+  padding: 0 20px;
+  .room__modal {
+    @include Center(center, center);
+    width: 100%;
+    flex-direction: column;
+    max-width: 400px;
+    min-height: 300px;
+    background: #fff;
+    border-radius: 15px;
+    @include Shadow;
+    &.dark {
+      background: $dark__theme;
+      @include DarkShadow;
+    }
+    .room-option__btn {
+      @include btn;
+    }
+  }
+}
+
+.loaderr {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 3px solid #fff;
+  border-right: 3px solid transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.join__in-private {
+  width: 100%;
+  @include Center(center, none);
+  padding: 0 20px;
+  flex-direction: column;
+  height: 100%;
+  min-height: inherit;
+  .join-room_wrapper {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    .goback {
+      position: absolute;
+      left: 0;
+      font-size: 0.7em;
+      top: 0;
+      cursor: pointer;
+      transform: translateY(8px);
+      &:hover {
+        text-decoration: underline;
+      }
+      &.dark {
+        color: #fff;
+      }
+    }
+  }
+  .join__input {
+    width: 100%;
+    height: 40px;
+		text-align: center;
+    border-radius: 8px;
+    outline: none;
+    border: 2px solid $gradient__color-one;
+    background: transparent;
+    color: #000;
+    padding: 0 5px;
+    margin-top: 20px;
+    &.dark {
+      color: #fff;
+    }
+  }
+	.join_in_room{
+		margin-top: 50px;
 		&.dark{
-			background: $dark__theme;
-			@include DarkShadow;
-		}
-		.room-option__btn{
-			width: 200px;
-			height: 80px;
-			border-radius: 50px;
-			@include gradient__bg($gradient__color-one, $gradient__color-two);
-			margin: 10px 0;
-			border: none;
-			cursor: pointer;
-			font-size: 1.4em;
 			color: #FFF;
 		}
 	}
+  .join_room_btn {
+		@include btn;
+		height: 50px;
+		width: 150px;
+		font-size: 1.1rem;
+  }
+}
+.join_error{
+	width: 100%;
+	min-height: 50px;
+	text-align: center;
+	@include Center(center, center);
+	color: #FFF;
+	background: #ff4f4f;
+	font-size: 0.9em;
+	border-radius: 5px;
 }

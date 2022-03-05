@@ -1,13 +1,13 @@
-import React from 'react'
+import {FC} from 'react'
 import "./style/messages.css"
 import Client from './Client'
 import SentMessages from './SentMessages'
 
-const Messages = () => {
+const Messages: FC<{socket: any}> = ({socket}) => {
 	return (
 		<div className='messages_container'>
 			<SentMessages />
-			<Client />
+			<Client socket={socket}/>
 		</div>
 	)
 }
