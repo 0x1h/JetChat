@@ -1,9 +1,9 @@
-import { FC, useCallback, useState, useEffect, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import "./style/style.css";
 import { useDispatch, useSelector } from "react-redux";
 import {State} from "../../../../Hooks/Chat/RoomData"
 
-interface JustMessageProps {
+export interface MessageProps {
   sentBy: string; //client_id
   username: string; //client_username,
   sentAt: string; //Date format,
@@ -12,7 +12,7 @@ interface JustMessageProps {
   message_id: string;
 }
 
-const JustMessage: FC<JustMessageProps> = ({
+const JustMessage: FC<MessageProps> = ({
   sentAt,
   sentBy,
   username,
@@ -35,15 +35,18 @@ const JustMessage: FC<JustMessageProps> = ({
       dispatch({type: "SET_OPTIONS_CONFIG", payload: {
         message_author: sentBy,
         message_id: message_id,
-        room_owner: roomData.owner_data.client_id
+        room_owner: roomData.owner_data.client_id,
+        message_username: username,
+        message_text: message,
+        message_profile: profile_src,
+        
       }})
       
       dispatch({type: "OPEN_OPTIONS", payload: {
         x: event.clientX,
         y: event.clientY
       }})
-
-    }
+  }
     
 
   useEffect(() => {

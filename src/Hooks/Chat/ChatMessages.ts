@@ -10,7 +10,8 @@ export type State = {
     reply?: {
       mentioned: string; //replying username
       mentioned_user_profile: string; //replying user profile source
-      mentioned_message: string;
+      mentioned_message: string,
+      mentioned_user_id: string
     };
   };
 };
@@ -30,6 +31,7 @@ type Action = {
         mentioned: string; //replying username
         mentioned_user_profile: string; //replying user profile source
         mentioned_message: string;
+        mentioned_user_id: string
       };
     };
   };
@@ -54,6 +56,8 @@ export const allMessages = (
       const { sentBy, username, sentAt, messageText, client_profile, message_id } =
       action.payload.message;
 
+      const {mentioned, mentioned_user_profile, mentioned_message, mentioned_user_id} = action.payload.message.reply!
+
       return [
         ...state,
         {
@@ -65,6 +69,12 @@ export const allMessages = (
             sentBy: sentBy,
             messageText: messageText,
             client_profile: client_profile,
+            reply: {
+              mentioned: mentioned, //replying username
+              mentioned_user_profile: mentioned_user_profile, //replying user profile source
+              mentioned_message: mentioned_message,
+              mentioned_user_id: mentioned_user_id
+            }
           },
         },
       ];

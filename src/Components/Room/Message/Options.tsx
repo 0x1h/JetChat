@@ -39,7 +39,20 @@ const Options = () => {
       document.removeEventListener("click", handleClickOutside, true);
       document.addEventListener("contextmenu", handleClickOutside, true);
     };
-  }, []);
+  }, []);  
+
+  const setReplyMessage = () => {
+    dispatch({
+      type: "SET_REPLY_MESSAGE",
+      payload: {
+        reply_username: optionConfig.message_username,
+		    reply_picture: optionConfig.message_profile,
+		    reply_message: optionConfig.message_text,
+        reply_message_id: optionConfig.message_author
+      }
+    })
+    dispatch({type: "CLOSE_OPTIONS"})
+  }
 
 
   return (
@@ -52,6 +65,7 @@ const Options = () => {
     >
       <button
         className={darkTheme ? "options-config-btn dark" : "options-config-btn"}
+        onClick={setReplyMessage}
       >
         Reply
       </button>

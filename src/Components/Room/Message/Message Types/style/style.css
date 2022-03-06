@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
 input[type="text"]:focus {
   outline: none;
   -webkit-box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
@@ -16,7 +17,8 @@ button:focus {
           box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
 }
 
-.just-message {
+.just-message,
+.replied-message {
   width: 100%;
   min-height: 80px;
   border-radius: 8px;
@@ -27,15 +29,18 @@ button:focus {
   display: flex;
 }
 
-.just-message:hover {
+.just-message:hover,
+.replied-message:hover {
   background: #e2e2e2;
 }
 
-.just-message.dark:hover {
+.just-message.dark:hover,
+.replied-message.dark:hover {
   background: #252525;
 }
 
-.just-message .profile-picture {
+.just-message .profile-picture,
+.replied-message .profile-picture {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -52,24 +57,28 @@ button:focus {
   cursor: pointer;
 }
 
-.just-message .profile-picture .profile-picture__wrapper {
+.just-message .profile-picture .profile-picture__wrapper,
+.replied-message .profile-picture .profile-picture__wrapper {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
 }
 
-.just-message .profile-picture .profile-picture__wrapper:hover {
+.just-message .profile-picture .profile-picture__wrapper:hover,
+.replied-message .profile-picture .profile-picture__wrapper:hover {
   -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
           box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.just-message .profile-picture .profile-picture__wrapper img {
+.just-message .profile-picture .profile-picture__wrapper img,
+.replied-message .profile-picture .profile-picture__wrapper img {
   width: auto;
   height: 100%;
 }
 
-.just-message .main-content {
+.just-message .main-content,
+.replied-message .main-content {
   width: 100%;
   height: 100%;
   padding: 0 20px;
@@ -84,7 +93,8 @@ button:focus {
           flex-direction: column;
 }
 
-.just-message .main-content .time_username-wrapper {
+.just-message .main-content .time_username-wrapper,
+.replied-message .main-content .time_username-wrapper {
   width: 100%;
   height: 35px;
   color: #838383;
@@ -99,7 +109,8 @@ button:focus {
           justify-content: none;
 }
 
-.just-message .main-content .time_username-wrapper time {
+.just-message .main-content .time_username-wrapper time,
+.replied-message .main-content .time_username-wrapper time {
   font-size: .8em;
   margin-left: 10px;
   color: #474747;
@@ -107,7 +118,8 @@ button:focus {
           transform: translateY(1px);
 }
 
-.just-message .main-content .actual__messsage {
+.just-message .main-content .actual__messsage,
+.replied-message .main-content .actual__messsage {
   width: 100%;
   height: 100%;
   min-height: 45px;
@@ -115,8 +127,108 @@ button:focus {
   overflow-wrap: anywhere;
 }
 
-.just-message .main-content .actual__messsage.dark {
+.just-message .main-content .actual__messsage.dark,
+.replied-message .main-content .actual__messsage.dark {
   color: #FFF;
+}
+
+.replied-message-wrapper {
+  width: 100%;
+  min-height: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 8px;
+}
+
+.replied-message-wrapper.ping {
+  background: rgba(255, 255, 0, 0.1);
+}
+
+.replied-message-wrapper:hover {
+  background: #e2e2e2;
+}
+
+.replied-message-wrapper.dark:hover {
+  background: #252525;
+}
+
+.replied-message-wrapper .replied-message__content {
+  width: 100%;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.replied-message-wrapper .replied-message__content .curved-line {
+  border: 2px solid #919191;
+  border-right: none;
+  border-bottom: none;
+  height: 20px;
+  width: 20px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-left: 2.2rem;
+  border-radius: 6px 0 0 0;
+}
+
+.replied-message-wrapper .replied-message__content .replied__username {
+  color: #2c2c2c;
+  margin-left: 10px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.replied-message-wrapper .replied-message__content .replied__username.dark {
+  color: #ebebeb;
+}
+
+.replied-message-wrapper .replied-message__content .replied__messageText {
+  font-size: 0.8em;
+  color: #363636;
+  margin-left: 5px;
+}
+
+.replied-message-wrapper .replied-message__content .replied__messageText.dark {
+  color: #a0a0a0;
+}
+
+.replied-message-wrapper .replied-message__content .replied-to {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 12px;
+}
+
+.replied-message-wrapper .replied-message__content .replied-to .replied-pfp-wrapper {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.replied-message-wrapper .replied-message__content .replied-to .replied-pfp-wrapper img {
+  width: auto;
+  height: 100%;
+}
+
+.replied-message-wrapper .replied-message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 0;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
 }
 
 .message_option {

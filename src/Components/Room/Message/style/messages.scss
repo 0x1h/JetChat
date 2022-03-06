@@ -12,19 +12,53 @@
   width: 100%;
   align-self: flex-end;
   margin-bottom: 10px;
+  position: relative;
   height: 50px;
+  display: flex;
+  flex-direction: column;
+  .replying_to{
+    width: calc(100% - 40px);
+    height: 30px;
+    z-index: 0;
+    left: 20px;
+    border-radius: 9px 9px 0 0;
+    padding: 0 20px;
+    color: #FFF;
+    position: absolute;
+    transform: translateY(-30px);
+    background: #3b5f64;
+    display: flex;
+    align-items: center;
+    cursor: default;
+    p{
+      color: #FFF;
+      margin-left: 5px;
+      font-weight: 500;
+      transform: translateY(-1.5px);
+    }
+    .exit-reply{
+      position: absolute;
+      right: 0;
+      transform: translateX(-10px);
+      cursor: pointer;
+    }
+  }
   .client__input {
     height: 100%;
     width: 100%;
-    background: transparent;
+    z-index: 9;
+    position: absolute;
+    background: transparent; 
     border: none;
     border: 2px solid $gradient__color-one;
     border-radius: 5px;
     font-size: 1.002rem;
     padding: 0 5px;
+    background: #FFF;
     font-family: "Poppins", sans-serif;
     &.dark {
       color: #fff;
+      background: $dark__theme;
     }
   }
 }

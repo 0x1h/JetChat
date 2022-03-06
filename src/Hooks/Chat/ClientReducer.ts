@@ -4,18 +4,28 @@ export type State = {
 	createdAt: string,
 	client_id: string
 	message: string,
-	message_id: string
+	message_id: string,
+	reply?: {
+		reply_username: string,
+		reply_picture: string,
+		reply_message: string,
+		reply_message_owner_id: string
+	}
 }
 
 type Action = {
-	type: "SET_USER" | "MESSAGE_INPUT" | "CLEAR_MESSAGE_FIELD" | "SET_MESSAGE_ID",
+	type: "SET_USER" | "MESSAGE_INPUT" | "CLEAR_MESSAGE_FIELD" | "SET_MESSAGE_ID" | "SET_REPLY_MESSAGE" | "CLEAR_REPLY",
 	payload: {
 		username: string,
 		profile_src: string,
 		createdAt: string,
 		client_id: string,
 		message: string,
-		message_id: string
+		message_id: string,
+		reply_username?: string,
+		reply_picture?: string,
+		reply_message?: string,
+		reply_message_id?: string
 	}
 }
 
@@ -58,6 +68,25 @@ export const clientReducer = (state: State = clientState, action: Action): State
 			return {
 				...state,
 				message_id: action.payload.message_id
+			}
+		}
+		case "SET_REPLY_MESSAGE": {
+			const {reply_username, reply_picture, reply_message, reply_message_id} = action.payload
+
+			return {
+				...state,
+				reply: {
+					reply_username: reply_username as string,
+					reply_picture: reply_picture as string,
+					reply_message: reply_message as string,
+					reply_message_owner_id: reply_message_id as string
+				}
+			}
+		}
+		case "CLEAR_REPLY": {
+			return {
+				...state,
+				reply: undefined
 			}
 		}
 		default: return state
