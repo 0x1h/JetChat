@@ -142,11 +142,13 @@ button:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-bottom: 10px;
   border-radius: 8px;
 }
 
 .replied-message-wrapper.ping {
-  background: rgba(255, 255, 0, 0.1);
+  background: #ff00b31a;
+  border-left: 2px solid #ff00b3;
 }
 
 .replied-message-wrapper:hover {

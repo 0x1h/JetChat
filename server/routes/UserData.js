@@ -12,11 +12,11 @@ router.post("/:client_id", authenticateUser, async (req, res) => {
 				err: "Invalid arguments"
 			})
 		}
-
+ 
 		UserScheme.findById(client_id, (err, model) => {
 			if(err){
 				return res.status(404).send({
-					err: "User not found"
+					err: "User not found" 
 				})
 			}
 

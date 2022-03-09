@@ -8,6 +8,7 @@ import hostConfig from "../../utils/hostconfig.json";
 import UsersDashboard from "./RoomUsers/UsersDashboard";
 import Options from "./Message/Options";
 import axios from "axios";
+import RoomDashboard from "./Room Settings/RoomDashboard";
 import Messages from "./Message/Messages";
 import Loader from "../Loader";
 import Confirm from "../Confirm";
@@ -17,15 +18,17 @@ const Room = () => {
   const socket = io(hostConfig.host);
   const loadErrHandle = useSelector(
     (state: { loadErrHandler: AlertType }) => state.loadErrHandler
-  );
-  const optionModal = useSelector((state: {optionModal: OptionState}) => state.optionModal)
-  const { roomId } = useParams();
-  const dispatch = useDispatch();  
+    );
+    const optionModal = useSelector((state: {optionModal: OptionState}) => state.optionModal)
+    const { roomId } = useParams();
+    const settingsModal = useSelector((state: {settingsModal: boolean}) => state.settingsModal)
+    const dispatch = useDispatch();  
+    
+    const loadClientData = async (client_id: string, authToken: string) => {
+      dispatch({ type: "LOAD" });
+      socket.emit("send-message", {}, roomId)
 
-  const loadClientData = async (client_id: string, authToken: string) => {
-    dispatch({ type: "LOAD" });
-
-    axios
+      axios
       .all([
         axios.post(`${hostConfig.host}/user/${client_id}`, {
           authToken: authToken,
@@ -39,8 +42,8 @@ const Room = () => {
       .then(
         axios.spread(async (userInfo, roomData) => {
           const { username, client_id, profile_src, createdAt } =
-            await userInfo.data;
-
+          await userInfo.data;
+          
           dispatch({
             type: "SET_USER",
             payload: {
@@ -50,25 +53,25 @@ const Room = () => {
               client_id: client_id,
             },
           });
-
+          
           const { room_icon, banned_users, room_name, room_id,owner_id } = roomData.data;
-
+          
           const ownerData = await axios.post(
             `${hostConfig.host}/user/${owner_id}`,
             {
               authToken: authToken,
               requestor: client_id,
             }
-          );
-
-          dispatch({
-            type: "LOAD_ROOM_DATA",
-            payload: {
-              room_id: room_id,
-              room_name: room_name,
-              room_icon: room_icon,
-              owner_data: {
-                client_id: ownerData.data.client_id,
+            );
+            
+            dispatch({
+              type: "LOAD_ROOM_DATA",
+              payload: {
+                room_id: room_id,
+                room_name: room_name,
+                room_icon: room_icon,
+                owner_data: {
+                  client_id: ownerData.data.client_id,
                 client_name: ownerData.data.username,
                 client_profile: ownerData.data.profile_src,
               },
@@ -78,13 +81,13 @@ const Room = () => {
           });
           dispatch({ type: "DEFAULT" });
         })
-      )
-      .catch((error) => {    
-        const { err } = error.response.data;
-        
-        if (
-          err === "User not found" ||
-          err === "Invalid Authentiction" ||
+        )
+        .catch((error) => {    
+          const { err } = error.response.data;
+          
+          if (
+            err === "User not found" ||
+            err === "Invalid Authentiction" ||
           err === "Invalid arguments"
         ) {
           dispatch({ type: "ERROR", payload:"Seems like you aren't Logged in your account, you can't join in room without account, sorry :(" })
@@ -135,6 +138,7 @@ const Room = () => {
       optionModal.open && 
       <Options />
     }
+      {settingsModal && <RoomDashboard />}
       {loadErrHandle.status === "isLoading" ? (
         <div className="modals-container__warn_load">
           <Loader />

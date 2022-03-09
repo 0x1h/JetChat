@@ -1,4 +1,4 @@
-import { FC, FormEvent, useEffect, useCallback } from "react";
+import { FC, FormEvent, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTime } from "../../../utils/getTime";
 import { State } from "../../../Hooks/Chat/ClientReducer";
@@ -6,14 +6,17 @@ import { useParams } from "react-router-dom";
 import { tokenGenerator } from "../../../utils/randomToken";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
+import { State as RoomData} from "../../../Hooks/Chat/RoomData";
 
 const Client: FC<{ socket: any }> = ({ socket }) => {
   const chatRoom = useSelector((state: { chatData: State }) => state.chatData);
+  const roomData = useSelector((state: { roomData: RoomData }) => state.roomData);
   const dispatch = useDispatch();
   const darkTheme = useSelector(
     (state: { themeReducer: boolean }) => state.themeReducer
   );
   const { roomId } = useParams();    
+  const clientRef = useRef<HTMLInputElement>(null)
 
   const messageSend = (e: FormEvent) => {
     e.preventDefault();
@@ -46,7 +49,7 @@ const Client: FC<{ socket: any }> = ({ socket }) => {
   };
 
   useEffect(() => {
-    socket.on("receive", (msg) => {
+    socket.on("receive", (msg: any) => {
       dispatch({
         type: "MESSAGE",
         payload: {
@@ -73,6 +76,18 @@ const Client: FC<{ socket: any }> = ({ socket }) => {
     };
   }, [socket]);
 
+  useEffect(() => {
+    if(roomData.owner_data.client_name !== undefined){
+      socket.emit("join-message", roomId)
+    }
+  }, [roomData.room_name])
+
+  useEffect(() => {
+    if(chatRoom.reply?.reply_username !== undefined){
+      clientRef.current?.focus()
+    }
+  }, [chatRoom])
+
   return (
     <form className="client__input-form" onSubmit={messageSend}>
       {
@@ -89,6 +104,7 @@ const Client: FC<{ socket: any }> = ({ socket }) => {
         value={chatRoom.message}
         maxLength={250}
         placeholder="Send message in room"
+        ref={clientRef}
         onChange={(e) => {
           dispatch({
             type: "MESSAGE_INPUT",

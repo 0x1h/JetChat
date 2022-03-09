@@ -7,7 +7,7 @@ export type State = {
 }
 
 type Action = {
-	type: "FILL_USER",
+	type: "FILL_USER" | "CLEAR_ALL_THE_DATA",
 	payload: {
 		username: string,
 		client_id: string,
@@ -38,6 +38,8 @@ export const userDataHandler = (state: State = defaultState, action: Action): St
 				profile_src: profile_src,
 				isLogined: isLogined
 			}
+		}case "CLEAR_ALL_THE_DATA": {
+			return defaultState
 		}
 		default: return state
 	}

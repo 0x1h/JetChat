@@ -30,7 +30,7 @@ const roomDefault: State = {
 	banned_users: []
 }
 
-type ActionType = "LOAD_ROOM_DATA" | "ROOM_BAN_ADD" | "ROOM_BAN_REMOVE" | "ROOM_MEMBER_UPDATE" | "ROOM_MEMBER_REMOVE" | "NEW_OWNER"
+type ActionType = "LOAD_ROOM_DATA" | "ROOM_BAN_ADD" | "ROOM_BAN_REMOVE" | "ROOM_MEMBER_UPDATE" | "ROOM_MEMBER_REMOVE" | "NEW_OWNER"| "CHANGE_ROOM"
 type ActionPayload = {
 	ip?: string,
 	client_id?: string,
@@ -141,6 +141,13 @@ export const roomInfo = (state: State = roomDefault, action: Action): State => {
 			return {
 				...state,
 				active_clients: addMember
+			}
+		}
+		case "CHANGE_ROOM": {
+			return {
+				...state,
+				room_name: action.payload.room_name!,
+				room_icon: action.payload.room_icon!
 			}
 		}
 		default: return state

@@ -10,30 +10,31 @@ const Login = require("./routes/LoginUser");
 const joinRoom = require("./routes/joinRoom")
 const createRoom = require('./routes/createRoom')
 const rateLimit = require('express-rate-limit');
+const changeRoom = require("./routes/changeRoom")
 
 const limiter = rateLimit({
   max: 100,
   windowMs: 60 * 60 * 1000,
   message: 'too many requests sent by this ip, please try again in an hour !'
 });
-
-
+ 
 const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http, socketIoConfig);
 
-io.on("connection", socket => {
-  console.log('Yay, connection was recorded')
-
-	socket.on("send-message", (msg, room) => {
+io.on("connection", async socket => {
+  socket.on("join", (room) => {
     socket.join(room)
+    io.emit("join-message", "new user joined")
+  })
+  
+	socket.on("send-message", async (msg, room) => {
+    console.log("user conencted");
+    socket.join(room);
     socket.to(room).emit("receive", msg)
   })
 
-  socket.on('disconnect', () => {
-    console.log("user disconnected");
-  });
-
+  
 })
 
 http.listen(process.env.PORT || port, () => {
@@ -56,4 +57,5 @@ app.use("/", Login);
 app.use("/user", UserData);
 app.use("/room", createRoom);
 app.use("/room", joinRoom)
+app.use("/room", changeRoom)
 app.use(limiter);

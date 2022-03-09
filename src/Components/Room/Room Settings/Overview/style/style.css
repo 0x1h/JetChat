@@ -1,0 +1,189 @@
+.overview-info__dashboard {
+  width: 100%;
+  height: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  padding: 0 10px;
+  height: 100vh;
+}
+
+.overview-info__dashboard .room-dashboard-logo {
+  padding: 0 50px;
+  height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+
+.overview-info__dashboard .room-dashboard-logo .room-info__inputs {
+  width: 100%;
+  height: 100%;
+  padding: 0 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.overview-info__dashboard .room-dashboard-logo .room-info__inputs .label {
+  text-align: left;
+  width: 100%;
+}
+
+.overview-info__dashboard .room-dashboard-logo .room-info__inputs .label.dark {
+  color: #FFF;
+}
+
+.overview-info__dashboard .room-dashboard-logo .room-info__inputs .room_inputs {
+  background: transparent;
+  border: 2px solid #FA00FF;
+  height: 40px;
+  border-radius: 5px;
+  background: #d8d8d8;
+  padding: 0 5px;
+}
+
+.overview-info__dashboard .room-dashboard-logo .room-info__inputs .room_inputs.dark {
+  background: #1a1a1a;
+  color: #FFF;
+}
+
+.overview-info__dashboard .room-dashboard-logo .room-info__inputs .room_inputs.forbidden {
+  cursor: not-allowed;
+  caret-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.overview-info__dashboard .room-dashboard-logo .room-info__inputs .room_inputs.forbidden::-moz-selection {
+  background: none;
+}
+
+.overview-info__dashboard .room-dashboard-logo .room-info__inputs .room_inputs.forbidden::selection {
+  background: none;
+}
+
+.overview-info__dashboard .room-dashboard-logo .room-icon-wrapper {
+  height: 250px;
+  width: 250px;
+  min-width: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.overview-info__dashboard .room-dashboard-logo .room-icon-wrapper img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
+.settings-confirm-changes {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 20px);
+  height: 50px;
+  background: #d8d8d8;
+  border-radius: 9px;
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  padding: 0 10px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+          box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.settings-confirm-changes.hidden {
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
+}
+
+.settings-confirm-changes.dark {
+  background: #353535;
+  color: #FFF;
+}
+
+.settings-confirm-changes button {
+  width: 200px;
+  height: 40px;
+  border: none;
+  background: #2e8b45;
+  cursor: pointer;
+  color: #FFF;
+  border-radius: 5px;
+}
+
+.settings-confirm-changes button:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(87, 163, 77, 0.411);
+          box-shadow: 0 0 0 3px rgba(87, 163, 77, 0.411);
+}
+
+.room-settings-hr {
+  height: 1px;
+  background-color: #2e2e2e;
+  border: none;
+}
+
+.delete-wrapper {
+  margin-top: 20px;
+}
+
+.delete-wrapper .delete-alert-text {
+  color: #000;
+  margin-bottom: 5px;
+}
+
+.delete-wrapper .delete-alert-text.dark {
+  color: #FFF;
+}
+
+.delete-wrapper button {
+  width: 180px;
+  height: 40px;
+  background: #ff4c4c;
+  border: 2px solid #ac3232;
+  border-radius: 5px;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.delete-wrapper button:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(134, 36, 36, 0.411);
+          box-shadow: 0 0 0 3px rgba(134, 36, 36, 0.411);
+}
+
+.delete-wrapper button:hover {
+  background: #ff6565;
+}
+/*# sourceMappingURL=style.css.map */

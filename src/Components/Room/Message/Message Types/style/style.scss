@@ -76,9 +76,11 @@
 	min-height: 20px;
 	display: flex;
 	flex-direction: column;
+	margin-bottom: 10px;
 	border-radius: 8px;
 	&.ping{
-		background: rgba(255, 255, 0, 0.1);
+		background: #ff00b31a;
+		border-left: 2px solid #ff00b3;
 	}
 	&:hover{
 		background: #e2e2e2;
@@ -89,7 +91,7 @@
 		}
 	}
 	.replied-message__content{
-		width: 100%;
+	width: 100%;
 		height: 40px;
 		display: flex;
 		.curved-line{

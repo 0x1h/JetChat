@@ -1,0 +1,124 @@
+input[type="text"]:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+input[type="password"]:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+button:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
+}
+
+.room__settings-dashboard {
+  width: 100%;
+  min-height: 100vh;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+          box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(11px);
+  -webkit-backdrop-filter: blur(11px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.room__settings-dashboard .room__settings-categories {
+  width: 400px;
+  min-width: 400px;
+  height: 100vh;
+  background: lightgray;
+  padding: 20px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.room__settings-dashboard .room__settings-categories.dark {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.room__settings-dashboard .room__settings-categories.dark .room_categories-btn {
+  color: #FFF;
+}
+
+.room__settings-dashboard .room__settings-categories.dark .room_categories-btn.active:hover {
+  color: #FFF;
+}
+
+.room__settings-dashboard .room__settings-categories .room_categories-btn {
+  background: transparent;
+  cursor: pointer;
+  color: #000;
+  border: none;
+  height: 50px;
+  border-radius: 7px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  font-size: 1.025rem;
+}
+
+.room__settings-dashboard .room__settings-categories .room_categories-btn.active {
+  background: #FA00FF;
+}
+
+.room__settings-dashboard .room__settings-categories .room_categories-btn.active:hover {
+  background: #FA00FF;
+}
+
+.room__settings-dashboard .room__settings-categories .room_categories-btn:hover {
+  background: #FFF;
+  color: #000;
+}
+
+.settings-exist-btn {
+  border: 2px solid #FFF;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  cursor: pointer;
+  z-index: 20;
+  right: 0;
+  -webkit-transform: translate(-25px, 25px);
+          transform: translate(-25px, 25px);
+}
+
+.settings-exist-btn:hover {
+  background: rgba(122, 122, 122, 0.5);
+}
+
+.settings-exist-btn:before {
+  content: "ESC";
+  color: #FFF;
+  cursor: default;
+  bottom: 0;
+  position: absolute;
+  -webkit-transform: translateY(30px);
+          transform: translateY(30px);
+}
+/*# sourceMappingURL=style.css.map */

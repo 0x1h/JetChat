@@ -1,0 +1,80 @@
+@import "../../../Home/style/variables";
+
+.room__settings-dashboard{
+	width: 100%;
+	min-height: 100vh;
+	position: fixed;
+	z-index: 20;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.25);
+	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+	backdrop-filter: blur( 11px );
+	-webkit-backdrop-filter: blur( 11px );
+	display: flex;
+	.room__settings-categories{
+		width: 400px;
+		min-width:400px;
+		height: 100vh;
+		background: rgb(211, 211, 211);
+		padding: 20px 10px;
+		display: flex;
+		gap: 10px 0;
+		flex-direction: column;
+		&.dark{
+			background:rgba(0, 0, 0, 0.25);
+			.room_categories-btn{
+				color: #FFF;
+				&.active{
+					&:hover{
+						color: #FFF;
+					}
+				}
+			}
+		}
+		.room_categories-btn{
+			background: transparent;
+			cursor: pointer;
+			color: #000;
+			border: none;
+			height: 50px;
+			border-radius: 7px;
+			box-shadow: none;
+			font-size: 1.025rem;
+			&.active{
+				background: $gradient__color-one;
+				&:hover{
+					background: $gradient__color-one;
+				}
+			}
+			&:hover{
+				background: #FFF;
+				color: #000;
+			}
+		}
+	}
+}
+
+.settings-exist-btn{
+	border: 2px solid #FFF;
+	border-radius: 50%;
+	@include Center(center, center);
+	width: 40px;
+	height: 40px;
+	&:hover{
+		background: rgba(122, 122, 122, 0.5);
+	}
+	position: absolute;
+	cursor: pointer;
+	z-index: 20;
+	right: 0;
+	transform: translate(-25px, 25px);
+	&:before{
+		content: "ESC";
+		color:#FFF;
+		cursor: default;
+		bottom: 0;
+		position: absolute;
+		transform: translateY(30px);
+	}
+}

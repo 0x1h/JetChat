@@ -92,6 +92,7 @@
     display: flex;
     align-items: center;
     .img-frame {
+      cursor: pointer;
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -103,7 +104,11 @@
     }
     .room-name {
       margin-left: 20px;
+      cursor: pointer;
       color: #000;
+      &:hover{
+        text-decoration: underline;
+      }
       &.dark {
         color: #fff;
       }

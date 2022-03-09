@@ -143,6 +143,7 @@ button:focus {
 }
 
 .room-header .room__info .img-frame {
+  cursor: pointer;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -156,7 +157,12 @@ button:focus {
 
 .room-header .room__info .room-name {
   margin-left: 20px;
+  cursor: pointer;
   color: #000;
+}
+
+.room-header .room__info .room-name:hover {
+  text-decoration: underline;
 }
 
 .room-header .room__info .room-name.dark {

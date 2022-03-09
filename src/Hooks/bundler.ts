@@ -9,7 +9,9 @@ import { clientReducer } from "./Chat/ClientReducer";
 import { allMessages } from "./Chat/ChatMessages";
 import { optionModal } from "./Chat/optionsModal";
 import { roomInfo } from "./Chat/RoomData";
-import {optionsHandle} from "./Chat/optionsHandle"
+import { optionsHandle } from "./Chat/optionsHandle"
+import { settingsModal } from "./Chat/settingsModal";
+import { roomSpecific } from "./Chat/roomSettings";
 import { combineReducers } from "redux"
 
 
@@ -25,5 +27,7 @@ export const allReducers = combineReducers({
 	sentMessages: allMessages,
 	roomData: roomInfo,
 	optionModal: optionModal,
-	optionsHandle: optionsHandle
+	optionsHandle: optionsHandle,
+	roomSpecific: roomSpecific,
+	settingsModal: settingsModal
 })
