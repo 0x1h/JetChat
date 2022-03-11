@@ -1,0 +1,161 @@
+@import "../../../../Home/style/variables";
+
+.settings__members-list {
+  width: 100%;
+  height: 100vh;
+  padding: 140px 10px 0 10px;
+  .find-user-input {
+    width: 100%;
+    background: transparent;
+    color: #000;
+    outline: none;
+    border: 2px solid $gradient__color-one;
+    height: 40px;
+		background: #FFF;
+    border-radius: 7px;
+    z-index: 10;
+    padding: 0 10px;
+    &.dark {
+      background: rgba(0, 0, 0, 0.3);
+      color: #fff;
+    }
+  }
+  .members-list-wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 5px 10px;
+    overflow-y: auto;
+    gap: 10px 0;
+    position: relative;
+    padding-bottom: 50px;
+  }
+  .settings__member-list {
+    width: 100%;
+    height: 70px;
+    background: #ebebeb;
+    position: relative;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    @include Center(center, space-between);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+      rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    padding: 0 20px;
+    &:last-child {
+      .settings__member-options {
+        transform: translate(-35px, -45px);
+        border-radius: 10px 10px 0 10px;
+      }
+    }
+    .settings__member-options {
+      @include Center(center, center);
+      position: absolute;
+      right: 0;
+      flex-direction: column;
+      top: 0;
+      background: #fff;
+      width: 160px;
+      height: 80px;
+      border-radius: 10px 0 10px 10px;
+      transform: translate(-35px, 35px);
+			box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+      z-index: 10;
+			&.dark{
+				background: #2c2c2c;
+			}
+      .high-order-permission__btn {
+        width: 100%;
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        font-weight: 500;
+				font-size: 1.01em;
+				height: 60px;
+				border-radius: 3px;
+        &:nth-child(1) {
+          color: #ffc524;
+          &:hover {
+            background: #ffc524;
+            color: #fff;
+          }
+        }
+        &:nth-child(2) {
+          color: #ff4848;
+          &:hover {
+            color: #fff;
+            background: #ff4848;
+          }
+        }
+      }
+    }
+    .member-list-options-opener {
+      width: 50px;
+      height: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 50px;
+      position: relative;
+      cursor: pointer;
+      @include Center(center, center);
+      .dot {
+        width: 5px;
+        height: 5px;
+        background: #fff;
+        border-radius: 50%;
+        &::before,
+        &::after {
+          content: "";
+          width: 5px;
+          height: 5px;
+          background: #fff;
+          position: absolute;
+          transform: translateX(9px);
+          border-radius: 50%;
+        }
+        &:after {
+          transform: translateX(-9px);
+        }
+      }
+    }
+    .user-info {
+      @include Center(center, none);
+      min-width: 200px;
+      height: 60px;
+      .pfp-frame {
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        border-radius: 50%;
+        img {
+          width: auto;
+          height: 100%;
+        }
+      }
+      .user-info-nickname {
+        margin-left: 10px;
+        color: #000;
+        font-weight: 500;
+        &.dark {
+          color: #fff;
+        }
+      }
+    }
+    &:hover {
+      background: #ffffff;
+    }
+    &.dark {
+      background: rgb(63, 63, 63);
+      box-shadow: none;
+      &:hover {
+        background: rgb(87, 87, 87);
+      }
+    }
+  }
+}
+
+.settings__unban-text{
+	color: #ff4848;
+	cursor: pointer;
+	&:hover{
+		text-decoration: underline;
+	}
+}

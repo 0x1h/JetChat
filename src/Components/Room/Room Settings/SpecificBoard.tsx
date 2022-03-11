@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { useSelector, useDispatch } from 'react-redux'
 import Overview from './Overview/Overview'
-import SettingsMembers from './SettingsMembers'
+import SettingsMembers from './Members/SettingsMembers'
 import BannedMembers from './Banned Members/BannedMembers'
 
 const SpecificBoard: FC<{display: State}> = ({display}) => {

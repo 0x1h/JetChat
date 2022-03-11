@@ -1,0 +1,242 @@
+input[type="text"]:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+input[type="password"]:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 86, 171, 0.411);
+}
+
+button:focus {
+  outline: none;
+  -webkit-box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
+          box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
+}
+
+.settings__members-list {
+  width: 100%;
+  height: 100vh;
+  padding: 140px 10px 0 10px;
+}
+
+.settings__members-list .find-user-input {
+  width: 100%;
+  background: transparent;
+  color: #000;
+  outline: none;
+  border: 2px solid #FA00FF;
+  height: 40px;
+  background: #FFF;
+  border-radius: 7px;
+  z-index: 10;
+  padding: 0 10px;
+}
+
+.settings__members-list .find-user-input.dark {
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+.settings__members-list .members-list-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 5px 10px;
+  overflow-y: auto;
+  gap: 10px 0;
+  position: relative;
+  padding-bottom: 50px;
+}
+
+.settings__members-list .settings__member-list {
+  width: 100%;
+  height: 70px;
+  background: #ebebeb;
+  position: relative;
+  border-radius: 7px;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  padding: 0 20px;
+}
+
+.settings__members-list .settings__member-list:last-child .settings__member-options {
+  -webkit-transform: translate(-35px, -45px);
+          transform: translate(-35px, -45px);
+  border-radius: 10px 10px 0 10px;
+}
+
+.settings__members-list .settings__member-list .settings__member-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  right: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  top: 0;
+  background: #fff;
+  width: 160px;
+  height: 80px;
+  border-radius: 10px 0 10px 10px;
+  -webkit-transform: translate(-35px, 35px);
+          transform: translate(-35px, 35px);
+  -webkit-box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+          box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  z-index: 10;
+}
+
+.settings__members-list .settings__member-list .settings__member-options.dark {
+  background: #2c2c2c;
+}
+
+.settings__members-list .settings__member-list .settings__member-options .high-order-permission__btn {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  font-weight: 500;
+  font-size: 1.01em;
+  height: 60px;
+  border-radius: 3px;
+}
+
+.settings__members-list .settings__member-list .settings__member-options .high-order-permission__btn:nth-child(1) {
+  color: #ffc524;
+}
+
+.settings__members-list .settings__member-list .settings__member-options .high-order-permission__btn:nth-child(1):hover {
+  background: #ffc524;
+  color: #fff;
+}
+
+.settings__members-list .settings__member-list .settings__member-options .high-order-permission__btn:nth-child(2) {
+  color: #ff4848;
+}
+
+.settings__members-list .settings__member-list .settings__member-options .high-order-permission__btn:nth-child(2):hover {
+  color: #fff;
+  background: #ff4848;
+}
+
+.settings__members-list .settings__member-list .member-list-options-opener {
+  width: 50px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.settings__members-list .settings__member-list .member-list-options-opener .dot {
+  width: 5px;
+  height: 5px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.settings__members-list .settings__member-list .member-list-options-opener .dot::before, .settings__members-list .settings__member-list .member-list-options-opener .dot::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: #fff;
+  position: absolute;
+  -webkit-transform: translateX(9px);
+          transform: translateX(9px);
+  border-radius: 50%;
+}
+
+.settings__members-list .settings__member-list .member-list-options-opener .dot:after {
+  -webkit-transform: translateX(-9px);
+          transform: translateX(-9px);
+}
+
+.settings__members-list .settings__member-list .user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: none;
+      -ms-flex-pack: none;
+          justify-content: none;
+  min-width: 200px;
+  height: 60px;
+}
+
+.settings__members-list .settings__member-list .user-info .pfp-frame {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.settings__members-list .settings__member-list .user-info .pfp-frame img {
+  width: auto;
+  height: 100%;
+}
+
+.settings__members-list .settings__member-list .user-info .user-info-nickname {
+  margin-left: 10px;
+  color: #000;
+  font-weight: 500;
+}
+
+.settings__members-list .settings__member-list .user-info .user-info-nickname.dark {
+  color: #fff;
+}
+
+.settings__members-list .settings__member-list:hover {
+  background: #ffffff;
+}
+
+.settings__members-list .settings__member-list.dark {
+  background: #3f3f3f;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.settings__members-list .settings__member-list.dark:hover {
+  background: #575757;
+}
+
+.settings__unban-text {
+  color: #ff4848;
+  cursor: pointer;
+}
+
+.settings__unban-text:hover {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=style.css.map */

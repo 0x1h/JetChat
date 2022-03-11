@@ -14,7 +14,7 @@ const RoomHeader: FC<{ darkTheme: boolean }> = ({ darkTheme }) => {
   const alertUser = (e: BeforeUnloadEvent) => {
     e.preventDefault()
     
-    e.returnValue = "are you sure u want leave?"
+    e.returnValue = ""
   }
 
   useEffect(() => {
