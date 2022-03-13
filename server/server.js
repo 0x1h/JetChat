@@ -25,13 +25,10 @@ const io = require("socket.io")(http, socketIoConfig);
 io.on("connection", async socket => {
   socket.on("join", (room, userInfo) => {
     socket.join(room)
-    io.emit("join-message", room,userInfo)
+    socket.to(room).emit("join-message",userInfo)
   })
   
 	socket.on("send-message", async (msg, room) => {
-    socket.join(room);
-    console.log(msg);
-    console.log(room);
     socket.to(room).emit("receive", msg)
   })
 })

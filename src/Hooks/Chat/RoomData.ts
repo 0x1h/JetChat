@@ -129,18 +129,16 @@ export const roomInfo = (state: State = roomDefault, action: Action): State => {
 		case "ROOM_MEMBER_UPDATE": {
 			const {client_id, client_name, client_profile} = action.payload
 
-			const addMember = [
-				...state.active_clients,
-				{
-					client_id: client_id!,
-					client_name: client_name!,
-					client_profile: client_profile!
-				}
-			]
-
 			return {
 				...state,
-				active_clients: addMember
+				active_clients: [
+					...state.active_clients,
+					{
+						client_id: client_id!,
+						client_name: client_name!,
+						client_profile: client_profile!
+					}
+				]
 			}
 		}
 		case "CHANGE_ROOM": {

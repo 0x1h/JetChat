@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
-import { io } from "socket.io-client";
+import { useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { State as AlertType } from "../../Hooks/Client/loadErrorHandle";
 import { State as RoomData} from '../../Hooks/Chat/RoomData'
 import { State } from "../../Hooks/Chat/ClientReducer";
 import { useParams } from "react-router-dom";
 import { State as OptionState} from "../../Hooks/Chat/optionsModal";
+import { io } from "socket.io-client";
 import hostConfig from "../../utils/hostconfig.json";
 import UsersDashboard from "./RoomUsers/UsersDashboard";
 import Options from "./Message/Options";
@@ -16,6 +16,8 @@ import Loader from "../Loader";
 import Confirm from "../Confirm";
 import "./style/style.css";
 
+const { host } = hostConfig;
+export const socket = io(host);
 
 const Room = () => {
   const loadErrHandle = useSelector(
@@ -49,6 +51,12 @@ const Room = () => {
           const { username, client_id, profile_src, createdAt } =
           await userInfo.data;
           
+          socket.emit("join", roomId, {
+            username: username,
+            profile_src: profile_src,
+            client_id: client_id,
+          });
+
           dispatch({
             type: "SET_USER",
             payload: {
@@ -59,7 +67,7 @@ const Room = () => {
             },
           });
           
-          const { room_icon, banned_users, room_name, room_id,owner_id } = roomData.data;
+          const { room_icon, banned_users, room_name, room_id,owner_id } = await roomData.data;
           
           const ownerData = await axios.post(
             `${hostConfig.host}/user/${owner_id}`,
@@ -84,6 +92,8 @@ const Room = () => {
               banned_users: banned_users,
             },
           });
+
+
           dispatch({ type: "DEFAULT" });
         })
         )

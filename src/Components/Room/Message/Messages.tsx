@@ -1,7 +1,7 @@
-import {FC} from 'react'
-import "./style/messages.css"
 import Client from './Client'
 import SentMessages from './SentMessages'
+import "./style/messages.css"
+
 
 const Messages= () => {
 	return (
