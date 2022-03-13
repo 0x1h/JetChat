@@ -3,11 +3,11 @@ import "./style/messages.css"
 import Client from './Client'
 import SentMessages from './SentMessages'
 
-const Messages: FC<{socket: any}> = ({socket}) => {
+const Messages= () => {
 	return (
 		<div className='messages_container'>
 			<SentMessages />
-			<Client socket={socket}/>
+			<Client/>
 		</div>
 	)
 }

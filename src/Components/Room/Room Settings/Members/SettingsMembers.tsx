@@ -12,25 +12,6 @@ const SettingsMembers = () => {
 				<input type="text" className={darkTheme ? "find-user-input dark" : "find-user-input"} placeholder="Find any member"/>
 				<div className='members-list-wrapper'>
 					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
-					<MemberList />
 				</div>
 		</div>
 	)

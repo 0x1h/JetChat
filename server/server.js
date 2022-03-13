@@ -23,18 +23,17 @@ const http = require("http").createServer(app);
 const io = require("socket.io")(http, socketIoConfig);
 
 io.on("connection", async socket => {
-  socket.on("join", (room) => {
+  socket.on("join", (room, userInfo) => {
     socket.join(room)
-    io.emit("join-message", "new user joined")
+    io.emit("join-message", room,userInfo)
   })
   
 	socket.on("send-message", async (msg, room) => {
-    console.log("user conencted");
     socket.join(room);
+    console.log(msg);
+    console.log(room);
     socket.to(room).emit("receive", msg)
   })
-
-  
 })
 
 http.listen(process.env.PORT || port, () => {

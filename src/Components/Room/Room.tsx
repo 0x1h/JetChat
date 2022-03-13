@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { useSelector, useDispatch } from "react-redux";
 import { State as AlertType } from "../../Hooks/Client/loadErrorHandle";
+import { State as RoomData} from '../../Hooks/Chat/RoomData'
+import { State } from "../../Hooks/Chat/ClientReducer";
 import { useParams } from "react-router-dom";
 import { State as OptionState} from "../../Hooks/Chat/optionsModal";
 import hostConfig from "../../utils/hostconfig.json";
@@ -14,19 +16,22 @@ import Loader from "../Loader";
 import Confirm from "../Confirm";
 import "./style/style.css";
 
+
 const Room = () => {
-  const socket = io(hostConfig.host);
   const loadErrHandle = useSelector(
     (state: { loadErrHandler: AlertType }) => state.loadErrHandler
     );
     const optionModal = useSelector((state: {optionModal: OptionState}) => state.optionModal)
     const { roomId } = useParams();
     const settingsModal = useSelector((state: {settingsModal: boolean}) => state.settingsModal)
-    const dispatch = useDispatch();  
+    const dispatch = useDispatch(); 
+    const chatRoom = useSelector((state: { chatData: State }) => state.chatData);
+    const roomData = useSelector(
+      (state: { roomData: RoomData }) => state.roomData
+    ); 
     
     const loadClientData = async (client_id: string, authToken: string) => {
       dispatch({ type: "LOAD" });
-      socket.emit("send-message", {}, roomId)
 
       axios
       .all([
@@ -101,7 +106,6 @@ const Room = () => {
   };
 
   useEffect(() => {
-    if (socket.connected) return;
     const { status } = loadErrHandle;
 
     const client_id = localStorage.getItem("client_id");
@@ -122,14 +126,6 @@ const Room = () => {
 
     //don't connect socket if Request is loading or has error
     if (status === "isError" || status === "isLoading") return;
-
-    socket.on("connect", () => {
-      console.log("User connect socket");
-    });
-
-    return () => {
-      socket.disconnect();
-    };
   }, []);
 
   return (
@@ -149,7 +145,7 @@ const Room = () => {
         </div>
       ) : null}
       <div className="chatting-playground">
-        <Messages socket={socket}/>
+        <Messages />
         <UsersDashboard />
       </div>
     </>

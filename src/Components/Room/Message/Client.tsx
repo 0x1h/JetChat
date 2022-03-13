@@ -1,14 +1,21 @@
-import { FC, FormEvent, useEffect, useRef } from "react";
+import { FC, FormEvent, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTime } from "../../../utils/getTime";
 import { State } from "../../../Hooks/Chat/ClientReducer";
 import { useParams } from "react-router-dom";
 import { tokenGenerator } from "../../../utils/randomToken";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import hostConfig from "../../../utils/hostconfig.json"
+import { io } from "socket.io-client";
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import { State as RoomData} from "../../../Hooks/Chat/RoomData";
 
-const Client: FC<{ socket: any }> = ({ socket }) => {
+
+
+const {host} = hostConfig
+const socket = io(host);
+
+const Client = () => {
   const chatRoom = useSelector((state: { chatData: State }) => state.chatData);
   const roomData = useSelector((state: { roomData: RoomData }) => state.roomData);
   const dispatch = useDispatch();
@@ -18,9 +25,12 @@ const Client: FC<{ socket: any }> = ({ socket }) => {
   const { roomId } = useParams();    
   const clientRef = useRef<HTMLInputElement>(null)
 
+
+  
+  //! leave that alone
   const messageSend = (e: FormEvent) => {
     e.preventDefault();
-
+    
     if (!chatRoom.message.trim()) return;
 
     dispatch({
@@ -42,14 +52,38 @@ const Client: FC<{ socket: any }> = ({ socket }) => {
         },
       },
     });
-
+    
     socket.emit("send-message", chatRoom, roomId);
     dispatch({ type: "CLEAR_MESSAGE_FIELD" });
     dispatch({type: "CLEAR_REPLY"})
   };
 
+  useEffect(() => {        
+    if(chatRoom.username.trim()){
+      socket.emit("join", roomId, {
+        username: chatRoom.username,
+        profile_src: chatRoom.profile_src,
+        client_id: chatRoom.client_id
+      })  
+    }
+
+    socket.on("join-message", (join, msg)  => {
+      dispatch({type: "ROOM_MEMBER_UPDATE", payload: {
+      client_id: msg.client_id,
+      client_name: msg.username, 
+      client_profile: msg.profile_src
+    }})
+  })
+    
+  return () => {
+    socket.disconnect()
+  }    
+  }, [])
+
+
   useEffect(() => {
     socket.on("receive", (msg: any) => {
+
       dispatch({
         type: "MESSAGE",
         payload: {
@@ -74,13 +108,7 @@ const Client: FC<{ socket: any }> = ({ socket }) => {
     return () => {
       socket.disconnect();
     };
-  }, [socket]);
-
-  useEffect(() => {
-    if(roomData.owner_data.client_name !== undefined){
-      socket.emit("join-message", roomId)
-    }
-  }, [roomData.room_name])
+  }, []);
 
   useEffect(() => {
     if(chatRoom.reply?.reply_username !== undefined){

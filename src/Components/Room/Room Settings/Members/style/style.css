@@ -193,6 +193,7 @@ button:focus {
           justify-content: none;
   min-width: 200px;
   height: 60px;
+  cursor: default;
 }
 
 .settings__members-list .settings__member-list .user-info .pfp-frame {
