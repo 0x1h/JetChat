@@ -27,8 +27,17 @@ io.on("connection", async socket => {
     socket.join(room)
     socket.to(room).emit("join-message",userInfo)
   })
-  
+
+  socket.on("full-users-datalist", (room, requestor,userslist) => {
+    console.log(requestor, userslist);
+    socket.to(room).emit("full-users-datalist",{
+      requestor: requestor,
+      dataList: userslist
+    })
+  })
+
 	socket.on("send-message", async (msg, room) => {
+    console.log(msg);
     socket.to(room).emit("receive", msg)
   })
 })
