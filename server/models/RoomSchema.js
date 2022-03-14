@@ -6,6 +6,13 @@ const RoomSchema = new Schema({
 	room_name: {type: String},
 	room_icon: {type: String},
 	owner_client_id: {type: String},
+	online_users: [
+		{
+			client_id: {type: String},
+			profile_src: {type: String},
+			username: {type: String}
+		}
+	],
 	banned_users: [{
 		ip: {type: String},
 		client_id: {type: String},

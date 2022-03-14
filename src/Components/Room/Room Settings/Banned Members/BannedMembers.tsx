@@ -11,7 +11,7 @@ const BannedMembers = () => {
 		<div className='settings__members-list'>
 				<input type="text" className={darkTheme ? "find-user-input dark" : "find-user-input"} placeholder="Find banned member"/>
 				<div className='members-list-wrapper'>
-					<BannedList />
+					{/* <BannedList /> */}
 				</div>
 		</div>
 	)

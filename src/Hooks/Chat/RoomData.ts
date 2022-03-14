@@ -30,7 +30,7 @@ const roomDefault: State = {
 	banned_users: []
 }
 
-type ActionType = "LOAD_ROOM_DATA" | "ROOM_BAN_ADD" | "ROOM_BAN_REMOVE" | "ROOM_MEMBER_UPDATE" | "ROOM_MEMBER_REMOVE" | "NEW_OWNER"| "CHANGE_ROOM"
+type ActionType = "LOAD_ROOM_DATA" | "ROOM_BAN_ADD" | "ROOM_BAN_REMOVE" | "ROOM_MEMBER_UPDATE" | "ROOM_MEMBER_REMOVE" | "NEW_OWNER"| "CHANGE_ROOM" | "SET_ONLINE_MEMBERS"
 type ActionPayload = {
 	ip?: string,
 	client_id?: string,
@@ -125,9 +125,20 @@ export const roomInfo = (state: State = roomDefault, action: Action): State => {
 				active_clients: memberLeft
 			}
 		}
+		case "SET_ONLINE_MEMBERS": {
+			const {active_clients} = action.payload
+
+			return {
+				...state,
+				active_clients: active_clients
+			}
+		}
 		//MEMBER JOINS ROOM	
 		case "ROOM_MEMBER_UPDATE": {
 			const {client_id, client_name, client_profile} = action.payload
+			const duplicateUser = state.active_clients.some(e => e.client_id === client_id)
+
+			if(duplicateUser) return state
 
 			return {
 				...state,

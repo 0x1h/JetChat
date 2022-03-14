@@ -1,9 +1,14 @@
-import { useState } from 'react'
+import { useState, FC } from 'react'
 import { useSelector } from 'react-redux';
 import MemberOptions from './MemberOptions';
 
+interface MemberProps {
+	client_id: string;
+  client_name: string;
+  client_profile: string;
+}
 
-const MemberList = () => {
+const MemberList: FC<MemberProps> = (props) => {
 	const darkTheme = useSelector(
     (state: { themeReducer: boolean }) => state.themeReducer
   );
@@ -14,9 +19,9 @@ const MemberList = () => {
 				{openOptions && <MemberOptions closeOption={() => setOpenOptions(false)}/>}
 			<div className="user-info">
 				<div className="pfp-frame">
-					<img src="https://cdn.discordapp.com/guilds/951208859836485723/users/484717395722895360/avatars/f730f2bfaaeda2e0eff3a4e008a96765.png?size=4096"/>
+					<img src={props.client_profile}/>
 				</div>
-				<p className={darkTheme ? 'user-info-nickname dark' : 'user-info-nickname'}>callmenikk</p>
+				<p className={darkTheme ? 'user-info-nickname dark' : 'user-info-nickname'}>{props.client_name}</p>
 			</div>
 			<div className="member-list-options-opener" onClick={() => setOpenOptions(true)}>
 				<span className="dot"></span>

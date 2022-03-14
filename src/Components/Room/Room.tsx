@@ -1,8 +1,6 @@
 import { useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { State as AlertType } from "../../Hooks/Client/loadErrorHandle";
-import { State as RoomData} from '../../Hooks/Chat/RoomData'
-import { State } from "../../Hooks/Chat/ClientReducer";
 import { useParams } from "react-router-dom";
 import { State as OptionState} from "../../Hooks/Chat/optionsModal";
 import { io } from "socket.io-client";
@@ -26,11 +24,7 @@ const Room = () => {
     const optionModal = useSelector((state: {optionModal: OptionState}) => state.optionModal)
     const { roomId } = useParams();
     const settingsModal = useSelector((state: {settingsModal: boolean}) => state.settingsModal)
-    const dispatch = useDispatch(); 
-    const chatRoom = useSelector((state: { chatData: State }) => state.chatData);
-    const roomData = useSelector(
-      (state: { roomData: RoomData }) => state.roomData
-    ); 
+    const dispatch = useDispatch();
     
     const loadClientData = async (client_id: string, authToken: string) => {
       dispatch({ type: "LOAD" });
@@ -50,7 +44,20 @@ const Room = () => {
         axios.spread(async (userInfo, roomData) => {
           const { username, client_id, profile_src, createdAt } =
           await userInfo.data;
+
+          axios.put(`${host}/room/update_user/add/${roomId}`, {
+            authToken: authToken,
+            requestor: client_id,
+            username: username,
+            profile_src: profile_src
+          }).then((msg) => {
+            // console.log(msg)
+          }).catch(err => {
+            console.log(err);
+            
+          })
           
+
           socket.emit("join", roomId, {
             username: username,
             profile_src: profile_src,
@@ -66,9 +73,11 @@ const Room = () => {
               client_id: client_id,
             },
           });
+
           
-          const { room_icon, banned_users, room_name, room_id,owner_id } = await roomData.data;
+          const { room_icon, banned_users, room_name, room_id,owner_id, online_users} = await roomData.data;
           
+
           const ownerData = await axios.post(
             `${hostConfig.host}/user/${owner_id}`,
             {
@@ -85,14 +94,26 @@ const Room = () => {
                 room_icon: room_icon,
                 owner_data: {
                   client_id: ownerData.data.client_id,
-                client_name: ownerData.data.username,
-                client_profile: ownerData.data.profile_src,
+                  client_name: ownerData.data.username,
+                  client_profile: ownerData.data.profile_src,
               },
-              active_clients: [],
+              active_clients: [
+                ...online_users.map((e: any) => {
+                return {
+                  client_id: e.client_id,
+                  client_name: e.username,
+                  client_profile: e.profile_src
+                }
+              }),
+                {
+                  client_name: username,
+                   client_profile: profile_src,
+                  client_id: client_id,
+                },
+            ],
               banned_users: banned_users,
             },
           });
-
 
           dispatch({ type: "DEFAULT" });
         })

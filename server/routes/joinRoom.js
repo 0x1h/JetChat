@@ -10,7 +10,7 @@ router.post("/join/:room_id", authenticateUser, async (req, res) => {
 			return res.status(400).send({
 				err: "Invalid arguments"
 			})
-		}  
+		}   
 		
 		roomSchema.findOne({room_id: room_id}, (err, room) => {
 			if(err || room === null){
@@ -24,7 +24,8 @@ router.post("/join/:room_id", authenticateUser, async (req, res) => {
 				room_name: room.room_name,
 				owner_id: room.owner_client_id,
 				banned_users: room.banned_users,
-				room_icon: room.room_icon
+				room_icon: room.room_icon,
+				online_users: room.online_users
 			})
 		})
 	}

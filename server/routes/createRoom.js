@@ -17,6 +17,7 @@ router.post("/create", authenticateUser, async (req, res) => {
       room_name: room_name,
       room_icon: room_icon,
       owner_client_id: requestor,
+      online_users: [],
       banned_users: [],
     });
 

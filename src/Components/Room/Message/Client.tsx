@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTime } from "../../../utils/getTime";
+import { State as RoomData } from "../../../Hooks/Chat/RoomData";
 import { State } from "../../../Hooks/Chat/ClientReducer";
 import { useParams } from "react-router-dom";
 import { tokenGenerator } from "../../../utils/randomToken";
@@ -11,11 +12,15 @@ import { socket } from "../Room";
 const Client = () => {
   const chatRoom = useSelector((state: { chatData: State }) => state.chatData);
   const dispatch = useDispatch();
+  const roomData = useSelector(
+    (state: { roomData: RoomData }) => state.roomData
+  );
   const darkTheme = useSelector(
     (state: { themeReducer: boolean }) => state.themeReducer
   );
   const { roomId } = useParams();
   const clientRef = useRef<HTMLInputElement>(null);
+  
 
   const messageSend = (e: FormEvent) => {
     e.preventDefault();
@@ -47,31 +52,6 @@ const Client = () => {
     dispatch({ type: "CLEAR_REPLY" });
   };
 
-  useEffect(() => {
-    socket.on("join-message", async (msg) => {
-      dispatch({
-        type: "ROOM_MEMBER_UPDATE",
-        payload: {
-          client_id: await msg.client_id,
-          client_name: await  msg.username,
-          client_profile: await  msg.profile_src,
-        },
-      });
-    })
-
-
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
-
-  // useEffect(() => {
-  //   socket.emit("join", roomId, {
-  //     username: chatRoom.username,
-  //     profile_src: chatRoom.profile_src,
-  //     client_id: chatRoom.client_id,
-  //   });
-  // }, []);
 
   useEffect(() => {
     socket.on("receive", (msg: any) => {
