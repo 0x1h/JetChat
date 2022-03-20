@@ -46,6 +46,46 @@ button:focus {
           flex-direction: column;
 }
 
+.client__input-form .emojis-menu-opener {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  cursor: pointer;
+  right: 0;
+  -webkit-transform: translateY(3px);
+          transform: translateY(3px);
+  z-index: 18;
+  padding: 5px;
+}
+
+.client__input-form .emojis-menu-opener::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 30px;
+  width: 1px;
+  background: #9c9c9c;
+}
+
+.client__input-form .emojis-menu-opener img {
+  width: 100%;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+
+.client__input-form .emojis-menu-opener .emoji-menu {
+  position: absolute;
+  min-width: 200px;
+  min-height: 200px;
+  bottom: 50%;
+  right: 50%;
+}
+
+.client__input-form .emojis-menu-opener .emoji-menu * {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .client__input-form .replying_to {
   width: calc(100% - 40px);
   height: 30px;
@@ -93,7 +133,8 @@ button:focus {
   border: 2px solid #FA00FF;
   border-radius: 5px;
   font-size: 1.002rem;
-  padding: 0 5px;
+  padding-left: 5px;
+  padding-right: 45px;
   background: #FFF;
   font-family: "Poppins", sans-serif;
 }
@@ -231,5 +272,24 @@ button:focus {
           animation-duration: 1s;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
+}
+
+.twemoji {
+  width: 20px;
+  -webkit-transform: translateY(6px);
+          transform: translateY(6px);
+  margin-left: 5px;
+}
+
+.twemoji.big {
+  width: 40px;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+}
+
+.twemoji.mini {
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+  width: 15px;
 }
 /*# sourceMappingURL=messages.css.map */

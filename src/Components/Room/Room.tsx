@@ -26,6 +26,19 @@ const Room = () => {
     const settingsModal = useSelector((state: {settingsModal: boolean}) => state.settingsModal)
     const dispatch = useDispatch();
     
+    useEffect(() => {
+      socket.on("join", (msg) => {
+        dispatch({
+          type: "ROOM_MEMBER_UPDATE",
+          payload: {
+            client_id: msg.client_id,
+            client_name: msg.username,   
+            client_profile: msg.profile_src,
+          },
+        });
+      });
+    }, [])
+
     const loadClientData = async (client_id: string, authToken: string) => {
       dispatch({ type: "LOAD" });
 
@@ -56,7 +69,6 @@ const Room = () => {
             console.log(err);
             
           })
-          
 
           socket.emit("join", roomId, {
             username: username,

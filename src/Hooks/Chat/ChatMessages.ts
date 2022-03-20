@@ -17,7 +17,7 @@ export type State = {
 };
 
 type Action = {
-  type: "MESSAGE" | "JOIN" | "LEFT" | "OWNER_TRANSFERSHIP";
+  type: "MESSAGE" | "JOIN" | "LEFT" | "OWNER_TRANSFERSHIP" | "MAKE_EMPTY_MESSAGE_HISTORY";
   payload: {
     type: "MESSAGE" | "JOIN" | "LEFT" | "OWNER_TRANSFERSHIP";
     message: {
@@ -38,14 +38,6 @@ type Action = {
 };
 
 const message: State[] = [];
-// {
-// 	type: "MESSAGE",
-// 	message: {
-// 		setBy: "", //client_id
-// 		username: "", //client_username,
-// 		sentAt: "", //Date format
-// 	}
-// }
 
 export const allMessages = (
   state: State[] = message,
@@ -78,6 +70,10 @@ export const allMessages = (
           },
         },
       ];
+    }
+    case "MAKE_EMPTY_MESSAGE_HISTORY" : {
+      state = []
+      return state
     }
     default:
       return state;

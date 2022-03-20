@@ -24,14 +24,18 @@ const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http, socketIoConfig);
 
-io.on("connection", async socket => {
+io.on("connection", socket => {
   socket.on("join", (room, userInfo) => {
-    socket.join(room)
-    socket.to(room).emit("join-message",userInfo)
+    socket.to(room).emit("join",userInfo)
   })
 
 	socket.on("send-message", async (msg, room) => {
     socket.to(room).emit("receive", msg)
+  })
+
+  socket.on("leave", (room, client_id) => {
+    console.log(client_id);
+    socket.to(room).emit("leave", client_id)
   })
 })    
 

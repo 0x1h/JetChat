@@ -1,6 +1,8 @@
 import { useRef, FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { State } from "../../../../Hooks/Chat/RoomData";
+import { onlyEmojis } from "../../../../utils/Emoji";
+import Twemoji from 'react-twemoji';
 import { MessageProps } from "./JustMessage";
 
 interface ReplyMessage extends MessageProps {
@@ -94,7 +96,9 @@ const RepliedMessage: FC<ReplyMessage> = ({
               darkTheme ? "replied__messageText dark" : "replied__messageText"
             }
           >
-            {reply_message}
+            <Twemoji options={{ className: "twemoji mini"}}>
+              {reply_message}
+            </Twemoji>
           </div>
         </div>
       </div>
@@ -117,7 +121,9 @@ const RepliedMessage: FC<ReplyMessage> = ({
           <div
             className={darkTheme ? "actual__messsage dark" : "actual__messsage"}
           >
-            {message}
+            <Twemoji options={{ className: onlyEmojis(message) ? "twemoji big" : "twemoji"}}>
+              {message}
+            </Twemoji>
           </div>
         </div>
       </div>

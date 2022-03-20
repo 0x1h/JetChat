@@ -2,19 +2,43 @@ import { FC, useEffect } from "react";
 import { State } from "../../../Hooks/Chat/RoomData";
 import { useSelector, useDispatch } from "react-redux";
 import { State as LoadState } from "../../../Hooks/Client/loadErrorHandle";
+import {socket} from "../Room"
+import axios from "axios";
+import hostConfig from "../../../utils/hostconfig.json"
 import "./style/messages.css";
+import { useParams } from "react-router-dom";
 
 const RoomHeader: FC<{ darkTheme: boolean }> = ({ darkTheme }) => {
   const roomData = useSelector((state: { roomData: State }) => state.roomData);
   const dispatch = useDispatch()
+  const {roomId} = useParams()
   const isLoading = useSelector(
     (state: { loadErrHandler: LoadState }) => state.loadErrHandler
   );
 
   const alertUser = (e: BeforeUnloadEvent) => {
-    e.preventDefault()
+    const client_id = JSON.parse(localStorage.getItem("client_id")!)
+    const authToken = JSON.parse(sessionStorage.getItem("s_t")!)
+    const clientIsOwner: boolean = roomData.owner_data.client_id === client_id
     
-    e.returnValue = ""
+    socket.emit("leave", roomId, client_id)
+    
+    if(clientIsOwner){
+      e.preventDefault()
+
+
+      axios.put(`${hostConfig.host}/room/update_user/remove/${roomId}`, {
+        authToken: authToken,
+        requestor: client_id,
+      })
+    
+    }else if(!clientIsOwner){
+      axios.put(`${hostConfig.host}/room/update_user/remove/${roomId}`, {
+        authToken: authToken,
+        requestor: client_id,
+      })
+      e.returnValue = ""
+    }
   }
 
   useEffect(() => {

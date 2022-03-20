@@ -61,6 +61,11 @@ button:focus {
   color: #FFF;
 }
 
+.accept-wrapper button:focus {
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.411);
+}
+
 .accept-wrapper button:hover {
   background: #d65858;
 }

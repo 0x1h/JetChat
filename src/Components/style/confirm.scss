@@ -25,7 +25,10 @@
 		border-radius: 50px;
 		cursor: pointer;
 		border: none;
-		background: #ff4646;
+		background: #ff4646;	
+		&:focus{
+			box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.411);
+		}
 		color: #FFF;
 		&:hover{
 			background: #d65858;

@@ -8,31 +8,19 @@ import { useParams } from "react-router-dom";
 
 const UsersDashboard = () => {
   const { roomId } = useParams();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const roomData = useSelector(
     (state: { roomData: RoomData }) => state.roomData
   );
 
   useEffect(() => {
-    socket.on("join-message", (msg) => {
-      console.log(msg);
-      
-      dispatch({
-        type: "ROOM_MEMBER_UPDATE",
-        payload: {
-          client_id: msg.client_id,
-          client_name: msg.username,
-          client_profile: msg.profile_src,
-        },
-      });
-    });
-
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+    socket.on("leave", (client_id) => {
+      dispatch({type: "ROOM_MEMBER_REMOVE", payload: {
+        client_id: client_id
+      }})
+    })
+  }, [])
   
-
   useEffect(() => {
     const client_id = JSON.parse(localStorage.getItem("client_id")!);
     if (!roomData.room_name.trim()) return;

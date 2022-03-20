@@ -13,6 +13,8 @@ const MemberOptions: FC<{closeOption: () => void}> = ({closeOption}) => {
 		}
 	};
 
+	
+
 	useEffect(() => {
 		document.addEventListener('click', handleClickOutside, true);
 		return () => {

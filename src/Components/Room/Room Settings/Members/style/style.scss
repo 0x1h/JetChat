@@ -58,7 +58,7 @@
       border-radius: 10px 0 10px 10px;
       transform: translate(-35px, 35px);
 			box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-      z-index: 10;
+      z-index: 99;
 			&.dark{
 				background: #2c2c2c;
 			}

@@ -1,7 +1,8 @@
-import { FormEvent, useEffect, useRef } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTime } from "../../../utils/getTime";
-import { State as RoomData } from "../../../Hooks/Chat/RoomData";
+import 'emoji-mart/css/emoji-mart.css'
+import { Picker } from 'emoji-mart'
 import { State } from "../../../Hooks/Chat/ClientReducer";
 import { useParams } from "react-router-dom";
 import { tokenGenerator } from "../../../utils/randomToken";
@@ -12,15 +13,27 @@ import { socket } from "../Room";
 const Client = () => {
   const chatRoom = useSelector((state: { chatData: State }) => state.chatData);
   const dispatch = useDispatch();
-  const roomData = useSelector(
-    (state: { roomData: RoomData }) => state.roomData
-  );
   const darkTheme = useSelector(
     (state: { themeReducer: boolean }) => state.themeReducer
   );
   const { roomId } = useParams();
   const clientRef = useRef<HTMLInputElement>(null);
+  const emojiMenu = useRef<HTMLDivElement>(null);
+  const [openEmoji, setOpenEmoji] = useState(false)
   
+  const handleClickOutside = (event: any): void => {
+    if (emojiMenu.current && !emojiMenu.current!.contains(event.target)) {
+      setOpenEmoji(false);
+    }
+  };
+
+  //fire "handleClickOutside()"
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  });
 
   const messageSend = (e: FormEvent) => {
     e.preventDefault();
@@ -89,6 +102,24 @@ const Client = () => {
 
   return (
     <form className="client__input-form" onSubmit={messageSend}>
+      <div className="emojis-menu-opener" onClick={() => setOpenEmoji(true)}>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Twemoji_1f600.svg/800px-Twemoji_1f600.svg.png" alt="" />
+        {
+          openEmoji && 
+          <div className="emoji-menu" ref={emojiMenu}>
+            <Picker set="twitter" showPreview={false} showSkinTones={false} theme={darkTheme ? "dark" : "light"} onSelect={(emoji: any) => {
+              console.log(emoji);
+              
+              dispatch({
+                type: "MESSAGE_INPUT",
+                payload: {
+                  message: `${chatRoom.message}${emoji.native}`,
+                },
+              });
+            }}/>
+          </div>
+        }
+        </div>
       {chatRoom.reply !== undefined && (
         <div className="replying_to">
           Replying to <p>{chatRoom.reply.reply_username}</p>

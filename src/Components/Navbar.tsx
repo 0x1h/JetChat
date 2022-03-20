@@ -109,19 +109,29 @@ const Navbar = () => {
   const leaveRoomValidate = () => {
     const client_id = JSON.parse(localStorage.getItem("client_id")!);
     const authToken = JSON.parse(sessionStorage.getItem("s_t")!);
-
+    
     if (!pathname.includes("/room/")) return;
+    
+    let roomId: string[] | string = pathname.split("/")
 
+    roomId = roomId[roomId.length - 1] 
     const leavingUser: boolean = roomData.owner_data.client_id === client_id;
     
     if(!leavingUser) {
+      axios.put(`${hostConfig.host}/room/update_user/remove/${roomId}`, {
+        authToken: authToken,
+        requestor: client_id,
+      }).then((data) => {
+        console.log(data.data);
+      }).catch(err => {
+        console.log(err);
+      })
+      dispatch({type: "MAKE_EMPTY_MESSAGE_HISTORY"})
       return navigate("/");
     }
 
-    let roomId: string[] | string = pathname.split("/")
-    roomId = roomId[roomId.length - 1] 
 
-    if (window.confirm(warnTxt) && leavingUser) {
+    if (window.confirm(warnTxt)) {
       axios.put(`${hostConfig.host}/room/update_user/remove/${roomId}`, {
         authToken: authToken,
         requestor: client_id,
@@ -130,16 +140,7 @@ const Navbar = () => {
       }).catch(err => {
         console.log(err);
       })
-      return navigate("/");
-    }else{
-      axios.put(`${hostConfig.host}/room/update_user/remove/${roomId}`, {
-        authToken: authToken,
-        requestor: client_id,
-      }).then((data) => {
-        console.log(data.data);
-      }).catch(err => {
-        console.log(err);
-      })
+      dispatch({type: "MAKE_EMPTY_MESSAGE_HISTORY"})
       return navigate("/");
     }
   };

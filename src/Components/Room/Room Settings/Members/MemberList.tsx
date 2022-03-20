@@ -13,6 +13,7 @@ const MemberList: FC<MemberProps> = (props) => {
     (state: { themeReducer: boolean }) => state.themeReducer
   );
 	const [openOptions, setOpenOptions] = useState(false)
+	const client_id = JSON.parse(localStorage.getItem("client_id")!)
 
 	return (
 		<div className={darkTheme ? 'settings__member-list dark' : 'settings__member-list'}>
@@ -23,9 +24,11 @@ const MemberList: FC<MemberProps> = (props) => {
 				</div>
 				<p className={darkTheme ? 'user-info-nickname dark' : 'user-info-nickname'}>{props.client_name}</p>
 			</div>
-			<div className="member-list-options-opener" onClick={() => setOpenOptions(true)}>
+			{props.client_id !== client_id && (
+				<div className="member-list-options-opener" onClick={() => setOpenOptions(true)}>
 				<span className="dot"></span>
 			</div>
+			)}
 		</div>
 	)
 }

@@ -102,7 +102,7 @@ button:focus {
           transform: translate(-35px, 35px);
   -webkit-box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
           box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-  z-index: 10;
+  z-index: 99;
 }
 
 .settings__members-list .settings__member-list .settings__member-options.dark {

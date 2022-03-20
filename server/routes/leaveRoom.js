@@ -24,8 +24,11 @@ router.put("/update_user/remove/:room_id", authenticateUser, async (req, res) =>
 				})
 			}
 
-			const deleteUser = room.online_users.filter(e => e.client_id !== requestor)
-			room.online_users = deleteUser
+
+			const deleteUser = room.online_users
+			room.online_users = deleteUser.filter(e => e.client_id !== requestor)
+
+			room.save()
 
 			res.send({
 				msg: "user left"
