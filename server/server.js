@@ -5,12 +5,13 @@ const port = 3001;
 const { socketIoConfig } = require("./config/IOconfig");
 const Signup = require("./routes/SignupUser");
 const UserData = require("./routes/UserData");
+const deleteRoom  = require("./routes/deleteRoom")
 const cors = require("cors");
 const newUserJoin = require("./routes/addUserRoom")
 const leaveUser = require("./routes/leaveRoom")
 const Login = require("./routes/LoginUser");
 const joinRoom = require("./routes/joinRoom")
-const createRoom = require('./routes/createRoom')
+const createRoom = require('./routes/createRoom') 
 const rateLimit = require('express-rate-limit'); 
 const changeRoom = require("./routes/changeRoom")
 
@@ -23,19 +24,21 @@ const limiter = rateLimit({
 const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http, socketIoConfig);
-
-io.on("connection", socket => {
-  socket.on("join", (room, userInfo) => {
+ 
+io.on("connection",  socket => {
+  socket.on("join",  (room, userInfo) => {
+    socket.join(room)
     socket.to(room).emit("join",userInfo)
   })
 
 	socket.on("send-message", async (msg, room) => {
+    socket.join(room)
     socket.to(room).emit("receive", msg)
   })
 
   socket.on("leave", (room, client_id) => {
     console.log(client_id);
-    socket.to(room).emit("leave", client_id)
+    socket.to(room).emit("leave", client_id) 
   })
 })    
 
@@ -62,4 +65,5 @@ app.use("/room", joinRoom)
 app.use("/room", changeRoom)
 app.use("/room", newUserJoin)
 app.use("/room", leaveUser)
+app.use("/room", deleteRoom)
 app.use(limiter); 

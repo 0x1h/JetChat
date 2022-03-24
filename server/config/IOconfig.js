@@ -3,6 +3,7 @@ const socketIoConfig = {
 		origin: "http://localhost:3000",
 		methods: ["GET", "POST"],
 		enabledTransports: ["ws", "wss"],
+		transports: ['websocket']
 	}
 }
 
