@@ -23,22 +23,22 @@ const RoomHeader: FC<{ darkTheme: boolean }> = ({ darkTheme }) => {
     
     socket.emit("leave", roomId, client_id)
     
-    if(clientIsOwner){
-      e.preventDefault()
+    // if(clientIsOwner){
+    //   e.preventDefault()
 
 
-      axios.put(`${hostConfig.host}/room/update_user/remove/${roomId}`, {
-        authToken: authToken,
-        requestor: client_id,
-      })
+    //   axios.put(`${hostConfig.host}/room/update_user/remove/${roomId}`, {
+    //     authToken: authToken,
+    //     requestor: client_id,
+    //   })
     
-    }else if(!clientIsOwner){
-      axios.put(`${hostConfig.host}/room/update_user/remove/${roomId}`, {
-        authToken: authToken,
-        requestor: client_id,
-      })
-      e.returnValue = ""
-    }
+    // }else if(!clientIsOwner){
+    //   axios.put(`${hostConfig.host}/room/update_user/remove/${roomId}`, {
+    //     authToken: authToken,
+    //     requestor: client_id,
+    //   })
+    //   e.returnValue = ""
+    // }
   }
 
   useEffect(() => {

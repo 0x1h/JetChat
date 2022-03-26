@@ -1,0 +1,66 @@
+.confirm-delete-modal {
+  position: absolute;
+  width: 450px;
+  min-height: 300px;
+  background-color: #FFF;
+  z-index: 20;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  color: #000;
+  -webkit-box-shadow: 0 0 10px;
+          box-shadow: 0 0 10px;
+  padding: 20px 10px;
+}
+
+.confirm-delete-modal.dark {
+  background-color: #272727;
+}
+
+.confirm-delete-modal.dark * {
+  color: #FFF;
+}
+
+.confirm-delete-modal input {
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  height: 35px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 0 10px;
+  border: 2px solid #FA00FF;
+}
+
+.confirm-delete-modal .delete-btn-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.confirm-delete-modal .delete-btn-wrapper button {
+  background-color: #ff5656;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+  width: 140px;
+  height: 40px;
+  border-radius: 50px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.confirm-delete-modal .delete-btn-wrapper button:focus {
+  -webkit-box-shadow: 0 0 0 3px rgba(255, 49, 49, 0.411);
+          box-shadow: 0 0 0 3px rgba(255, 49, 49, 0.411);
+}
+/*# sourceMappingURL=confirm.css.map */

@@ -3,12 +3,14 @@ import { useSelector } from "react-redux";
 import RoomInfo from "./RoomInfo";
 import ConfirmChanges from "./ConfirmChanges";
 import { State as RoomData } from "../../../../Hooks/Chat/RoomData";
+import ConfirmDelete from "./ConfirmDelete"
 import DeleteRoom from "./DeleteRoom";
 import { Input } from "../../../Home/Sign up/SignUp";
 import "./style/style.css";
 
 const Overview = () => {
   const [changes, setChanges] = useState<boolean>(false);
+  const [openDelete, setOpenDelete] = useState<boolean>(false)
   const roomData = useSelector(
     (state: { roomData: RoomData }) => state.roomData
   );
@@ -47,12 +49,15 @@ const Overview = () => {
 	const client_id = JSON.parse(localStorage.getItem("client_id")!)
 
   return (
+    <>
+    {<ConfirmDelete closeModal={() => setOpenDelete(false)}/>}
     <div className="overview-info__dashboard">
       <RoomInfo unChanged={(state: boolean) => setChanges(state)} inputHandler={inputHandler} unChange={unChange}/>
       <hr className="room-settings-hr" />
-      {roomData.owner_data.client_id === client_id && <DeleteRoom />}
+      {roomData.owner_data.client_id === client_id && <DeleteRoom openModal={() => setOpenDelete(true)}/>}
       <ConfirmChanges changes={changes} dark={darkTheme} newChanges={unChange}/>
     </div>
+    </>
   );
 };
 

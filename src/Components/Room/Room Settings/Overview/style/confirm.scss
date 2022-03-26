@@ -1,0 +1,49 @@
+.confirm-delete-modal{
+  position: absolute;
+  width: 450px;
+  min-height: 300px;
+  background-color: #FFF;
+  z-index: 20;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  box-shadow: 0 0 10px;
+  padding: 20px 10px;
+  &.dark{
+    background-color: #272727;
+    & *{
+      color: #FFF;
+    }
+  }
+  input{
+    background: transparent;
+    border: none;
+    border-radius: 5px;
+    height: 35px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0 10px;
+    border: 2px solid #FA00FF;
+  }
+  .delete-btn-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & button{
+      background-color: #ff5656;
+      box-shadow: none;
+      border: none;
+      width: 140px;
+      height: 40px;
+      border-radius: 50px;
+      margin-top: 20px;
+      cursor: pointer;
+      &:focus{
+        box-shadow: 0 0 0 3px rgba(255, 49, 49, 0.411);
+      }
+    }
+  }
+}

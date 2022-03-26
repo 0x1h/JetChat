@@ -143,7 +143,7 @@ const Room = () => {
           return sessionStorage.removeItem("s_t");
         }else if(err === "room not found"){
           dispatch({ type: "ERROR", payload: "Room not found, make sure your URL or inputed room code is correct"
-          })
+        })
         }
       });
   };
