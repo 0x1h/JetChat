@@ -11,8 +11,8 @@ const AlertBox = () => {
   );
   const dispatch = useDispatch()
 
-  const [appear, setAppear] = useState(false);
   const alertRef = useRef<HTMLDivElement>(null);
+  const [appear, setAppear] = useState(false);
 
   const variants = {
     visible: { opacity: appear ? 1 : 0, y: appear ? 0 : 50 },

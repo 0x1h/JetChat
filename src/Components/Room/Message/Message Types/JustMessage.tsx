@@ -62,7 +62,7 @@ const JustMessage: FC<MessageProps> = ({
       <div className={darkTheme ? "just-message dark" : "just-message"}>
         <div className="profile-picture">
           <div className="profile-picture__wrapper">
-            <img src={profile_src} alt="" />
+            <img src={profile_src.trim() === "" ? "/Avatars/Avatar-1.png":profile_src} alt="" />
           </div>
         </div>
         <div className="main-content" ref={messageRef}>

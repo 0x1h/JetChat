@@ -50,7 +50,7 @@ const Overview = () => {
 
   return (
     <>
-    {<ConfirmDelete closeModal={() => setOpenDelete(false)}/>}
+    {openDelete && <ConfirmDelete closeModal={() => setOpenDelete(false)} isOpen={openDelete}/>}
     <div className="overview-info__dashboard">
       <RoomInfo unChanged={(state: boolean) => setChanges(state)} inputHandler={inputHandler} unChange={unChange}/>
       <hr className="room-settings-hr" />
