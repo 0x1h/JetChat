@@ -46,7 +46,7 @@ const ConfirmDelete: FC<{ closeModal: () => void, isOpen: boolean }> = ({ closeM
   });
 
   useEffect(() => {
-    if(isOpen) return setAppear(true)
+    if (isOpen) return setAppear(true)
 
     setAppear(false)
   }, [isOpen])
@@ -75,14 +75,14 @@ const ConfirmDelete: FC<{ closeModal: () => void, isOpen: boolean }> = ({ closeM
 
 
   return (
-    <motion.form 
-    className={darkTheme ? "confirm-delete-modal dark" : "confirm-delete-modal"} 
-    onSubmit={submitForm} 
-    ref={formRef}
-    variants={variants}
-        animate="visible"
-        transition={{ ease: "easeOut", duration: 0.4 }}
-        initial="hidden"
+    <motion.form
+      className={darkTheme ? "confirm-delete-modal dark" : "confirm-delete-modal"}
+      onSubmit={submitForm}
+      ref={formRef}
+      variants={variants}
+      animate="visible"
+      transition={{ ease: "easeOut", duration: 0.4 }}
+      initial="hidden"
     >
       <h3>Delete "{roomData.room_name}"</h3>
       <p style={{ marginTop: "10px" }}>Are you sure, you want to delete that room? If you will do that you can't back it</p>

@@ -1,7 +1,15 @@
 import {useRef, useEffect, FC} from 'react'
 import { useSelector } from 'react-redux';
+import {ActionType} from "./MemberList"
 
-const MemberOptions: FC<{closeOption: () => void}> = ({closeOption}) => {
+interface MemberOptionsProps {
+	closeOption: () => void,
+	setActionHandler: (type: ActionType) => void
+	username: string,
+	client_id: string
+}
+
+const MemberOptions: FC<MemberOptionsProps> = ({closeOption, setActionHandler, client_id, username}) => {
 	const darkTheme = useSelector(
     (state: { themeReducer: boolean }) => state.themeReducer
   );
@@ -13,8 +21,6 @@ const MemberOptions: FC<{closeOption: () => void}> = ({closeOption}) => {
 		}
 	};
 
-	
-
 	useEffect(() => {
 		document.addEventListener('click', handleClickOutside, true);
 		return () => {
@@ -24,8 +30,18 @@ const MemberOptions: FC<{closeOption: () => void}> = ({closeOption}) => {
 
 	return (
 		<div className={darkTheme ? 'settings__member-options dark' : 'settings__member-options'} ref={optionRef}>
-			<button className='high-order-permission__btn'>Kick</button>
-			<button className='high-order-permission__btn'>Ban</button>
+			<button className='high-order-permission__btn' onClick={() => setActionHandler({
+				type: "KICK",
+				person: { username, client_id }
+			})}>Kick</button>
+			<button className='high-order-permission__btn' onClick={() => setActionHandler({
+				type: "BAN",
+				person: { username, client_id }
+			})}>Ban</button>
+			<button className='high-order-permission__btn' onClick={() => setActionHandler({
+				type: "OWNERSHIP",
+				person: { username, client_id }
+			})}>Transfer ownership</button>
 		</div>
 	)
 }
