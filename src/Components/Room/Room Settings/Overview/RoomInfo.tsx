@@ -40,7 +40,7 @@ const RoomInfo: FC<RoomInfoProps> = ({ unChanged, unChange, inputHandler }) => {
   return (
     <div className="room-dashboard-logo">
       <div className="room-icon-wrapper">
-        <img src={roomData.room_icon} alt="" />
+        <img src={roomData.room_icon} alt="" draggable={false}/>
       </div>
       <div className="room-info__inputs">
         <label

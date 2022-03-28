@@ -19,6 +19,8 @@ const Options = () => {
   const dispatch = useDispatch();
 
   const handleClickOutside = (event: any) => {
+    
+
     if (optionsRef.current && !optionsRef.current.contains(event.target)) {
       dispatch({ type: "CLOSE_OPTIONS" });
     }

@@ -36,6 +36,10 @@ io.on("connection",  socket => {
     socket.to(room).emit("receive", msg)
   })
 
+  socket.on("room-changes", (room, room_changes) => {
+    socket.to(room).emit("room-changes-obj", room_changes)
+  })
+
   socket.on("leave", (room, client_id) => {
     console.log(client_id);
     socket.to(room).emit("leave", client_id) 

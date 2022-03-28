@@ -185,7 +185,7 @@ const Navbar = () => {
           {userData.isLogined ? (
             <div className="menu__profile">
               <div className="profile-wrapper">
-                <img src={userData.profile_src} alt="" />
+                <img src={userData.profile_src} alt="" draggable={false}/>
               </div>
               <p
                 className={darkTheme ? "menu__username dark" : "menu__username"}

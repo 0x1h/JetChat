@@ -4,6 +4,7 @@ import hostConfig from "../../../../utils/hostconfig.json"
 import axios from "axios"
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { socket } from "../../Room";
 
 const ConfirmChanges: FC<{
   changes: boolean;
@@ -33,6 +34,11 @@ const ConfirmChanges: FC<{
         room_name: room_data.room_name,
         room_icon: room_data.room_icon
       }})
+
+      socket.emit("room-changes", roomId, {
+        room_name: room_data.room_name,
+        room_icon: room_data.room_icon
+      })
 
       setIsLoading(false)
       

@@ -23,6 +23,9 @@ const RoomHeader: FC<{ darkTheme: boolean }> = ({ darkTheme }) => {
     
     socket.emit("leave", roomId, client_id)
     
+    
+    console.log("bye")
+
     // if(clientIsOwner){
     //   e.preventDefault()
 
@@ -42,6 +45,15 @@ const RoomHeader: FC<{ darkTheme: boolean }> = ({ darkTheme }) => {
   }
 
   useEffect(() => {
+    socket.on("room-changes-obj", (changes) => {
+      dispatch({type: "CHANGE_ROOM", payload: {
+        room_name: changes.room_name,
+        room_icon: changes.room_icon
+      }})
+    })
+  }, [])
+
+  useEffect(() => {
     window.addEventListener('beforeunload', alertUser)
     return () => {
       window.removeEventListener('beforeunload', alertUser)
@@ -55,7 +67,7 @@ const RoomHeader: FC<{ darkTheme: boolean }> = ({ darkTheme }) => {
           {
 						isLoading.status === "isLoading" ? 
 						<div className="skeleton room-icon"></div>:
-						<img src={roomData.room_icon} onClick={() => dispatch({type: "OPEN_SETTINGS"})}/>
+						<img src={roomData.room_icon} onClick={() => dispatch({type: "OPEN_SETTINGS"})} draggable={false}/>
 					}
         </div>
         {isLoading.status === "isLoading" ? (

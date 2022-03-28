@@ -53,7 +53,7 @@ router.post("/signup", async (req, res) => {
       const enc_pass = hashData(password);  
       const authToken = tokenGenerator();
 
-      const randomNumber = Math.floor(Math.random() * 35) + 1
+      const randomNumber = Math.floor(Math.random() * 32) + 1
 
       const newUser = UserScheme({
         username: username.toLowerCase(),
