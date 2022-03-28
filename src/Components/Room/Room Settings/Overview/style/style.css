@@ -54,8 +54,8 @@
 .overview-info__dashboard .room-dashboard-logo .room-info__inputs .room_inputs {
   background: transparent;
   border: 2px solid #FA00FF;
-  height: 40px;
   border-radius: 5px;
+  height: 40px;
   background: #d8d8d8;
   padding: 0 5px;
 }
@@ -185,5 +185,43 @@
 
 .delete-wrapper button:hover {
   background: #ff6565;
+}
+
+.invite_btn {
+  width: 200px;
+  height: 40px;
+  background: transparent;
+  border: 2px solid #FA00FF;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #000;
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+}
+
+.invite_btn.copied {
+  background: #88ff51;
+  border: 2px solid #88ff51;
+}
+
+.invite_btn:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.invite_btn:hover {
+  background: #FA00FF;
+}
+
+.invite_btn:hover:hover {
+  color: #FFF;
+}
+
+.invite_btn.dark {
+  color: #FFF;
+}
+
+.invite_btn.dark.copied {
+  background: #88ff51;
 }
 /*# sourceMappingURL=style.css.map */

@@ -12,13 +12,14 @@ export type isEqualType = {
 interface RoomInfoProps {
   unChanged: (state: boolean) => void;
   unChange: isEqualType;
-	inputHandler: (e: Input) => void
+  inputHandler: (e: Input) => void
 }
 
 const RoomInfo: FC<RoomInfoProps> = ({ unChanged, unChange, inputHandler }) => {
   const roomData = useSelector(
     (state: { roomData: RoomData }) => state.roomData
   );
+  const [copyClipboard, setCopyClipboard] = useState<boolean>(false)
   const darkTheme = useSelector(
     (state: { themeReducer: boolean }) => state.themeReducer
   );
@@ -40,7 +41,7 @@ const RoomInfo: FC<RoomInfoProps> = ({ unChanged, unChange, inputHandler }) => {
   return (
     <div className="room-dashboard-logo">
       <div className="room-icon-wrapper">
-        <img src={roomData.room_icon} alt="" draggable={false}/>
+        <img src={roomData.room_icon} alt="" draggable={false} />
       </div>
       <div className="room-info__inputs">
         <label
@@ -53,7 +54,7 @@ const RoomInfo: FC<RoomInfoProps> = ({ unChanged, unChange, inputHandler }) => {
         </label>
         <input
           type="text"
-          className={darkTheme ? `room_inputs dark ${client_id === roomData.owner_data.client_id ? "": "forbidden"}` : `room_inputs  ${client_id === roomData.owner_data.client_id ? "": "forbidden"}`}
+          className={darkTheme ? `room_inputs dark ${client_id === roomData.owner_data.client_id ? "" : "forbidden"}` : `room_inputs  ${client_id === roomData.owner_data.client_id ? "" : "forbidden"}`}
           value={unChange.room_name}
           name="room_name"
           onChange={inputHandler}
@@ -67,13 +68,22 @@ const RoomInfo: FC<RoomInfoProps> = ({ unChanged, unChange, inputHandler }) => {
         </label>
         <input
           type="text"
-          className={darkTheme ? `room_inputs dark ${client_id === roomData.owner_data.client_id ? "": "forbidden"}` : `room_inputs ${client_id === roomData.owner_data.client_id ? "": "forbidden"}`}
+          className={darkTheme ? `room_inputs dark ${client_id === roomData.owner_data.client_id ? "" : "forbidden"}` : `room_inputs ${client_id === roomData.owner_data.client_id ? "" : "forbidden"}`}
           value={unChange.room_icon}
           spellCheck="false"
           autoComplete="off"
           name="room_icon"
           onChange={inputHandler}
         />
+        <button className={darkTheme ? `invite_btn dark ${copyClipboard ? "copied" : ""}` : `invite_btn ${copyClipboard ? "copied" : ""}`} 
+        onClick={() => {
+          navigator.clipboard.writeText(window.location.href)
+          setCopyClipboard(true)
+          setTimeout(() => {
+            setCopyClipboard(false)
+          }, 2000)
+        }}
+        >{copyClipboard ? "Copied to clipboard" : "Copy Invite Link"}</button>
       </div>
     </div>
   );

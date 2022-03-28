@@ -109,6 +109,11 @@ button:focus {
           justify-content: none;
 }
 
+.just-message .main-content .time_username-wrapper:hover,
+.replied-message .main-content .time_username-wrapper:hover {
+  cursor: default;
+}
+
 .just-message .main-content .time_username-wrapper time,
 .replied-message .main-content .time_username-wrapper time {
   font-size: .8em;

@@ -30,8 +30,8 @@
 			.room_inputs{
 				background: transparent;
 				border: 2px solid #FA00FF;
-				height: 40px;
 				border-radius: 5px;
+				height: 40px;
 				background: #d8d8d8;
 				padding: 0 5px;
 				&.dark{
@@ -128,6 +128,36 @@
 		}
 		&:hover{
 			background: #ff6565;
+		}
+	}
+}
+
+.invite_btn{
+	width: 200px;
+	height: 40px;
+	background: transparent;
+	border: 2px solid #FA00FF;
+	cursor: pointer;
+	border-radius: 5px;
+	color: #000;
+	transition: 0.1s ease-in-out;
+	&.copied{
+		background: #88ff51;
+		border: 2px solid #88ff51;
+	}
+	&:focus{
+		box-shadow: none;
+	}
+	&:hover{
+		background: #FA00FF;
+		&:hover{
+			color: #FFF;
+		}
+	}
+	&.dark{
+		color: #FFF;
+		&.copied{
+			background: #88ff51;
 		}
 	}
 }

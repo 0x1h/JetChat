@@ -20,7 +20,7 @@ const MemberList: FC<MemberProps> = (props) => {
 				{openOptions && <MemberOptions closeOption={() => setOpenOptions(false)}/>}
 			<div className="user-info">
 				<div className="pfp-frame">
-					<img src={props.client_profile}/>
+					<img src={props.client_profile} draggable={false}/>
 				</div>
 				<p className={darkTheme ? 'user-info-nickname dark' : 'user-info-nickname'}>{props.client_name}</p>
 			</div>
