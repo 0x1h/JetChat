@@ -1,8 +1,12 @@
-import { useState, useEffect, FC, useRef} from 'react'
+import { useState, useEffect, FC, useRef } from 'react'
 import { motion } from "framer-motion"
-import { useSelector } from 'react-redux'
-import "./style/action_style.css"
+import { useSelector, useDispatch } from 'react-redux'
+import hostConfig from "../../../../utils/hostconfig.json"
 import { ActionType } from "./MemberList"
+import { socket } from '../../Room'
+import { useParams } from 'react-router-dom'
+import "./style/action_style.css"
+import axios from 'axios'
 
 interface ActionModalProps {
   username: string;
@@ -13,7 +17,10 @@ interface ActionModalProps {
 
 const ActionModal: FC<ActionModalProps> = ({ username, client_id, type, cancelModal }) => {
   const modalRef = useRef<HTMLDivElement>(null)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const dispatch = useDispatch()
   const [appear, setAppear] = useState<boolean>(false);
+  const { roomId } = useParams()
   const darkTheme = useSelector(
     (state: { themeReducer: boolean }) => state.themeReducer
   );
@@ -22,6 +29,37 @@ const ActionModal: FC<ActionModalProps> = ({ username, client_id, type, cancelMo
     visible: { opacity: appear ? 1 : 0, y: appear ? 0 : 50 },
     hidden: { opacity: 0, y: appear ? 0 : 80 },
   };
+
+  const emitAction = () => {
+    const requestor = JSON.parse(localStorage.getItem("client_id")!)
+    const authToken = JSON.parse(sessionStorage.getItem("s_t")!)
+    const kickedUserId = client_id
+
+    setIsLoading(true)
+
+    switch (type) {
+      case "KICK": {
+        axios.post(`${hostConfig.host}/room/kick.User/${roomId}`, {
+          requestor, authToken, kickedUserId
+        })
+          .then(resp => {
+            if (resp.data.msg === "user kicked out") {
+              cancelModal()
+              setIsLoading(false)
+              socket.emit("kick", roomId, client_id)
+              dispatch({
+                type: "ROOM_MEMBER_REMOVE",
+                payload: { client_id }
+              })
+            }
+          }).catch(err => {
+            setIsLoading(false)
+            alert("Weird error occured, try again later")
+          })
+
+      }
+    }
+  }
 
   useEffect(() => {
     let timeout = setTimeout(() => {
@@ -58,10 +96,16 @@ const ActionModal: FC<ActionModalProps> = ({ username, client_id, type, cancelMo
         </div>
         <div className="accept_actions-container">
           <button className="action-btn" onClick={cancelModal}>Cancel</button>
-          <button className={`action-btn ${type === "BAN" ? "ban" : "light"}`}>
-            {type === "BAN" && "Ban"}
-            {type === "KICK" && "Kick"}
-            {type === "OWNERSHIP" && "Transfership"}
+          <button className={`action-btn ${type === "BAN" ? "ban" : "light"}`} onClick={emitAction}>
+            {
+              isLoading
+                ? <span className='loaderr' />
+                : <>
+                  {type === "BAN" && "Ban"}
+                  {type === "KICK" && "Kick"}
+                  {type === "OWNERSHIP" && "Transfership"}
+                  </>
+            }
           </button>
         </div>
       </motion.div>

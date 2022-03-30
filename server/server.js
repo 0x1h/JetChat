@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const port = 3001;
+const kickUser = require("./routes/grantKickUser")
 const { socketIoConfig } = require("./config/IOconfig");
 const Signup = require("./routes/SignupUser");
 const UserData = require("./routes/UserData");
@@ -13,7 +14,7 @@ const Login = require("./routes/LoginUser");
 const joinRoom = require("./routes/joinRoom")
 const createRoom = require('./routes/createRoom') 
 const rateLimit = require('express-rate-limit'); 
-const changeRoom = require("./routes/changeRoom")
+const changeRoom = require("./routes/changeRoom");
 
 const limiter = rateLimit({
   max: 100,
@@ -41,8 +42,12 @@ io.on("connection",  socket => {
   })
 
   socket.on("leave", (room, client_id) => {
-    console.log(client_id);
+    // console.log(client_id);
     socket.to(room).emit("leave", client_id) 
+  })
+
+  socket.on("kick", (room, client_id) => {
+    socket.to(room).emit("kicked-user", client_id)
   })
 })    
 
@@ -69,5 +74,6 @@ app.use("/room", joinRoom)
 app.use("/room", changeRoom)
 app.use("/room", newUserJoin)
 app.use("/room", leaveUser)
+app.use("/room", kickUser)
 app.use("/room", deleteRoom)
 app.use(limiter); 
