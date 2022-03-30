@@ -2,12 +2,12 @@ const router = require("express").Router();
 const authenticateUser = require("../middleware/authenticate");
 const roomSchema = require("../models/RoomSchema"); 
 
-router.post("/kick.User/:roomId", authenticateUser, async (req, res) => {
+router.post("/ban.User/:roomId", authenticateUser, async (req, res) => {
   const {roomId} = req.params
-  const {requestor, kickedUserId} = req.body
+  const {requestor, banUserId} = req.body
 
   try{
-    if(kickedUserId === undefined || kickedUserId === null){
+    if(banUserId === undefined || banUserId === null){
       return res.status(402).send({
         err: "Invalid arguments"
       })
@@ -27,12 +27,20 @@ router.post("/kick.User/:roomId", authenticateUser, async (req, res) => {
 			}
 
       const deleteUser = room.online_users
-			room.online_users = deleteUser.filter(e => e.client_id !== kickedUserId)
+			room.online_users = deleteUser.filter(e => e.client_id !== banUserId)
+
+      if(room.banned_users.includes(banUserId.toString())){
+        return res.status(201).send({
+          msg: "user is already banned"
+        })
+      }
+
+      room.banned_users.push(banUserId.toString())
 
 			room.save()
 
       res.send({
-        msg: "user kicked out"
+        msg: "user banned"
       })
 
     })

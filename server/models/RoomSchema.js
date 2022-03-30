@@ -13,10 +13,7 @@ const RoomSchema = new Schema({
 			username: {type: String}
 		}
 	],
-	banned_users: [{
-		ip: {type: String},
-		client_id: {type: String},
-	}]
+	banned_users: [String],
 }, {timestamps: true})
 
 module.exports = mongoose.model("rooms", RoomSchema)

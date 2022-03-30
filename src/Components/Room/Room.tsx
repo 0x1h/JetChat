@@ -63,11 +63,6 @@ const Room = () => {
             requestor: client_id,
             username: username,
             profile_src: profile_src
-          }).then((msg) => {
-            // console.log(msg)
-          }).catch(err => {
-            console.log(err);
-            
           })
 
           socket.emit("join", roomId, {
@@ -132,7 +127,14 @@ const Room = () => {
         )
         .catch((error) => {    
           const { err } = error.response.data;
+        
           
+
+          if(err === "user is banned"){
+            socket.disconnect()
+            dispatch({ type: "ERROR", payload: "You are banned from this room" })
+          }
+
           if (
             err === "User not found" ||
             err === "Invalid Authentiction" ||

@@ -10,6 +10,7 @@ router.put("/update_user/remove/:room_id", authenticateUser, async (req, res) =>
 	try{
 
 		roomSchema.findOne({room_id: room_id}, async (err, room) => {
+			
 			if(err || room === null){
 				return res.status(404).send({
 					err: "invalid room"
@@ -22,6 +23,7 @@ router.put("/update_user/remove/:room_id", authenticateUser, async (req, res) =>
 					msg: "room will be deleted"
 				})
 			}
+
 
 			const deleteUser = room.online_users
 			room.online_users = deleteUser.filter(e => e.client_id !== requestor)

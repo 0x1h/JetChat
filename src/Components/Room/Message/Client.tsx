@@ -1,7 +1,6 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTime } from "../../../utils/getTime";
-import 'emoji-mart/css/emoji-mart.css'
 import { Picker } from 'emoji-mart'
 import { State } from "../../../Hooks/Chat/ClientReducer";
 import { useParams } from "react-router-dom";
@@ -9,6 +8,7 @@ import { tokenGenerator } from "../../../utils/randomToken";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { socket } from "../Room";
+import 'emoji-mart/css/emoji-mart.css'
 
 const Client = () => {
   const chatRoom = useSelector((state: { chatData: State }) => state.chatData);

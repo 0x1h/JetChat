@@ -5,6 +5,7 @@ const port = 3001;
 const kickUser = require("./routes/grantKickUser")
 const { socketIoConfig } = require("./config/IOconfig");
 const Signup = require("./routes/SignupUser");
+const banUser = require("./routes/grantBanUser");
 const UserData = require("./routes/UserData");
 const deleteRoom  = require("./routes/deleteRoom")
 const cors = require("cors");
@@ -49,6 +50,10 @@ io.on("connection",  socket => {
   socket.on("kick", (room, client_id) => {
     socket.to(room).emit("kicked-user", client_id)
   })
+
+  socket.on("ban", (room, client_id) => {
+    socket.to(room).emit("banned-user", client_id)
+  })
 })    
 
 http.listen(process.env.PORT || port, () => {
@@ -75,5 +80,6 @@ app.use("/room", changeRoom)
 app.use("/room", newUserJoin)
 app.use("/room", leaveUser)
 app.use("/room", kickUser)
+app.use("/room", banUser)
 app.use("/room", deleteRoom)
 app.use(limiter); 

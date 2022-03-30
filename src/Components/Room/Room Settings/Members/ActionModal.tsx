@@ -56,7 +56,29 @@ const ActionModal: FC<ActionModalProps> = ({ username, client_id, type, cancelMo
             setIsLoading(false)
             alert("Weird error occured, try again later")
           })
-
+          break
+      }
+      case "BAN": {
+        axios.post(`${hostConfig.host}/room/ban.User/${roomId}`, {
+          requestor, authToken, banUserId: client_id
+        }).then((resp) => {
+          cancelModal()
+          if(resp.data.msg === "user banned"){
+            dispatch({
+              type: "ROOM_MEMBER_REMOVE",
+              payload: { client_id }
+            })
+            socket.emit("ban", roomId, client_id)
+          }
+          if(resp.data.msg === "user is already banned"){
+            alert("User is already banned in this room")
+          }
+        })
+        .catch(err => {
+          setIsLoading(false)
+          alert("Weird error occured, try again later")
+        })
+        break
       }
     }
   }

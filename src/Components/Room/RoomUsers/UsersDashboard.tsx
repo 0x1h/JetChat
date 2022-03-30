@@ -45,8 +45,18 @@ const UsersDashboard = () => {
       })
 
       if(client_id === sessionToken){
+        socket.disconnect()
         dispatch({ type: "ERROR", payload: "You have been kicked out from" })
       }
+    })
+
+    socket.on("banned-user", (client_id:string) => {
+      socket.disconnect()
+      dispatch({
+        type: "ROOM_MEMBER_REMOVE",
+        payload: { client_id }
+      })
+      dispatch({ type: "ERROR", payload: "You have been banned from this room" })
     })
   })
 

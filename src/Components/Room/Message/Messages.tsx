@@ -18,7 +18,7 @@ const Messages= () => {
 		<div className='messages_container'>
 			<SentMessages />
 			{
-				loadErrHandler.msg === "You have been kicked out from room" ? null : <Client/> 
+				loadErrHandler.msg === "You have been kicked out from room" || loadErrHandler.msg === "You are banned from this room" ? null : <Client/> 
 			}
 		</div>
 	)
