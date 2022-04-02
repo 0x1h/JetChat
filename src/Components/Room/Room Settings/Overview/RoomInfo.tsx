@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, useRef } from "react";
 import { State as RoomData } from "../../../../Hooks/Chat/RoomData";
 import { useSelector } from "react-redux";
 import { isEqual } from "../../../../utils/isEqual";
@@ -23,6 +23,15 @@ const RoomInfo: FC<RoomInfoProps> = ({ unChanged, unChange, inputHandler }) => {
   const darkTheme = useSelector(
     (state: { themeReducer: boolean }) => state.themeReducer
   );
+  const imageRef = useRef<HTMLDivElement>(null)
+
+	const imageContext = (e: MouseEvent) => e.preventDefault()
+	
+	useEffect(() => {
+		imageRef.current?.addEventListener("contextmenu", imageContext)
+
+		return () => imageRef.current?.removeEventListener("contextmenu", imageContext)
+	})
 
   useEffect(() => {
     if (!unChange.room_name.trim()) return;
@@ -40,7 +49,7 @@ const RoomInfo: FC<RoomInfoProps> = ({ unChanged, unChange, inputHandler }) => {
 
   return (
     <div className="room-dashboard-logo">
-      <div className="room-icon-wrapper">
+      <div className="room-icon-wrapper" ref={imageRef}>
         <img src={roomData.room_icon} alt="" draggable={false} />
       </div>
       <div className="room-info__inputs">

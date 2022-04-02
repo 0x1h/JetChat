@@ -1,18 +1,19 @@
 import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { State } from "../Hooks/Client/userDataHandler";
-import { useNavigate, useLocation, useParams } from "react-router-dom";
-import { State as RoomData } from "../Hooks/Chat/RoomData";
-import Moon_icon from "./style/icons/moon-icon.png";
-import hostConfig from "../utils/hostconfig.json";
-import Sun_icon from "./style/icons/sun-icon.png";
-import "./style/navbar__style.css";
+import NavbarProfile from "./NavbarProfile"
+import { State } from "../../Hooks/Client/userDataHandler";
+import { useNavigate, useLocation } from "react-router-dom";
+import { State as RoomData } from "../../Hooks/Chat/RoomData";
+import hostConfig from "../../utils/hostconfig.json";
+import ThemeSwitcher from "./ThemeSwitcher"
+import "../style/navbar__style.css";
 import axios from "axios";
 const warnTxt = "You are owner of this room if you will leave room will be deleted\nyou better give someone else ownership"
 
 const Navbar = () => {
   const [toggleSettings, setToggleSettings] = useState<boolean>(false);
   const { pathname } = useLocation();
+
   const roomData = useSelector(
     (state: { roomData: RoomData }) => state.roomData
   );
@@ -104,20 +105,20 @@ const Navbar = () => {
       dispatch({ type: "DARK" });
     }
   }, []);
-  
+
 
   const leaveRoomValidate = () => {
     const client_id = JSON.parse(localStorage.getItem("client_id")!);
     const authToken = JSON.parse(sessionStorage.getItem("s_t")!);
-    
+
     if (!pathname.includes("/room/")) return;
-    
+
     let roomId: string[] | string = pathname.split("/")
 
-    roomId = roomId[roomId.length - 1] 
+    roomId = roomId[roomId.length - 1]
     const leavingUser: boolean = roomData.owner_data.client_id === client_id;
-    
-    if(!leavingUser) {
+
+    if (!leavingUser) {
       axios.put(`${hostConfig.host}/room/update_user/remove/${roomId}`, {
         authToken: authToken,
         requestor: client_id,
@@ -126,7 +127,7 @@ const Navbar = () => {
       }).catch(err => {
         console.log(err);
       })
-      dispatch({type: "MAKE_EMPTY_MESSAGE_HISTORY"})
+      dispatch({ type: "MAKE_EMPTY_MESSAGE_HISTORY" })
       return navigate("/");
     }
 
@@ -140,7 +141,7 @@ const Navbar = () => {
       }).catch(err => {
         console.log(err);
       })
-      dispatch({type: "MAKE_EMPTY_MESSAGE_HISTORY"})
+      dispatch({ type: "MAKE_EMPTY_MESSAGE_HISTORY" })
       return navigate("/");
     }
   };
@@ -183,18 +184,7 @@ const Navbar = () => {
           ref={settingsRef}
         >
           {userData.isLogined ? (
-            <div className="menu__profile">
-              <div className="profile-wrapper">
-                <img src={userData.profile_src} alt="" draggable={false}/>
-              </div>
-              <p
-                className={darkTheme ? "menu__username dark" : "menu__username"}
-              >
-                {userData.username.length > 10
-                  ? `${userData.username.slice(0, 10)}...`
-                  : userData.username}
-              </p>
-            </div>
+            <NavbarProfile darkTheme={darkTheme} userData={userData} />
           ) : (
             <button
               className={darkTheme ? "menu__button dark" : "menu__button"}
@@ -221,30 +211,10 @@ const Navbar = () => {
               Sign up
             </button>
           )}
-          <div
-            className="dark-theme__toggler-btn"
-            onClick={() => {
-              dispatch({ type: darkTheme ? "LIGHT" : "DARK" });
-            }}
-          >
-            <div className={`theme-dragger ${darkTheme}`} />
-            <img
-              src={Moon_icon}
-              alt="moon-icon"
-              className={
-                !darkTheme ? "menu-icon moon hidden" : "menu-icon moon"
-              }
-            />
-            <img
-              src={Sun_icon}
-              alt="sun-icon"
-              className={darkTheme ? "menu-icon sun hidden" : "menu-icon sun"}
-            />
-          </div>
+          <ThemeSwitcher darkTheme={darkTheme} />
         </div>
       )}
     </nav>
   );
 };
-
-export default Navbar;
+export default Navbar

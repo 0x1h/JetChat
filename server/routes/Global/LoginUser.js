@@ -1,6 +1,6 @@
-const UserSchema  = require("../models/UserSchema")
+const UserSchema  = require("../../models/UserSchema")
 const router = require("express").Router()
-const { decryptData } = require("../utils/decryptData")
+const { decryptData } = require("../../utils/decryptData")
 
 router.post("/login", async (req, res) => {
 	const {username, password} = req.body

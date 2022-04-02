@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const authenticateUser = require("../middleware/authenticate");
-const roomSchema = require("../models/RoomSchema"); 
+const authenticateUser = require("../../middleware/authenticate");
+const roomSchema = require("../../models/RoomSchema"); 
 
 router.post("/ban.User/:roomId", authenticateUser, async (req, res) => {
   const {roomId} = req.params
@@ -25,6 +25,12 @@ router.post("/ban.User/:roomId", authenticateUser, async (req, res) => {
 					err: "user doesn't have permissions to kick user"
 				})
 			}
+
+      if(room.owner_client_id === banUserId){
+        return res.status(403).send({
+          err: "Owner can't ban him self"
+        })
+      }
 
       const deleteUser = room.online_users
 			room.online_users = deleteUser.filter(e => e.client_id !== banUserId)

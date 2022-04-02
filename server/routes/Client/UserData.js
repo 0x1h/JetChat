@@ -1,7 +1,7 @@
 const router = require("express").Router()
-const authenticateUser = require("../middleware/authenticate")
-const { modelName } = require("../models/UserSchema")
-const UserScheme = require("../models/UserSchema")
+const authenticateUser = require("../../middleware/authenticate")
+const { modelName } = require("../../models/UserSchema")
+const UserScheme = require("../../models/UserSchema")
 
 router.post("/:client_id", authenticateUser, async (req, res) => {
 	const { client_id } = req.params

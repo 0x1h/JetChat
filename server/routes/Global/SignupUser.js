@@ -1,8 +1,8 @@
-const UserScheme = require("../models/UserSchema");
+const UserScheme = require("../../models/UserSchema");
 const router = require("express").Router();
-const { hashData } = require("../utils/hashData");
-const { tokenGenerator } = require("../utils/tokenGenerator");
-const {validateURL} = require("../utils/validateURL")
+const { hashData } = require("../../utils/hashData");
+const { tokenGenerator } = require("../../utils/tokenGenerator");
+const {validateURL} = require("../../utils/validateURL")
 const fetch = require("node-fetch")
 const { verify } = require("hcaptcha");
 
@@ -45,7 +45,7 @@ router.post("/signup", async (req, res) => {
       if(validateURLstring){
         await fetch(profile_src)
         .then(resp => {if(resp.ok) isImage = true})
-        .catch(err => isImage = false)
+        .catch(() => isImage = false)
       }
 
       console.log("iamge validate:",isImage);

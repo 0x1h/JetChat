@@ -2,20 +2,21 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const port = 3001;
-const kickUser = require("./routes/grantKickUser")
+const kickUser = require("./routes/High Orders/grantKickUser")
 const { socketIoConfig } = require("./config/IOconfig");
-const Signup = require("./routes/SignupUser");
-const banUser = require("./routes/grantBanUser");
-const UserData = require("./routes/UserData");
-const deleteRoom  = require("./routes/deleteRoom")
+const Signup = require("./routes/Global/SignupUser");
+const banUser = require("./routes/High Orders/grantBanUser");
+const UserData = require("./routes/Client/UserData");
+const deleteRoom  = require("./routes/High Orders/deleteRoom")
 const cors = require("cors");
-const newUserJoin = require("./routes/addUserRoom")
-const leaveUser = require("./routes/leaveRoom")
-const Login = require("./routes/LoginUser");
-const joinRoom = require("./routes/joinRoom")
-const createRoom = require('./routes/createRoom') 
+const newUserJoin = require("./routes/Client/addUserRoom")
+const leaveUser = require("./routes/Client/leaveRoom")
+const Login = require("./routes/Global/LoginUser");
+const joinRoom = require("./routes/Client/joinRoom")
+const createRoom = require('./routes/Global/createRoom') 
+const unBanuser = require("./routes/High Orders/unbanUser")
 const rateLimit = require('express-rate-limit'); 
-const changeRoom = require("./routes/changeRoom");
+const changeRoom = require("./routes/High Orders/changeRoom");
 
 const limiter = rateLimit({
   max: 100,
@@ -43,7 +44,6 @@ io.on("connection",  socket => {
   })
 
   socket.on("leave", (room, client_id) => {
-    // console.log(client_id);
     socket.to(room).emit("leave", client_id) 
   })
 
@@ -81,5 +81,6 @@ app.use("/room", newUserJoin)
 app.use("/room", leaveUser)
 app.use("/room", kickUser)
 app.use("/room", banUser)
+app.use("/room", unBanuser)
 app.use("/room", deleteRoom)
 app.use(limiter); 

@@ -68,12 +68,14 @@
 .overview-info__dashboard .room-dashboard-logo .room-info__inputs .room_inputs.forbidden {
   cursor: not-allowed;
   caret-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
   -webkit-box-shadow: none;
           box-shadow: none;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 
 .overview-info__dashboard .room-dashboard-logo .room-info__inputs .room_inputs.forbidden::-moz-selection {

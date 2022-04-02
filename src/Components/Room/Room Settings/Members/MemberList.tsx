@@ -1,4 +1,4 @@
-import { useState, FC } from 'react'
+import { useState, FC, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux';
 import MemberOptions from './MemberOptions';
 
@@ -23,12 +23,21 @@ const MemberList: FC<MemberProps> = (props) => {
 	);
 	const [openOptions, setOpenOptions] = useState(false)
 	const client_id = JSON.parse(localStorage.getItem("client_id")!)
+	const imageRef = useRef<HTMLDivElement>(null)
+
+	const imageContext = (e: MouseEvent) => e.preventDefault()
+	
+	useEffect(() => {
+		imageRef.current?.addEventListener("contextmenu", imageContext)
+
+		return () => imageRef.current?.removeEventListener("contextmenu", imageContext)
+	})
 
 	return (
 		<div className={darkTheme ? 'settings__member-list dark' : 'settings__member-list'}>
 			{openOptions && <MemberOptions closeOption={() => setOpenOptions(false)} setActionHandler={props.setActionHandler} client_id={props.client_id} username={props.client_name} />}
 			<div className="user-info">
-				<div className="pfp-frame">
+				<div className="pfp-frame" ref={imageRef}>
 					<img src={props.client_profile} draggable={false} />
 				</div>
 				<p className={darkTheme ? 'user-info-nickname dark' : 'user-info-nickname'}>{props.client_name}</p>

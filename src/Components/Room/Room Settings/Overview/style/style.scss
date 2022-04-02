@@ -1,4 +1,4 @@
-.overview-info__dashboard{
+.overview-info__dashboard {
 	width: 100%;
 	height: 250px;
 	display: flex;
@@ -6,56 +6,72 @@
 	position: relative;
 	padding: 0 10px;
 	height: 100vh;
-	.room-dashboard-logo{
+
+	.room-dashboard-logo {
 		padding: 0 50px;
 		height: 300px;
 		display: flex;
 		align-items: center;
 		gap: 20px;
-		.room-info__inputs{
+
+		.room-info__inputs {
 			width: 100%;
 			height: 100%;
-			padding: 0 20px;	
+			padding: 0 20px;
 			display: flex;
 			justify-content: center;
 			gap: 10px 0;
 			flex-direction: column;
-			.label{
+
+			.label {
 				text-align: left;
 				width: 100%;
-				&.dark{
+
+				&.dark {
 					color: #FFF;
 				}
 			}
-			.room_inputs{
+
+			.room_inputs {
 				background: transparent;
 				border: 2px solid #FA00FF;
 				border-radius: 5px;
 				height: 40px;
 				background: #d8d8d8;
 				padding: 0 5px;
-				&.dark{
+
+				&.dark {
 					background: #1a1a1a;
 					color: #FFF;
 				}
-				&.forbidden{
+
+				&.forbidden {
 					cursor: not-allowed;
 					caret-color: transparent;
+					-webkit-user-select: none;
+					-khtml-user-select: none;
+					-moz-user-select: none;
+					-ms-user-select: none;
+					-o-user-select: none;
+					user-select: none;
 					box-shadow: none;
-					user-select:none;
-					&::selection{
+					user-select: none;
+
+					&::selection {
 						background: none;
 					}
 				}
 			}
 		}
-		.room-icon-wrapper{
+
+		.room-icon-wrapper {
 			height: 250px;
 			width: 250px;
 			min-width: 250px;
 			border-radius: 50%;
 			overflow: hidden;
-			img{
+
+			img {
 				width: 100%;
 				vertical-align: bottom;
 			}
@@ -63,7 +79,7 @@
 	}
 }
 
-.settings-confirm-changes{
+.settings-confirm-changes {
 	position: absolute;
 	bottom: 0;
 	width: calc(100% - 20px);
@@ -77,14 +93,17 @@
 	transition: 0.3s;
 	padding: 0 10px;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-	&.hidden{
+
+	&.hidden {
 		transform: translateY(50px);
 	}
-	&.dark{
+
+	&.dark {
 		background: #353535;
 		color: #FFF;
 	}
-	button{
+
+	button {
 		width: 200px;
 		height: 40px;
 		border: none;
@@ -92,29 +111,33 @@
 		cursor: pointer;
 		color: #FFF;
 		border-radius: 5px;
+
 		&:focus {
 			outline: none;
 			box-shadow: 0 0 0 3px rgba(87, 163, 77, 0.411);
 		}
 	}
-} 
-
-.room-settings-hr{
-	height: 1px;
-  background-color: rgb(46, 46, 46);
-  border: none;
 }
 
-.delete-wrapper{
+.room-settings-hr {
+	height: 1px;
+	background-color: rgb(46, 46, 46);
+	border: none;
+}
+
+.delete-wrapper {
 	margin-top: 20px;
-	.delete-alert-text{
+
+	.delete-alert-text {
 		color: #000;
 		margin-bottom: 5px;
-		&.dark{
+
+		&.dark {
 			color: #FFF;
 		}
 	}
-	button{
+
+	button {
 		width: 180px;
 		height: 40px;
 		background: #ff4c4c;
@@ -122,17 +145,19 @@
 		border-radius: 5px;
 		color: #FFF;
 		cursor: pointer;
+
 		&:focus {
 			outline: none;
 			box-shadow: 0 0 0 3px rgba(134, 36, 36, 0.411);
 		}
-		&:hover{
+
+		&:hover {
 			background: #ff6565;
 		}
 	}
 }
 
-.invite_btn{
+.invite_btn {
 	width: 200px;
 	height: 40px;
 	background: transparent;
@@ -141,22 +166,28 @@
 	border-radius: 5px;
 	color: #000;
 	transition: 0.1s ease-in-out;
-	&.copied{
+
+	&.copied {
 		background: #88ff51;
 		border: 2px solid #88ff51;
 	}
-	&:focus{
+
+	&:focus {
 		box-shadow: none;
 	}
-	&:hover{
+
+	&:hover {
 		background: #FA00FF;
-		&:hover{
+
+		&:hover {
 			color: #FFF;
 		}
 	}
-	&.dark{
+
+	&.dark {
 		color: #FFF;
-		&.copied{
+
+		&.copied {
 			background: #88ff51;
 		}
 	}

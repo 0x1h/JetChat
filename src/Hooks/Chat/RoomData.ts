@@ -12,9 +12,6 @@ export type State = {
 		client_name: string,
 		client_profile: string
 	}[]
-	banned_users: {
-		client_id: string,
-	}[]
 }
 
 const roomDefault: State = {
@@ -27,7 +24,6 @@ const roomDefault: State = {
 		client_profile: ''		
 	},
 	active_clients: [],
-	banned_users: []
 }
 
 type ActionType = "LOAD_ROOM_DATA" | "ROOM_BAN_ADD" | "ROOM_BAN_REMOVE" | "ROOM_MEMBER_UPDATE" | "ROOM_MEMBER_REMOVE" | "NEW_OWNER"| "CHANGE_ROOM" | "SET_ONLINE_MEMBERS"
@@ -38,8 +34,7 @@ type ActionPayload = {
 	client_profile?: string
 	room_name?: string,
 	room_icon?: string,
-	room_id?: string,
-	banned_users: {client_id: string}[],
+	room_id?: string
 	active_clients: {
 		client_id: string,
 		client_name: string,
@@ -63,7 +58,7 @@ export const roomInfo = (state: State = roomDefault, action: Action): State => {
 	switch(action.type){
 		//LOAD ROOM DATA
 		case "LOAD_ROOM_DATA": {
-			const {room_icon, room_id, room_name, owner_data, active_clients, banned_users} = action.payload
+			const {room_icon, room_id, room_name, owner_data, active_clients} = action.payload
 			
 			return {
 				room_id: room_id!,
@@ -71,7 +66,6 @@ export const roomInfo = (state: State = roomDefault, action: Action): State => {
 				room_icon: room_icon!,
 				owner_data: owner_data,
 				active_clients: active_clients,
-				banned_users: banned_users,
 			}
 		}
 		//WHEN OWNER GIVES NEW MEMBER OWNERHOST
@@ -85,33 +79,6 @@ export const roomInfo = (state: State = roomDefault, action: Action): State => {
 					client_name: client_name!,
 					client_profile: client_profile!		
 				},
-			}
-		}
-		//BANNING USER
-		case "ROOM_BAN_ADD": {
-			const {client_id} = action.payload
-			
-			const addBanned = [
-				...state.banned_users,
-				{
-					client_id: client_id!
-				}
-			]			
-
-			return {
-				...state,
-				banned_users: addBanned
-			}
-		}
-		//REMOVING USER FROM GUILD
-		case "ROOM_BAN_REMOVE": {
-			const {client_id} = action.payload
-
-			const removeBanned = state.banned_users.filter(e => e.client_id !== client_id)
-
-			return {
-				...state,
-				banned_users: removeBanned
 			}
 		}
 		//MEMBER LEAVES ROOM

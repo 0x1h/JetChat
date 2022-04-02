@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const authenticateUser = require("../middleware/authenticate");
-const roomSchema = require("../models/RoomSchema"); 
+const authenticateUser = require("../../middleware/authenticate");
+const roomSchema = require("../../models/RoomSchema"); 
 
 router.put("/delete/:room_id", authenticateUser,async (req, res) => {
 	const {requestor} = req.body

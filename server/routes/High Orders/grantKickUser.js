@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const authenticateUser = require("../middleware/authenticate");
-const roomSchema = require("../models/RoomSchema"); 
+const authenticateUser = require("../../middleware/authenticate");
+const roomSchema = require("../../models/RoomSchema"); 
 
 router.post("/kick.User/:roomId", authenticateUser, async (req, res) => {
   const {roomId} = req.params

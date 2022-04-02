@@ -1,0 +1,122 @@
+.unban_blur-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  -webkit-backdrop-filter: blur(30px);
+          backdrop-filter: blur(30px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 20px;
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.unban_blur-modal .unban_accept-container {
+  max-width: 100%;
+  width: 430px;
+  min-height: 300px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #FFF;
+  -webkit-box-shadow: 0 0 5px;
+          box-shadow: 0 0 5px;
+  padding: 10px 5px;
+}
+
+.unban_blur-modal .unban_accept-container.dark {
+  background-color: #252525;
+}
+
+.unban_blur-modal .unban_accept-container.dark * {
+  color: #FFF;
+}
+
+.unban_blur-modal .unban_accept-container.dark .user-card {
+  background-color: #313131;
+}
+
+.unban_blur-modal .unban_accept-container p {
+  margin-top: 20px;
+  font-size: 1.1rem;
+}
+
+.unban_blur-modal .unban_accept-container p .bold {
+  font-weight: 500;
+}
+
+.unban_blur-modal .unban_accept-container .user-card {
+  width: 100%;
+  height: 60px;
+  padding: 0 10px;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #c7c7c7;
+  margin: 20px 0;
+}
+
+.unban_blur-modal .unban_accept-container .user-card .username {
+  font-weight: 500;
+  margin-left: 10px;
+  margin-top: 0;
+}
+
+.unban_blur-modal .unban_accept-container .user-card .profile-frame {
+  width: 50px;
+  height: 50px;
+  outline: none;
+  border-radius: 50%;
+}
+
+.unban_blur-modal .unban_accept-container .user-card .profile-frame img {
+  width: 100%;
+}
+
+.unban_blur-modal .unban_accept-container .accept-container {
+  width: 105%;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.2);
+  -webkit-transform: translate(-10px, 10px);
+          transform: translate(-10px, 10px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.unban_blur-modal .unban_accept-container .accept-container button {
+  cursor: pointer;
+  width: 120px;
+  height: 35px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-radius: 5px;
+  border: none;
+  background-color: #4e4e4e;
+  color: #FFF;
+}
+
+.unban_blur-modal .unban_accept-container .accept-container button.unban-btn {
+  background-color: #ff5d5d;
+}
+/*# sourceMappingURL=unban.css.map */
