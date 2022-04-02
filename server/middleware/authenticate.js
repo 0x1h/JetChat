@@ -7,10 +7,8 @@ const authenticateUser = async (req, res, next) => {
     if (
       !requestor ||
       !authToken ||
-      authToken === null ||
-      requestor === null ||
-      requestor === undefined ||
-      authToken === undefined 
+      authToken == null ||
+      requestor == null
     ) {
       return res.status(400).send({
         err: "Invalid arguments",

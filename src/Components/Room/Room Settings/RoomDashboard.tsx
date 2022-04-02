@@ -16,7 +16,6 @@ const RoomDashboard = () => {
     (state: { roomData: RoomData }) => state.roomData
   );
 	const dispatch = useDispatch()
-
   const client_id = JSON.parse(localStorage.getItem("client_id")!)
 
   return (

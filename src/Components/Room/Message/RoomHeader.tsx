@@ -22,9 +22,7 @@ const RoomHeader: FC<{ darkTheme: boolean }> = ({ darkTheme }) => {
     const clientIsOwner: boolean = roomData.owner_data.client_id === client_id
     
     socket.emit("leave", roomId, client_id)
-    
-    
-    console.log("bye")
+  
 
     // if(clientIsOwner){
     //   e.preventDefault()
@@ -58,6 +56,15 @@ const RoomHeader: FC<{ darkTheme: boolean }> = ({ darkTheme }) => {
     return () => {
       window.removeEventListener('beforeunload', alertUser)
     }
+  })
+
+  useEffect(() => {
+    socket.on("transferShip-user", (user_data) => {
+      dispatch({
+        type: "NEW_OWNER",
+        payload: {...user_data}
+      })
+    })
   })
 
   return (

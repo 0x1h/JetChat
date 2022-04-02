@@ -80,6 +80,34 @@ const ActionModal: FC<ActionModalProps> = ({ username, client_id, type, cancelMo
         })
         break
       }
+      case "OWNERSHIP": {
+        axios.put(`${hostConfig.host}/room/transferRoom/${roomId}`, {
+          requestor,
+          authToken,
+          transferTo: client_id
+        }).then(resp => {
+          setIsLoading(false)
+          if(resp.data.success){
+            socket.emit('transferShip', roomId, {
+              client_id,
+              client_name: username,
+              profile_src: ""
+            })
+            dispatch({
+              type: "NEW_OWNER",
+              payload: {
+                client_id: client_id,
+					      client_name: username,
+					      client_profile: ""	
+              }
+            })
+            dispatch({type: "CHANGE_SPECIFIC", payload: "OVERVIEW"})
+          }
+        }).catch(err => {
+          setIsLoading(false)
+          console.log(err);
+        })
+      }
     }
   }
 

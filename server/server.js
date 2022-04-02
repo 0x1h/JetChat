@@ -1,20 +1,21 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
+const { socketIoConfig } = require("./config/IOconfig");
 const port = 3001;
 const kickUser = require("./routes/High Orders/grantKickUser")
-const { socketIoConfig } = require("./config/IOconfig");
 const Signup = require("./routes/Global/SignupUser");
 const banUser = require("./routes/High Orders/grantBanUser");
 const UserData = require("./routes/Client/UserData");
 const deleteRoom  = require("./routes/High Orders/deleteRoom")
-const cors = require("cors");
 const newUserJoin = require("./routes/Client/addUserRoom")
 const leaveUser = require("./routes/Client/leaveRoom")
 const Login = require("./routes/Global/LoginUser");
 const joinRoom = require("./routes/Client/joinRoom")
 const createRoom = require('./routes/Global/createRoom') 
-const unBanuser = require("./routes/High Orders/unbanUser")
+const unBanUser = require("./routes/High Orders/unbanUser")
+const transferOwner = require("./routes/High Orders/transferOwnerShip")
 const rateLimit = require('express-rate-limit'); 
 const changeRoom = require("./routes/High Orders/changeRoom");
 
@@ -51,6 +52,10 @@ io.on("connection",  socket => {
     socket.to(room).emit("kicked-user", client_id)
   })
 
+  socket.on("transferShip", (room, client_id) => {
+    socket.to(room).emit("transferShip-user", client_id)
+  })
+
   socket.on("ban", (room, client_id) => {
     socket.to(room).emit("banned-user", client_id)
   })
@@ -67,13 +72,15 @@ app.use(cors());
 mongoose
 .connect(process.env.DB_URL, { useNewUrlParser: true })
 .then(() => {
-  console.log("\x1b[35m", "Successfully connected to Database");
+  console.log("Successfully connected to Database");
 })
 .catch((err) => console.log(err));
 
 app.use("/", Signup);
 app.use("/", Login);
+
 app.use("/user", UserData);
+
 app.use("/room", createRoom);
 app.use("/room", joinRoom)
 app.use("/room", changeRoom)
@@ -81,6 +88,8 @@ app.use("/room", newUserJoin)
 app.use("/room", leaveUser)
 app.use("/room", kickUser)
 app.use("/room", banUser)
-app.use("/room", unBanuser)
+app.use("/room", unBanUser)
 app.use("/room", deleteRoom)
+app.use("/room", transferOwner)
+
 app.use(limiter); 

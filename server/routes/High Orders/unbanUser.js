@@ -1,8 +1,8 @@
-const router = require("express").Router();
+const router = require("express").Router(); 
 const authenticateUser = require("../../middleware/authenticate");
 const roomSchema = require("../../models/RoomSchema"); 
 
-router.put("/unban.User/:roomId", authenticateUser, async (req,res) => {
+router.put("/unban.User/:roomId", authenticateUser, async (req,res) => { 
   const {roomId} = req.params
   const {requestor, unBanUser} = req.body
 
@@ -14,7 +14,7 @@ router.put("/unban.User/:roomId", authenticateUser, async (req,res) => {
         })
       }
 
-      if(requestor === undefined || requestor === null || unBanUser === undefined){
+      if(requestor == null || unBanUser == null){
         return res.status(402).send({
           err: "Invalid arguments"
         })
@@ -28,7 +28,7 @@ router.put("/unban.User/:roomId", authenticateUser, async (req,res) => {
 
       if(!room.banned_users.includes(unBanUser.toString())){
         return res.status(404).send({
-          err: "user not found in speficied room"
+          err: "user isn't banned from this room"
         })
       }
 

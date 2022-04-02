@@ -8,7 +8,7 @@ router.put("/delete/:room_id", authenticateUser,async (req, res) => {
 
 	try{
 		roomSchema.findOne({room_id: room_id}, async (err, room) => {
-			if(err || room === null){
+			if(err || room == null){
 				return res.status(404).send({
 					err: "Room doesn't exist"
 				})
