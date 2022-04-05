@@ -192,8 +192,8 @@ button:focus {
 }
 
 .room-header .room__info .img-frame img {
-  width: auto;
-  height: 100%;
+  width: 100%;
+  vertical-align: bottom;
 }
 
 .room-header .room__info .room-name {

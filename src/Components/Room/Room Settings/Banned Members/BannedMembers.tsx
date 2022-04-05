@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { useSelector } from 'react-redux'
 import BannedList, { MemberProps } from './BannedList';
 import NoOneBanned from "./NoOneBanned";
@@ -13,6 +13,7 @@ const BannedMembers = () => {
 		(state: { themeReducer: boolean }) => state.themeReducer
 	);
 	const { roomId } = useParams()
+	const [input, setInput] = useState("")
 	const [isLoading, setIsLoading] = useState<boolean>(true)
 	const [bannedList, setBannedList] = useState<MemberProps[]>([])
 	const [openModal, setOpenModal] = useState(false)
@@ -21,6 +22,11 @@ const BannedMembers = () => {
 		profile_src: "",
 		client_id: "",
 	})
+	const filterBanned = useMemo(() => {
+		const filterMembers = bannedList.filter(member => member.username.includes(input.trim()))
+
+		return filterMembers
+	}, [input])
 
 	const fetchBannedUsers = async () => {
 		const client_id = JSON.parse(localStorage.getItem("client_id")!)
@@ -71,7 +77,7 @@ const BannedMembers = () => {
 		<>
 			{openModal && <UnbanConfirm {...unBanningUser} modalCloseOpen={() => setOpenModal(prev => !prev)} removeBannedFromList={removeUserFromList} />}
 			<div className='settings__members-list'>
-				<input type="text" className={darkTheme ? "find-user-input dark" : "find-user-input"} placeholder="Find banned member" />
+				<input type="text" className={darkTheme ? "find-user-input dark" : "find-user-input"} placeholder="Find banned member" value={input} onChange={e => setInput(e.target.value)}/>
 				{
 					isLoading
 						? <span className="loaderr" style={{
@@ -79,19 +85,33 @@ const BannedMembers = () => {
 							top: "50%",
 							right: "50%"
 						}} />
-						: bannedList.length > 0 ?
-							<div className='members-list-wrapper'>
+						: (bannedList.length > 0 && !input.trim()) ?
+						<div className='members-list-wrapper'>
+							{
+								bannedList.map(member => {
+									return <BannedList
+										{...member}
+										modalCloseOpen={() => setOpenModal(prev => !prev)}
+										setUnbanUser={(user) => setUnBanningUser({ ...user })}
+									/>
+								})
+							}
+						</div> :
+						(input.trim().length > 0) ?
+							<div className="members-list-wrapper">
 								{
-									bannedList.map(member => {
+									filterBanned.map(member => {
 										return <BannedList
 											{...member}
 											modalCloseOpen={() => setOpenModal(prev => !prev)}
 											setUnbanUser={(user) => setUnBanningUser({ ...user })}
 										/>
-									})
+									}
+									)
 								}
-							</div> :
-							<NoOneBanned />
+							</div>	
+						 :
+						<NoOneBanned />
 				}
 			</div>
 		</>

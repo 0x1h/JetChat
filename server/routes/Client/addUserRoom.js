@@ -20,6 +20,14 @@ router.put("/update_user/add/:room_id", authenticateUser,async (req, res) => {
 				})
 			}
 
+			const clientAlreadyExists = room.online_users.some(obj => obj.client_id === requestor.toString())
+
+			if(clientAlreadyExists){
+				return res.send({
+					err: "user already exists in room"
+				})
+			}
+
 			const newUser = room.online_users.push({
 				client_id: requestor,
 				profile_src: profile_src,

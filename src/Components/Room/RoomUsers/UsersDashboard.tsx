@@ -47,6 +47,7 @@ const UsersDashboard = () => {
       if(client_id === sessionToken){
         socket.disconnect()
         dispatch({ type: "ERROR", payload: "You have been kicked out from" })
+        dispatch({type: "CLOSE_SETTINGS"})
       }
     })
 

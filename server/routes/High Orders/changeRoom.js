@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const authenticateUser = require("../../middleware/authenticate");
+const { validateURL } = require("../../utils/validateURL")
+const fetch = require("node-fetch")
 const roomSchema = require("../../models/RoomSchema"); 
 
 router.put("/changes/:room_id", authenticateUser, async (req, res) => {
@@ -13,7 +15,7 @@ router.put("/changes/:room_id", authenticateUser, async (req, res) => {
 			})
 		}
 
-		roomSchema.findOne({room_id: room_id}, (err, room) => {
+		roomSchema.findOne({room_id: room_id}, async (err, room) => {
 			if(err || room === null){
 				return res.status(404).send({
 					err: "room not found"
@@ -28,6 +30,7 @@ router.put("/changes/:room_id", authenticateUser, async (req, res) => {
 
 			const {room_icon, room_name} = req.body
 
+
 			if(room_icon === undefined || room_name === undefined){
 				return res.status(400).send({  
 					err: "object value mustn't be undefined"
@@ -40,18 +43,32 @@ router.put("/changes/:room_id", authenticateUser, async (req, res) => {
 				})
 			}
 
+			let isImage = false
+
+    	const validateURLstring = validateURL(room_icon)
+
+    		if (validateURLstring) {
+      await fetch(room_icon)
+        .then(resp => { if (resp.ok) isImage = true })
+        .catch(() => isImage = false)
+    }
+
+			if(isImage){
+				room.room_icon = room_icon
+			}
 			room.room_name = room_name
-			room.room_icon = room_icon
 
 			room.save()
-
-			res.send({
-				msg: "successfully saved",
-				room_data: {
-					room_name: room_name.trim(),
-					room_icon: room_icon.trim()
-				}
+			.then((newData) => {
+				res.send({
+					msg: "successfully saved",
+					room_data: {
+						room_name: newData.room_name.trim(),
+						room_icon: newData.room_icon.trim()
+					}
+				})
 			})
+
 		})
 
 	}catch(e){

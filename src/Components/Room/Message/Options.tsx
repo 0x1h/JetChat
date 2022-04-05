@@ -80,7 +80,7 @@ const Options = () => {
       >
         Copy Message ID
       </button>
-      {
+      {/* {
 				showBtns && <button
 				className={
 					darkTheme
@@ -90,7 +90,7 @@ const Options = () => {
 			>
 				Delete
 			</button>
-			}
+			} */}
     </div>
   );
 };
