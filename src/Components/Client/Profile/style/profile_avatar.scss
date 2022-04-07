@@ -1,0 +1,51 @@
+.profile_avatar_container{
+  width: 100%;
+  padding: 0 20px;
+  min-height: 600px;
+  position: relative;
+  &.dark{
+    h1{
+      color: #FFF;
+    }
+    .user-avatar{
+      border: 8px solid #1A1A1A;
+    }
+  }
+  h1{
+    z-index: 9;
+    margin-left: 20px;
+  }
+  .user-avatar{
+    width: 160px;
+    height: 160px;
+    min-height: 160px;
+    min-width: 160px;
+    border-radius: 50%;
+    z-index: 9;
+    border: 5px solid #FFF;
+    overflow: hidden;
+    img{
+      width: auto;
+      height: 100%;
+    }
+  }
+  .profile-background{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    overflow: hidden;
+    .background-wrapper{
+      overflow: hidden;
+      width: 100%;
+      height: 50%;
+      top: 0;
+      left: 0;
+      position: absolute;
+    }
+  }
+}

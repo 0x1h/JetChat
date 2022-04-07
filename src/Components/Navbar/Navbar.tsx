@@ -45,6 +45,8 @@ const Navbar = () => {
     localStorage.removeItem("client_id");
     sessionStorage.removeItem("s_t");
 
+    navigate("/")
+
     dispatch({
       type: "FILL_USER",
       payload: {
@@ -106,46 +108,6 @@ const Navbar = () => {
     }
   }, []);
 
-
-  const leaveRoomValidate = () => {
-    const client_id = JSON.parse(localStorage.getItem("client_id")!);
-    const authToken = JSON.parse(sessionStorage.getItem("s_t")!);
-
-    if (!pathname.includes("/room/")) return;
-
-    let roomId: string[] | string = pathname.split("/")
-
-    roomId = roomId[roomId.length - 1]
-    const leavingUser: boolean = roomData.owner_data.client_id === client_id;
-
-    if (!leavingUser) {
-      axios.put(`${hostConfig.host}/room/update_user/remove/${roomId}`, {
-        authToken: authToken,
-        requestor: client_id,
-      }).then((data) => {
-        console.log(data.data);
-      }).catch(err => {
-        console.log(err);
-      })
-      dispatch({ type: "MAKE_EMPTY_MESSAGE_HISTORY" })
-      return navigate("/");
-    }
-
-
-    if (window.confirm(warnTxt)) {
-      axios.put(`${hostConfig.host}/room/update_user/remove/${roomId}`, {
-        authToken: authToken,
-        requestor: client_id,
-      }).then((data) => {
-        console.log(data.data);
-      }).catch(err => {
-        console.log(err);
-      })
-      dispatch({ type: "MAKE_EMPTY_MESSAGE_HISTORY" })
-      return navigate("/");
-    }
-  };
-
   useEffect(() => {
     const body = document.querySelector(".body") as HTMLBodyElement;
 
@@ -160,7 +122,7 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className="logo-wrapper" onClick={leaveRoomValidate}>
+      <div className="logo-wrapper" onClick={() => navigate("/")}>
         <div className="logo">
           <img src="/assets/jetchat-icon.png" alt="" />
         </div>

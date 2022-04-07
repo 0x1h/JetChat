@@ -2,6 +2,8 @@ const UserScheme = require("../../models/UserSchema");
 const router = require("express").Router();
 const { hashData } = require("../../utils/hashData");
 const { tokenGenerator } = require("../../utils/tokenGenerator");
+const CAPTCHA_SECRET = require("../../env.json").CAPTCHA_SECRET
+const { getAverageColor } = require('fast-average-color-node');
 const {validateURL} = require("../../utils/validateURL")
 const fetch = require("node-fetch")
 const { verify } = require("hcaptcha");
@@ -31,7 +33,7 @@ router.post("/signup", async (req, res) => {
         }); 
       }
 
-      const verifyAccept = await verify(process.env.CAPTCHA_SECRET, isVerified)
+      const verifyAccept = await verify(CAPTCHA_SECRET, isVerified)
       if(!verifyAccept.success){
         return res.status(403).send({
           err: "captcha failed",
@@ -48,7 +50,12 @@ router.post("/signup", async (req, res) => {
         .catch(() => isImage = false)
       }
 
-      console.log("iamge validate:",isImage);
+      const setImage = isImage ? profile_src : `/Avatars/Avatar-${randomNumber}.png`
+      let ImageRGB = ""
+
+      await getAverageColor(setImage)
+			.then(color => {ImageRGB = color.rgb})
+      .catch(() => {ImageRGB = "rgb(136, 136, 136)"})
 
       const enc_pass = hashData(password);  
       const authToken = tokenGenerator();
@@ -57,9 +64,10 @@ router.post("/signup", async (req, res) => {
 
       const newUser = UserScheme({
         username: username.toLowerCase(),
-        profile_src: isImage ? profile_src : `/Avatars/Avatar-${randomNumber}.png`,
+        profile_src: setImage,
         password: enc_pass,
         authToken: authToken,
+        main_color: ImageRGB
       });
 
       newUser

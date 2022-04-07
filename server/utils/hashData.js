@@ -1,4 +1,5 @@
 const CryptoJS = require("crypto-js");
+const PASSWORD_HASH = require("../env.json").PASSWORD_HASH
 
 /**
  * @param {string} data
@@ -7,7 +8,7 @@ const CryptoJS = require("crypto-js");
 */
 
 const hashData = (data) => {
-	const hashPassword = CryptoJS.AES.encrypt(JSON.stringify(data), process.env.PASSWORD_HASH).toString()
+	const hashPassword = CryptoJS.AES.encrypt(JSON.stringify(data), PASSWORD_HASH).toString()
 	return hashPassword;
 }
 

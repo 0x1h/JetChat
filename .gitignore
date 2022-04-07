@@ -13,7 +13,7 @@ node_modules
 
 #captcha secret key
 captcha.json
-server/.env
+server/env.json
 
 # misc
 .DS_Store

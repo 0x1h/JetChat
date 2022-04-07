@@ -1,6 +1,5 @@
 const router = require("express").Router()
 const authenticateUser = require("../../middleware/authenticate")
-const { modelName } = require("../../models/UserSchema")
 const UserScheme = require("../../models/UserSchema")
 
 router.post("/:client_id", authenticateUser, async (req, res) => {
@@ -13,8 +12,8 @@ router.post("/:client_id", authenticateUser, async (req, res) => {
 			})
 		}
  
-		UserScheme.findById(client_id, (err, model) => {
-			if(err){
+		UserScheme.findById(client_id, async (err, model) => {
+			if(err || model == null){
 				return res.status(404).send({
 					err: "User not found" 
 				})
@@ -24,7 +23,8 @@ router.post("/:client_id", authenticateUser, async (req, res) => {
 				username: model.username,
 				profile_src: model.profile_src,
 				createdAt: model.createdAt,
-				client_id: model._id
+				client_id: model._id,
+				main_color: model.main_color
 			})
 
 		})

@@ -1,0 +1,61 @@
+.profile_avatar_container {
+  width: 100%;
+  padding: 0 20px;
+  min-height: 600px;
+  position: relative;
+}
+
+.profile_avatar_container.dark h1 {
+  color: #FFF;
+}
+
+.profile_avatar_container.dark .user-avatar {
+  border: 8px solid #1A1A1A;
+}
+
+.profile_avatar_container h1 {
+  z-index: 9;
+  margin-left: 20px;
+}
+
+.profile_avatar_container .user-avatar {
+  width: 160px;
+  height: 160px;
+  min-height: 160px;
+  min-width: 160px;
+  border-radius: 50%;
+  z-index: 9;
+  border: 5px solid #FFF;
+  overflow: hidden;
+}
+
+.profile_avatar_container .user-avatar img {
+  width: auto;
+  height: 100%;
+}
+
+.profile_avatar_container .profile-background {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 220px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.profile_avatar_container .profile-background .background-wrapper {
+  overflow: hidden;
+  width: 100%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+/*# sourceMappingURL=profile_avatar.css.map */
