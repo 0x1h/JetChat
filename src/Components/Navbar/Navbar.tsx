@@ -2,21 +2,14 @@ import { useEffect, useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import NavbarProfile from "./NavbarProfile"
 import { State } from "../../Hooks/Client/userDataHandler";
-import { useNavigate, useLocation } from "react-router-dom";
-import { State as RoomData } from "../../Hooks/Chat/RoomData";
+import { useNavigate } from "react-router-dom";
 import hostConfig from "../../utils/hostconfig.json";
 import ThemeSwitcher from "./ThemeSwitcher"
 import "../style/navbar__style.css";
 import axios from "axios";
-const warnTxt = "You are owner of this room if you will leave room will be deleted\nyou better give someone else ownership"
 
 const Navbar = () => {
   const [toggleSettings, setToggleSettings] = useState<boolean>(false);
-  const { pathname } = useLocation();
-
-  const roomData = useSelector(
-    (state: { roomData: RoomData }) => state.roomData
-  );
   const darkTheme = useSelector(
     (state: { themeReducer: boolean }) => state.themeReducer
   );
@@ -32,6 +25,14 @@ const Navbar = () => {
       setToggleSettings(false);
     }
   };
+
+  const imageContext = (e: MouseEvent) => e.preventDefault()
+
+  useEffect(() => {
+    settingsRef.current?.addEventListener("contextmenu", imageContext)
+
+    return () => settingsRef.current?.removeEventListener("contextmenu", imageContext)
+  })
 
   //fire "handleClickOutside()"
   useEffect(() => {

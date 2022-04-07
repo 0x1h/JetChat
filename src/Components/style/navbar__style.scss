@@ -24,6 +24,12 @@ nav {
   justify-content: space-between;
   .logo-wrapper {
     gap: 10px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
     display: inherit;
     align-items: inherit;
     font-weight: 900;
@@ -140,6 +146,7 @@ nav {
     .menu__logout{
       background: #ff4a4a;
       border-radius: 7px;
+      box-shadow: none;
       color: #FFF;
       border: none;
       cursor: pointer;

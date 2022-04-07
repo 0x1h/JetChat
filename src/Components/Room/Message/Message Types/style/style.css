@@ -17,6 +17,16 @@ button:focus {
           box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
 }
 
+::-moz-selection {
+  background: #FA00FF;
+  color: #FFF;
+}
+
+::selection {
+  background: #FA00FF;
+  color: #FFF;
+}
+
 .just-message,
 .replied-message {
   width: 100%;

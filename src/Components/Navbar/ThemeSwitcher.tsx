@@ -21,11 +21,13 @@ const ThemeSwitcher: FC<{darkTheme: boolean}> = ({darkTheme}) => {
         className={
           !darkTheme ? "menu-icon moon hidden" : "menu-icon moon"
         }
+        draggable={false}
       />
       <img
         src={Sun_icon}
         alt="sun-icon"
         className={darkTheme ? "menu-icon sun hidden" : "menu-icon sun"}
+        draggable={false}
       />
     </div>
   )

@@ -39,3 +39,8 @@ button:focus {
   outline: none;
   box-shadow: 0 0 0 5px rgba(255, 86, 171, 0.411);
 }
+
+::selection{
+  background: $gradient__color-one;
+  color: #FFF;
+}

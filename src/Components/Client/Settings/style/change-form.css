@@ -1,0 +1,129 @@
+.change-profile-picture {
+  padding: 20px 40px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media screen and (max-width: 580px) {
+  .change-profile-picture {
+    padding: 20px 20px;
+  }
+}
+
+.change-profile-picture.dark * {
+  color: #FFF;
+}
+
+.change-profile-picture input {
+  width: 100%;
+  border-radius: 7px;
+  border: 2px solid #FA00FF;
+  height: 40px;
+  padding: 0 10px;
+  background: none;
+  margin-bottom: 10px;
+  max-width: 500px;
+}
+
+.change-profile-picture .reset-avatar {
+  color: #4b66ff;
+  background: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+  outline: none;
+  width: 90px;
+  cursor: pointer;
+}
+
+.change-profile-picture .reset-avatar:hover {
+  text-decoration: underline;
+}
+
+.change-profile-picture .reset-avatar:focus {
+  border-radius: 5px;
+  border: 1px solid #4b66ff;
+}
+
+.change-profile-picture .upload-photo-btn {
+  width: 200px;
+  height: 40px;
+  border-radius: 7px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 50px;
+  background: -webkit-gradient(linear, left top, right top, from(#FA00FF), to(#161955));
+  background: linear-gradient(to right, #FA00FF, #161955);
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #919191;
+  margin: 0 20px;
+}
+
+.username-change-container,
+.password-change-container {
+  padding: 0 20px;
+  width: 100%;
+  min-height: 300px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.username-change-container.dark *,
+.password-change-container.dark * {
+  color: #FFF;
+}
+
+.username-change-container h3,
+.password-change-container h3 {
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.username-change-container label,
+.password-change-container label {
+  margin-top: 15px;
+}
+
+.username-change-container input,
+.password-change-container input {
+  width: 100%;
+  border-radius: 7px;
+  border: 2px solid #FA00FF;
+  height: 40px;
+  padding: 0 10px;
+  background: none;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  max-width: 500px;
+}
+
+.username-change-container .upload-username-btn,
+.username-change-container .upload-pass-btn,
+.password-change-container .upload-username-btn,
+.password-change-container .upload-pass-btn {
+  width: 200px;
+  height: 40px;
+  border-radius: 7px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-top: 30px;
+  background: -webkit-gradient(linear, left top, right top, from(#FA00FF), to(#161955));
+  background: linear-gradient(to right, #FA00FF, #161955);
+}
+/*# sourceMappingURL=change-form.css.map */

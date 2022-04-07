@@ -3,19 +3,36 @@
   padding: 0 20px;
   min-height: 600px;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.profile_avatar_container h1 {
+  color: #242424;
+  z-index: 9;
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 580px) {
+  .profile_avatar_container h1 {
+    margin-left: 0;
+  }
 }
 
 .profile_avatar_container.dark h1 {
-  color: #FFF;
+  color: #e7e7e7;
+  cursor: default;
 }
 
 .profile_avatar_container.dark .user-avatar {
   border: 8px solid #1A1A1A;
-}
-
-.profile_avatar_container h1 {
-  z-index: 9;
-  margin-left: 20px;
 }
 
 .profile_avatar_container .user-avatar {
@@ -48,6 +65,16 @@
           align-items: center;
   padding: 0 20px;
   overflow: hidden;
+}
+
+@media screen and (max-width: 580px) {
+  .profile_avatar_container .profile-background {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 20px;
+  }
 }
 
 .profile_avatar_container .profile-background .background-wrapper {

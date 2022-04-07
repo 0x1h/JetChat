@@ -5,7 +5,6 @@ import CreateRoom from "./Room Setup/CreateRoom";
 import AlertBox from './AlertBox'
 import SignUp from "./Sign up/SignUp";
 import Login from "./Login/Login";
-import { useNavigate } from "react-router-dom";
 import Confetti from 'react-confetti'
 import "./style/style.css"
 
@@ -19,7 +18,6 @@ const Home = () => {
   const [tada, setTada] = useState<boolean>(false)
   const [passUser, setPassUser] = useState<UserSigned>("no_pass")
   const dispatch = useDispatch()
-  const navigate = useNavigate()
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight
   

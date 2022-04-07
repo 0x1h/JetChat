@@ -1,0 +1,85 @@
+.profile-change-container{
+  width: 100%;
+  min-height: 400px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  &.dark{
+    h3{
+      color: #FFF;
+    }
+  }
+  h3{
+    color: #000;
+    width: 100%;
+    font-weight: 500;
+    font-size: 1.6rem;
+  }
+  .main-container{
+    width: 100%;
+    min-height: 400px;
+    display: flex;
+    @media screen and(max-width: 500px){
+      flex-direction: column;
+    }
+    .picture-remover-wrapper{
+      min-height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 0;
+      @media screen and(max-width: 500px){
+        min-height: auto;
+        justify-content: center;
+      }
+      .change-profile-preview{
+        width: 250px;
+        height: 250px;
+        min-width: 250px;
+        height: 250px;
+        overflow: hidden;
+        border-radius: 50%;
+        @media screen and(max-width: 580px){
+          width: 200px;
+          height: 200px;
+          min-width: 200px;
+          height: 200px;
+        }
+        img{
+          width: auto;
+          height: 100%;
+        }
+      }
+      .remove-avatar{
+        color: rgb(75, 102, 255);
+        margin-bottom: 40px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 5px 10px;
+        box-shadow: none;
+        border-radius: 5px;
+        @media screen and(max-width: 580px){
+          margin-top: 20px;
+        }
+        @media screen and(max-width: 500px){
+          width: 150px;
+          margin-bottom: 0px;
+        }
+        &:focus{
+          border:1px solid rgb(75, 102, 255);
+        }
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+    .change-profile-picture{
+      width: 100%;
+      min-height: inherit;
+      @media screen and(max-width: 500px){
+        min-height: auto;
+      }
+    }
+  }
+}

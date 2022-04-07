@@ -33,6 +33,16 @@ nav {
 
 nav .logo-wrapper {
   gap: 10px;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
   display: inherit;
   -webkit-box-align: inherit;
       -ms-flex-align: inherit;
@@ -194,6 +204,8 @@ nav .dropped__menu .menu__profile .menu__username.dark {
 nav .dropped__menu .menu__logout {
   background: #ff4a4a;
   border-radius: 7px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   color: #FFF;
   border: none;
   cursor: pointer;
