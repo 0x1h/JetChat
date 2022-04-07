@@ -35,7 +35,68 @@ This project uses
 </div>
 
 ## Getting Started
-I will write there later
+
+1) clone repo
+```shell
+git clone https://github.com/callmenikk/JetChat.git
+```
+2)
+then you must setup **database configs**, **re-captcha tokens** and **host**
+go to `src/utils/hostConfigs.json`
+and set your prefered host
+
+```json
+{
+   "host": "http://localhost:3001"
+}
+```
+
+then go to captcha configs `src/Components/Home`
+**create captcha.json**
+
+create key and client secret on re-captcha website 
+
+```json
+{
+   "site_key": "XXX-XXX-XXX"    
+}
+```
+
+then go to `server/`
+create **env.json**
+
+```json
+{
+   "CAPTCHA": "YOUR CLIENT SECRET"
+}
+```
+
+3) in `env.json` create **"DB_URL"**
+
+```json
+{
+   "CAPTCHA": "YOUR CLIENT SECRET",
+   "DB_URL": "YOUR MONGODB DATA BASE URL"
+}
+```
+
+and also **"PASSWORD_HASH"**
+
+```json
+{
+   "CAPTCHA": "YOUR CLIENT SECRET",
+   "DB_URL": "YOUR MONGODB DATA BASE URL",
+   "PASSWORD_HASH": "LONG PASSWORD HASH"
+}
+```
+
+4) then run 
+
+### `npm i` and `npm i --save-dev` in main folder
+
+and then same commands in `server/` folder
+
+then run `npm start` in both folders and you are good to go
 
 ## Contributing
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
