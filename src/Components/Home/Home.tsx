@@ -22,9 +22,6 @@ const Home = () => {
   const screenHeight = window.innerHeight
   
   useEffect(() => {
-    if(passUser === "global") {
-      
-    }
     if(passUser === "room_create") {
       dispatch({type: "PRIVATE_ROOM", payload: true})
     }
@@ -65,7 +62,7 @@ const Home = () => {
     <h1>Connect With People</h1>
     <div className="btns-wrapper">
       <button onClick={() => checkUserAuth("room_create")}>Private room</button>
-      <button onClick={() => checkUserAuth("global")}>
+      <button>
       <div className="box arrow-bottom">
         This feature is under the development 🔧
       </div>

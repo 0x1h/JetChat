@@ -85,6 +85,10 @@ button:focus {
           animation: rotation 1s linear infinite;
 }
 
+.loaderr.dark {
+  border-top: 3px solid #000;
+}
+
 @-webkit-keyframes rotation {
   0% {
     -webkit-transform: rotate(0deg);

@@ -15,7 +15,7 @@ main{
     background-clip: text;
     -webkit-text-fill-color: transparent;
 		text-align: center;
-		@media screen and(max-width: 417px){
+		@media screen and(max-width: 592px){
 			font-size: 4rem;
 		}
 		@media screen and(max-width: 300px){
@@ -95,4 +95,22 @@ main{
   border-right: 15px solid transparent;
   border-left: 15px solid transparent;
   border-bottom: none;
+}
+
+.response-warn{
+	width: 100%;
+	max-width: 300px;
+	background-color: #b92a2a;
+	margin: 20px 0;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: #FFF;
+	font-size: 0.8rem;
+	min-height: 50px;
+	&.green{
+		background-color: rgb(43, 163, 39);
+	}
 }

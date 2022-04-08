@@ -23,7 +23,7 @@ const LoginInputs: FC<{allowRequest: boolean, showPassword: boolean}> = ({allowR
             type: "LOGIN_FILL",
             payload: {
               key: "username",
-              value: e.target.value,
+              value: e.target.value.trim(),
             },
           });
           dispatch({

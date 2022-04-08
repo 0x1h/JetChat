@@ -32,7 +32,7 @@
 }
 
 .profile_avatar_container.dark .user-avatar {
-  border: 8px solid #1A1A1A;
+  border: 5px solid #1A1A1A;
 }
 
 .profile_avatar_container .user-avatar {
@@ -41,14 +41,13 @@
   min-height: 160px;
   min-width: 160px;
   border-radius: 50%;
-  z-index: 9;
+  z-index: 8;
   border: 5px solid #FFF;
   overflow: hidden;
 }
 
 .profile_avatar_container .user-avatar img {
-  width: auto;
-  height: 100%;
+  width: 100%;
 }
 
 .profile_avatar_container .profile-background {

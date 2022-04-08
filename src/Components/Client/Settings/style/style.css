@@ -82,8 +82,7 @@
 }
 
 .profile-change-container .main-container .picture-remover-wrapper .change-profile-preview img {
-  width: auto;
-  height: 100%;
+  width: 100%;
 }
 
 .profile-change-container .main-container .picture-remover-wrapper .remove-avatar {

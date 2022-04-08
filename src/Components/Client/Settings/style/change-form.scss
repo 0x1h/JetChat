@@ -1,9 +1,10 @@
 .change-profile-picture{
   padding: 20px 40px;
   flex-direction: column;
+
   display: flex;
   @media screen and(max-width: 580px){
-    padding: 20px 20px;
+    padding: 20px 0;
   }
   &.dark *{
     color: #FFF;
@@ -37,12 +38,38 @@
   .upload-photo-btn{
     width: 200px;
     height: 40px;
+    color: #FFF;
     border-radius: 7px;
     border: none;
     outline: none;
+    transition: 0.3s;
     cursor: pointer;
     margin-top: 50px;
     background: linear-gradient(to right, #FA00FF, #161955);
+    &.disabled{
+      background: #919191;
+      cursor:not-allowed;
+      box-shadow: none;
+    }
+  }
+  .warn-alert{
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    min-height: 40px;
+    background-color: #439432;
+    border-radius: 7px;
+    margin-top: 10px;
+    padding: 10px 10px;
+    font-size: 0.9em;
+    color: #FFF;
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+					-khtml-user-select: none;
+					-moz-user-select: none;
+					-ms-user-select: none;
+					-o-user-select: none;
   }
 }
   hr{
@@ -58,6 +85,7 @@
   width: 100%;
   min-height: 300px;
   display: flex;
+  position: relative;
   flex-direction: column;
   &.dark *{
     color: #FFF
@@ -86,9 +114,33 @@
     height: 40px;
     border-radius: 7px;
     border: none;
+    color: #FFF;
     outline: none;
     cursor: pointer;
     margin-top: 30px;
     background: linear-gradient(to right, #FA00FF, #161955);
+    &.disabled{
+      background: #919191;
+      cursor:not-allowed;
+      box-shadow: none;
+    }
+  }
+}
+
+.reset-username{
+  color: #4b66ff !important;
+  background: none;
+  box-shadow: none;
+  border: none;
+  outline: none;
+  width: 120px;;
+  cursor: pointer;
+  &:hover{
+    text-decoration: underline;
+  }
+  &:focus{
+    box-shadow: none;
+    border-radius: 5px;
+    border:1px solid rgb(75, 102, 255);
   }
 }

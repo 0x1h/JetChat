@@ -48,6 +48,7 @@ const Navbar = () => {
 
     navigate("/")
 
+    dispatch({type: 'MAKE_SETTINGS_EMPTY'})
     dispatch({
       type: "FILL_USER",
       payload: {

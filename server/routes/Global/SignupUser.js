@@ -27,6 +27,12 @@ router.post("/signup", async (req, res) => {
     }
 
     UserScheme.findOne({ username: username.toLowerCase() }, async (err, user) => {
+      if(err){
+        res.status(400).send({
+          err: "weird error occured"
+        })
+      }
+
       if (user) {
         return res.status(406).send({
           err: "User already exists",

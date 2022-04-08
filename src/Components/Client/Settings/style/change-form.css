@@ -11,7 +11,7 @@
 
 @media screen and (max-width: 580px) {
   .change-profile-picture {
-    padding: 20px 20px;
+    padding: 20px 0;
   }
 }
 
@@ -53,13 +53,43 @@
 .change-profile-picture .upload-photo-btn {
   width: 200px;
   height: 40px;
+  color: #FFF;
   border-radius: 7px;
   border: none;
   outline: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   cursor: pointer;
   margin-top: 50px;
   background: -webkit-gradient(linear, left top, right top, from(#FA00FF), to(#161955));
   background: linear-gradient(to right, #FA00FF, #161955);
+}
+
+.change-profile-picture .upload-photo-btn.disabled {
+  background: #919191;
+  cursor: not-allowed;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.change-profile-picture .warn-alert {
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  min-height: 40px;
+  background-color: #439432;
+  border-radius: 7px;
+  margin-top: 10px;
+  padding: 10px 10px;
+  font-size: 0.9em;
+  color: #FFF;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
 }
 
 hr {
@@ -77,6 +107,7 @@ hr {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  position: relative;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -120,10 +151,43 @@ hr {
   height: 40px;
   border-radius: 7px;
   border: none;
+  color: #FFF;
   outline: none;
   cursor: pointer;
   margin-top: 30px;
   background: -webkit-gradient(linear, left top, right top, from(#FA00FF), to(#161955));
   background: linear-gradient(to right, #FA00FF, #161955);
+}
+
+.username-change-container .upload-username-btn.disabled,
+.username-change-container .upload-pass-btn.disabled,
+.password-change-container .upload-username-btn.disabled,
+.password-change-container .upload-pass-btn.disabled {
+  background: #919191;
+  cursor: not-allowed;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.reset-username {
+  color: #4b66ff !important;
+  background: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+  outline: none;
+  width: 120px;
+  cursor: pointer;
+}
+
+.reset-username:hover {
+  text-decoration: underline;
+}
+
+.reset-username:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-radius: 5px;
+  border: 1px solid #4b66ff;
 }
 /*# sourceMappingURL=change-form.css.map */

@@ -12,6 +12,8 @@ import { roomInfo } from "./Chat/RoomData";
 import { optionsHandle } from "./Chat/optionsHandle"
 import { settingsModal } from "./Chat/settingsModal";
 import { roomSpecific } from "./Chat/roomSettings";
+import { PhotoHandler } from "./Settings/Photohandler";
+import { UsernameHandler } from "./Settings/Usernamehandler"
 import { combineReducers } from "redux"
 
 
@@ -29,5 +31,7 @@ export const allReducers = combineReducers({
 	optionModal: optionModal,
 	optionsHandle: optionsHandle,
 	roomSpecific: roomSpecific,
-	settingsModal: settingsModal
+	settingsModal: settingsModal,
+	PhotoHandler: PhotoHandler,
+	UsernameHandler: UsernameHandler
 })

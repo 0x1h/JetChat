@@ -56,7 +56,7 @@ main h1 {
   text-align: center;
 }
 
-@media screen and (max-width: 417px) {
+@media screen and (max-width: 592px) {
   main h1 {
     font-size: 4rem;
   }
@@ -161,5 +161,30 @@ main .btns-wrapper button:nth-child(2):hover .box {
   border-right: 15px solid transparent;
   border-left: 15px solid transparent;
   border-bottom: none;
+}
+
+.response-warn {
+  width: 100%;
+  max-width: 300px;
+  background-color: #b92a2a;
+  margin: 20px 0;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  color: #FFF;
+  font-size: 0.8rem;
+  min-height: 50px;
+}
+
+.response-warn.green {
+  background-color: #2ba327;
 }
 /*# sourceMappingURL=style.css.map */

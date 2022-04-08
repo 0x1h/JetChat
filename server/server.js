@@ -5,6 +5,7 @@ const cors = require("cors");
 const { socketIoConfig } = require("./config/IOconfig");
 const port = 3001;
 const kickUser = require("./routes/High Orders/grantKickUser")
+const changePicture = require("./routes/Settings/changeProfile")
 const Signup = require("./routes/Global/SignupUser");
 const banUser = require("./routes/High Orders/grantBanUser");
 const UserData = require("./routes/Client/UserData");
@@ -16,6 +17,7 @@ const joinRoom = require("./routes/Client/joinRoom")
 const createRoom = require('./routes/Global/createRoom') 
 const unBanUser = require("./routes/High Orders/unbanUser")
 const transferOwner = require("./routes/High Orders/transferOwnerShip")
+const changeUsername= require("./routes/Settings/changeUsername")
 const rateLimit = require('express-rate-limit'); 
 const changeRoom = require("./routes/High Orders/changeRoom");
 
@@ -91,5 +93,8 @@ app.use("/room", banUser)
 app.use("/room", unBanUser)
 app.use("/room", deleteRoom)
 app.use("/room", transferOwner)
+
+app.use("/settings", changePicture)
+app.use("/settings", changeUsername)
 
 app.use(limiter); 

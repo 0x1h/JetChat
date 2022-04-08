@@ -7,13 +7,15 @@ export type State = {
 }
 
 type Action = {
-	type: "FILL_USER" | "CLEAR_ALL_THE_DATA",
+	type: "FILL_USER" | "CLEAR_ALL_THE_DATA" | "SPECIFIC_KEY_UPDATE",
 	payload: {
 		username: string,
 		client_id: string,
 		createdAt: string,
 		profile_src: string,
-		isLogined: boolean
+		isLogined: boolean,
+		key?: string ,
+		value?: string
 	}
 }
 
@@ -40,6 +42,14 @@ export const userDataHandler = (state: State = defaultState, action: Action): St
 			}
 		}case "CLEAR_ALL_THE_DATA": {
 			return defaultState
+		}
+		case "SPECIFIC_KEY_UPDATE": {
+			const {key, value} = action.payload
+			
+			return {
+				...state,
+				[key!]: value
+			}
 		}
 		default: return state
 	}
