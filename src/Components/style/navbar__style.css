@@ -187,8 +187,7 @@ nav .dropped__menu .menu__profile .profile-wrapper {
 }
 
 nav .dropped__menu .menu__profile .profile-wrapper img {
-  width: auto;
-  height: 100%;
+  width: 100%;
 }
 
 nav .dropped__menu .menu__profile .menu__username {

@@ -57,7 +57,7 @@ const ProfileAvatar = () => {
     <div className={darkTheme ? 'profile_avatar_container dark' : 'profile_avatar_container'}>
       {
         isLoading
-          ? <span className='loaderr' style={{
+          ? <span className={!darkTheme ? 'loaderr dark' : 'loaderr'} style={{
             width: "45px",
             height: "45px"
           }}/>

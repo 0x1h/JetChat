@@ -124,9 +124,9 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className="logo-wrapper" onClick={() => navigate("/")}>
+      <div className="logo-wrapper" onClick={() => navigate("/")} ref={settingsRef}>
         <div className="logo">
-          <img src="/assets/jetchat-icon.png" alt="" />
+          <img src="/assets/jetchat-icon.png" alt="" draggable={false}/>
         </div>
         JetChat
       </div>

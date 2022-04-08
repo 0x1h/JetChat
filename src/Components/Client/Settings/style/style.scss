@@ -82,3 +82,18 @@
     }
   }
 }
+
+.password-warns{
+  width: 100%;
+  max-width: 400px;
+  min-height: 50px;
+  background-color: #b92a2a;
+  border-radius: 7px;
+  ul{
+    width: 100%;
+    padding: 10px 40px;
+    li{
+      color: #FFF;
+    }
+  }
+}
