@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react"
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import BannedList, { MemberProps } from './BannedList';
 import NoOneBanned from "./NoOneBanned";
 import hostConfig from "../../../../utils/hostconfig.json"
@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 const BannedMembers = () => {
 	const darkTheme = useSelector(
 		(state: { themeReducer: boolean }) => state.themeReducer
-	);
+	);const dispatch = useDispatch()
 	const { roomId } = useParams()
 	const [input, setInput] = useState("")
 	const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -77,6 +77,10 @@ const BannedMembers = () => {
 		<>
 			{openModal && <UnbanConfirm {...unBanningUser} modalCloseOpen={() => setOpenModal(prev => !prev)} removeBannedFromList={removeUserFromList} />}
 			<div className='settings__members-list'>
+				
+			<div className="menu-toggler" onClick={() => dispatch({type: "TOGGLE"}) }>
+        <div className={darkTheme ? "stick dark" : "stick"} />
+      </div>
 				<input type="text" className={darkTheme ? "find-user-input dark" : "find-user-input"} placeholder="Find banned member" value={input} onChange={e => setInput(e.target.value)}/>
 				{
 					isLoading

@@ -27,7 +27,7 @@ const ConfirmDelete: FC<{ closeModal: () => void, isOpen: boolean }> = ({ closeM
   const [appear, setAppear] = useState(false);
 
   const variants = {
-    visible: { opacity: appear ? 1 : 0, y: appear ? -150 : 50, x: -220 },
+    visible: { opacity: appear ? 1 : 0, y: appear ? -150 : 50},
     hidden: { opacity: 0, y: appear ? 0 : -200 },
   };
 

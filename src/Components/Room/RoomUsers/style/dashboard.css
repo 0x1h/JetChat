@@ -80,8 +80,7 @@ button:focus {
 }
 
 .current_online_users .online-member .pfp__frame img {
-  width: auto;
-  height: 100%;
+  width: 100%;
 }
 
 .current_online_users .online-member .active-users__username {

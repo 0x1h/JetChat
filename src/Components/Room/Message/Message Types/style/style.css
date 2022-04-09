@@ -37,11 +37,13 @@ button:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
-.just-message:hover,
-.replied-message:hover {
-  background: #e2e2e2;
+.just-message:active,
+.replied-message:active {
+  background: #3f3f3f;
 }
 
 .just-message.dark:hover,
@@ -83,8 +85,7 @@ button:focus {
 
 .just-message .profile-picture .profile-picture__wrapper img,
 .replied-message .profile-picture .profile-picture__wrapper img {
-  width: auto;
-  height: 100%;
+  width: 100%;
 }
 
 .just-message .main-content,

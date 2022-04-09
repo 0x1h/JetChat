@@ -1,6 +1,7 @@
 .confirm-delete-modal {
   position: absolute;
-  width: 450px;
+  width: 100%;
+  max-width: 450px;
   min-height: 300px;
   background-color: #FFF;
   z-index: 20;
@@ -62,5 +63,67 @@
 .confirm-delete-modal .delete-btn-wrapper button:focus {
   -webkit-box-shadow: 0 0 0 3px rgba(255, 49, 49, 0.411);
           box-shadow: 0 0 0 3px rgba(255, 49, 49, 0.411);
+}
+
+.menu-toggler {
+  position: absolute;
+  width: 40px;
+  height: 50px;
+  top: 0;
+  left: 0;
+  -webkit-transform: translate(20px, 20px);
+          transform: translate(20px, 20px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: none;
+  cursor: pointer;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+@media screen and (max-width: 1017px) {
+  .menu-toggler {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+.menu-toggler .stick {
+  width: 100%;
+  height: 3px;
+  background-color: #000;
+  border-radius: 10px;
+}
+
+.menu-toggler .stick::before {
+  content: "";
+  width: 100%;
+  background-color: inherit;
+  height: 3px;
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+  position: absolute;
+  border-radius: 10px;
+}
+
+.menu-toggler .stick::after {
+  border-radius: 10px;
+  content: "";
+  width: 100%;
+  background-color: inherit;
+  height: 3px;
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+  position: absolute;
+}
+
+.menu-toggler .stick.dark {
+  background-color: #FFF;
 }
 /*# sourceMappingURL=confirm.css.map */

@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { ActionType } from './MemberList';
 import { State as RoomData } from "../../../../Hooks/Chat/RoomData";
 import MemberList from './MemberList';
@@ -15,6 +15,7 @@ const SettingsMembers = () => {
 			client_id: ""
 		}
 	})
+	const dispatch = useDispatch()
 	const darkTheme = useSelector(
 		(state: { themeReducer: boolean }) => state.themeReducer
 	);
@@ -30,8 +31,6 @@ const SettingsMembers = () => {
 	const setActionHandler = (type: ActionType) => {
 		setActionType(type)
 	}
-
-	console.log(inputedUserList);
 
 
 	return (
@@ -54,6 +53,9 @@ const SettingsMembers = () => {
 				/>
 			}
 			<div className='settings__members-list'>
+			<div className="menu-toggler" onClick={() => dispatch({type: "TOGGLE"}) }>
+        <div className={darkTheme ? "stick dark" : "stick"} />
+      </div>
 				<input type="text" className={darkTheme ? "find-user-input dark" : "find-user-input"} placeholder="Find any member" value={input} onChange={e => setInput(e.target.value)} />
 				<div className='members-list-wrapper'>
 					{

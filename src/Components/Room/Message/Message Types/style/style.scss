@@ -9,8 +9,17 @@
 	margin-bottom: 10px;
 	position: relative;
 	display: flex;
-	&:hover{
-		background: #e2e2e2;
+	transition: 0.3s ease;
+	// @media (hover: none){
+	// 	background: inherit;
+	// }
+	// @media (hover: hover){
+	// 	&:hover{
+	// 		background: none;
+	// 	}
+	// }
+	&:active{
+		background: #3f3f3f;
 	}
 	&.dark{
 		&:hover{
@@ -33,8 +42,7 @@
 				box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 			}
 			img{
-				width: auto;
-				height: 100%
+				width: 100%;
 			}
 		}
 	}

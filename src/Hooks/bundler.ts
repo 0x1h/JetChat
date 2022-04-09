@@ -14,8 +14,8 @@ import { settingsModal } from "./Chat/settingsModal";
 import { roomSpecific } from "./Chat/roomSettings";
 import { PhotoHandler } from "./Settings/Photohandler";
 import { UsernameHandler } from "./Settings/Usernamehandler"
+import { menuToggler } from "./Chat/MenuCloseOpen";
 import { combineReducers } from "redux"
-
 
 export const allReducers = combineReducers({
 	themeReducer: themeReducer,
@@ -33,5 +33,6 @@ export const allReducers = combineReducers({
 	roomSpecific: roomSpecific,
 	settingsModal: settingsModal,
 	PhotoHandler: PhotoHandler,
-	UsernameHandler: UsernameHandler
+	UsernameHandler: UsernameHandler,
+	menu: menuToggler
 })

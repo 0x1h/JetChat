@@ -10,8 +10,10 @@
 	background: rgba(0, 0, 0, 0.25);
 	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 	backdrop-filter: blur( 11px );
-	-webkit-backdrop-filter: blur( 11px );
 	display: flex;
+	@media screen and(max-width: 1017px){
+		flex-direction: column;
+	}
 	.room__settings-categories{
 		width: 400px;
 		min-width:400px;
@@ -21,6 +23,17 @@
 		display: flex;
 		gap: 10px 0;
 		flex-direction: column;
+		@media screen and(max-width: 1017px){
+			position: fixed;
+			transition: 0.3s;
+			width: 100%;
+			z-index: 99;
+			background: rgba(0,0,0,0.9) !important;
+			transform: translateX(-100%);
+			&.open{
+				transform: translateX(-0%);
+			}
+		}
 		&.dark{
 			background:rgba(0, 0, 0, 0.25);
 			.room_categories-btn{
@@ -41,6 +54,9 @@
 			border-radius: 7px;
 			box-shadow: none;
 			font-size: 1.025rem;
+			@media screen and (max-width: 700px){
+				width: 100%;
+			}
 			&.active{
 				background: $gradient__color-one;
 				&:hover{
@@ -66,7 +82,7 @@
 	}
 	position: absolute;
 	cursor: pointer;
-	z-index: 20;
+	z-index: 99;
 	right: 0;
 	transform: translate(-25px, 25px);
 	&:before{

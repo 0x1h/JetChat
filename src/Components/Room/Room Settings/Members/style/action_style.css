@@ -21,7 +21,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-backdrop-filter: blur(25px);
   z-index: 50;
 }
 

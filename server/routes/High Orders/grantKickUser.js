@@ -7,7 +7,7 @@ router.post("/kick.User/:roomId", authenticateUser, async (req, res) => {
   const {requestor, kickedUserId} = req.body
 
   try{
-    if(kickedUserId === undefined || kickedUserId === null){
+    if(kickedUserId == null){
       return res.status(402).send({
         err: "Invalid arguments"
       })
@@ -18,6 +18,12 @@ router.post("/kick.User/:roomId", authenticateUser, async (req, res) => {
         return res.status(404).send({
           err: "Invalid room code"
         })
+      }
+
+      if(room.owner_client_id === requestor){
+        return res.status(403).send({
+					err: "Owner can't be kicked"
+				})
       }
 
       if(room.owner_client_id !== requestor){

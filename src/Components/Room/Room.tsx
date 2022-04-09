@@ -114,9 +114,10 @@ const Room = () => {
               }),
                 {
                   client_name: username,
-                   client_profile: profile_src,
+                  client_profile: profile_src,
                   client_id: client_id,
-                },
+                }
+                
             ],
               banned_users: banned_users,
             },

@@ -9,6 +9,11 @@ const RoomDashboard = () => {
   const darkTheme = useSelector(
     (state: { themeReducer: boolean }) => state.themeReducer
   );
+  const menuToggle = useSelector(
+    (state: { menu: boolean }) => state.menu
+  );
+  console.log(menuToggle);
+  
   const roomSpecific = useSelector(
     (state: { roomSpecific: Settings }) => state.roomSpecific
   );
@@ -23,15 +28,18 @@ const RoomDashboard = () => {
       <div
         className={
           darkTheme
-            ? "room__settings-categories dark"
-            : "room__settings-categories"
+            ? `room__settings-categories dark ${menuToggle ? 'open' : ''}`
+            : `room__settings-categories ${menuToggle ? 'open' : ''}`
         }
       >
         <button
           className={`room_categories-btn ${
             roomSpecific.specific === "OVERVIEW" ? "active" : ""
           }`}
-					onClick={() => dispatch({type: "CHANGE_SPECIFIC", payload: "OVERVIEW"})}
+					onClick={() => {
+            dispatch({type: "CHANGE_SPECIFIC", payload: "OVERVIEW"})
+            dispatch({type: "TOGGLE"})
+          }}
         >
           Overview
         </button>
@@ -41,7 +49,10 @@ const RoomDashboard = () => {
           className={`room_categories-btn ${
             roomSpecific.specific === "MEMBERS" ? "active" : ""
           }`}
-					onClick={() => dispatch({type: "CHANGE_SPECIFIC", payload: "MEMBERS"})}
+					onClick={() => {
+            dispatch({type: "CHANGE_SPECIFIC", payload: "MEMBERS"})
+            dispatch({type: "TOGGLE"})
+          }}
         >
           Members
         </button>
@@ -52,7 +63,10 @@ const RoomDashboard = () => {
           className={`room_categories-btn ${
             roomSpecific.specific === "BANS" ? "active" : ""
           }`}
-					onClick={() => dispatch({type: "CHANGE_SPECIFIC", payload: "BANS"})}
+					onClick={() => {
+            dispatch({type: "CHANGE_SPECIFIC", payload: "BANS"})
+            dispatch({type: "TOGGLE"})  
+          }}
         >
           Bans
         </button>

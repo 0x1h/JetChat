@@ -108,7 +108,6 @@ const Client = () => {
           openEmoji && 
           <div className="emoji-menu" ref={emojiMenu}>
             <Picker set="twitter" showPreview={false} showSkinTones={false} theme={darkTheme ? "dark" : "light"} onSelect={(emoji: any) => {
-              console.log(emoji);
               
               dispatch({
                 type: "MESSAGE_INPUT",

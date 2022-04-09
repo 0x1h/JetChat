@@ -1,6 +1,6 @@
 import { FC, useEffect, useState, useRef } from "react";
 import { State as RoomData } from "../../../../Hooks/Chat/RoomData";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { isEqual } from "../../../../utils/isEqual";
 import { Input } from "../../../Home/Sign up/SignUp";
 
@@ -16,6 +16,7 @@ interface RoomInfoProps {
 }
 
 const RoomInfo: FC<RoomInfoProps> = ({ unChanged, unChange, inputHandler }) => {
+  const dispatch = useDispatch()
   const roomData = useSelector(
     (state: { roomData: RoomData }) => state.roomData
   );
@@ -49,6 +50,9 @@ const RoomInfo: FC<RoomInfoProps> = ({ unChanged, unChange, inputHandler }) => {
 
   return (
     <div className="room-dashboard-logo">
+      <div className="menu-toggler" onClick={() => dispatch({type: "TOGGLE"}) }>
+        <div className={darkTheme ? "stick dark" : "stick"} />
+      </div>
       <div className="room-icon-wrapper" ref={imageRef}>
         <img src={roomData.room_icon} alt="" draggable={false} />
       </div>

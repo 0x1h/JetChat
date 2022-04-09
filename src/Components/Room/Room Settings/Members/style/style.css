@@ -33,6 +33,12 @@ button:focus {
   position: relative;
 }
 
+@media screen and (max-width: 1017px) {
+  .settings__members-list {
+    padding: 100px 10px 0 10px;
+  }
+}
+
 .settings__members-list .find-user-input {
   width: 100%;
   background: transparent;
@@ -54,11 +60,17 @@ button:focus {
 .settings__members-list .members-list-wrapper {
   width: 100%;
   height: 100%;
-  padding: 5px 10px;
+  padding: 5px 0;
   overflow-y: auto;
   gap: 10px 0;
   position: relative;
   padding-bottom: 50px;
+}
+
+@media screen and (max-width: 1017px) {
+  .settings__members-list .members-list-wrapper {
+    padding: 10px 0;
+  }
 }
 
 .settings__members-list .settings__member-list {

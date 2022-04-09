@@ -5,14 +5,6 @@ import w from "./Assets/EmptyBanlistWords.json"
 
 const {i} = w
 
-const noneBanned: React.CSSProperties = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  flexDirection: "column",
-  height: "calc(100% - 150px)"
-}
-
 const NoOneBanned = () => {
   const rNumber: number = Math.floor(Math.random() * i.length)
   const darkTheme = useSelector(
@@ -20,15 +12,12 @@ const NoOneBanned = () => {
   );
   
   return (
-    <div className='none-banned-ui' style={noneBanned}>
-      <img src={BanIcon} alt="" draggable={false} style={{
-        width: "200px"
-      }}/>
-      <h3 style={{
-        textAlign: "center",
+    <div className='none-banned-ui'>
+      <img src={BanIcon} alt="" draggable={false}/>
+      <h3
+      className='random-none-banned-text' 
+      style={{
         color: darkTheme ? "#FFF" : "#000",
-        marginTop: '40px',
-        fontWeight: 500
       }}>{i[rNumber]}</h3>
     </div>
   )

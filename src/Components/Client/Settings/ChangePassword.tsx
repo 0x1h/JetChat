@@ -50,7 +50,10 @@ const ChangePassword: FC<{ isLoading: boolean }> = ({ isLoading }) => {
         setRequstLoad(false)
 
         setSuccess(true)
-
+        setPassword({
+          new_password: "",
+          old_password: ""
+        })
         setTimeout(() => {
           setSuccess(false)
         }, 2000)

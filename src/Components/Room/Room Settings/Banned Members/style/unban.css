@@ -18,7 +18,6 @@
       -ms-flex-pack: center;
           justify-content: center;
   padding: 0 20px;
-  -webkit-backdrop-filter: blur(20px);
 }
 
 .unban_blur-modal .unban_accept-container {
@@ -118,5 +117,41 @@
 
 .unban_blur-modal .unban_accept-container .accept-container button.unban-btn {
   background-color: #ff5d5d;
+}
+
+.none-banned-ui {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: calc(100% - 150px);
+}
+
+.none-banned-ui img {
+  width: 200px;
+}
+
+@media screen and (max-width: 1017px) {
+  .none-banned-ui {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    padding-top: 20px;
+  }
+}
+
+.random-none-banned-text {
+  text-align: center;
+  margin-top: 40px;
+  font-weight: 300;
 }
 /*# sourceMappingURL=unban.css.map */

@@ -1,6 +1,6 @@
 .overview-info__dashboard {
   width: 100%;
-  height: 250px;
+  min-height: 250px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -15,7 +15,7 @@
 
 .overview-info__dashboard .room-dashboard-logo {
   padding: 0 50px;
-  height: 300px;
+  min-height: 300px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -23,6 +23,16 @@
       -ms-flex-align: center;
           align-items: center;
   gap: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  .overview-info__dashboard .room-dashboard-logo {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 20px 10px;
+  }
 }
 
 .overview-info__dashboard .room-dashboard-logo .room-info__inputs {
@@ -40,6 +50,12 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media screen and (max-width: 900px) {
+  .overview-info__dashboard .room-dashboard-logo .room-info__inputs {
+    padding: 0 5px;
+  }
 }
 
 .overview-info__dashboard .room-dashboard-logo .room-info__inputs .label {
@@ -92,6 +108,15 @@
   min-width: 250px;
   border-radius: 50%;
   overflow: hidden;
+}
+
+@media screen and (max-width: 900px) {
+  .overview-info__dashboard .room-dashboard-logo .room-icon-wrapper {
+    height: 200px;
+    width: 200px;
+    min-width: 200px;
+    min-height: 200px;
+  }
 }
 
 .overview-info__dashboard .room-dashboard-logo .room-icon-wrapper img {
@@ -158,6 +183,7 @@
 
 .delete-wrapper {
   margin-top: 20px;
+  min-height: 40px;
 }
 
 .delete-wrapper .delete-alert-text {
