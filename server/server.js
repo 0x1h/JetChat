@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const DB_URL = require("./env.json").DB_URL
 const cors = require("cors");
 const { socketIoConfig } = require("./config/IOconfig");
-const port = 3001;
+const port = process.env.PORT || 3001;
 const kickUser = require("./routes/High Orders/grantKickUser")
 const changePicture = require("./routes/Settings/changeProfile")
 const Signup = require("./routes/Global/SignupUser");
@@ -65,7 +65,7 @@ io.on("connection",  socket => {
   })
 })    
 
-http.listen(process.env.PORT || port, () => {
+http.listen(port, () => {
   const port = http.address().port;
   console.log("App listening at", port);
 });

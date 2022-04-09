@@ -205,6 +205,16 @@ button:focus {
 .broken-url-wrapper .ufo-wrapper img {
   width: auto;
   height: 100%;
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
 }
 
 .broken-url-wrapper .not-found-text {

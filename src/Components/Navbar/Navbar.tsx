@@ -49,6 +49,7 @@ const Navbar = () => {
     navigate("/")
 
     dispatch({type: 'MAKE_SETTINGS_EMPTY'})
+    dispatch({type: "MAKE_EMPTY_MESSAGE_HISTORY"})
     dispatch({
       type: "FILL_USER",
       payload: {
@@ -124,7 +125,10 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className="logo-wrapper" onClick={() => navigate("/")} ref={settingsRef}>
+      <div className="logo-wrapper" onClick={() => {
+      dispatch({type: "MAKE_EMPTY_MESSAGE_HISTORY"})  
+        navigate("/")
+      }} ref={settingsRef}>
         <div className="logo">
           <img src="/assets/jetchat-icon.png" alt="" draggable={false}/>
         </div>

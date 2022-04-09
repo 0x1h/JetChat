@@ -11,7 +11,7 @@ const BrokenURL = () => {
   return (
     <div className='broken-url-wrapper'>
       <div className="ufo-wrapper">
-        <img src="/assets/not-found.gif" alt="" />
+        <img src="/assets/not-found.gif" alt="" draggable={false}/>
       </div>
         <h3
         className={darkTheme ? "not-found-text dark" : "not-found-text"}

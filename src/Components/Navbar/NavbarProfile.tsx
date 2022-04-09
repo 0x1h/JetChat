@@ -1,5 +1,6 @@
 import { FC } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const NavbarProfile: FC<{
   userData: any,
@@ -8,11 +9,15 @@ const NavbarProfile: FC<{
   userData,
   darkTheme
 }) => {
-
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     return (
-    <div className="menu__profile" onClick={() => navigate("/profile")}>
+    <div className="menu__profile" onClick={() => {
+      navigate("/profile")
+      dispatch({type: "MAKE_EMPTY_MESSAGE_HISTORY"})
+      
+      }}>
       <div className="profile-wrapper">
         <img src={userData.profile_src} alt="" draggable={false} />
       </div>
