@@ -187,4 +187,26 @@ main .btns-wrapper button:nth-child(2):hover .box {
 .response-warn.green {
   background-color: #2ba327;
 }
+
+.github-log-wrapper {
+  width: 30px;
+  height: 30px;
+  background-color: #FFF;
+  border-radius: 7px;
+  padding: 2px;
+  position: absolute;
+  bottom: 0;
+  -webkit-transform: translate(10px, -10px);
+          transform: translate(10px, -10px);
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.github-log-wrapper:hover {
+  -webkit-transform: translate(10px, -15px);
+          transform: translate(10px, -15px);
+  -webkit-box-shadow: 0 5px 5px #000;
+          box-shadow: 0 5px 5px #000;
+}
 /*# sourceMappingURL=style.css.map */

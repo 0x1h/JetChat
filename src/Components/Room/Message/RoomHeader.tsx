@@ -58,6 +58,7 @@ const RoomHeader: FC<{ darkTheme: boolean }> = ({ darkTheme }) => {
             right: 0,
             transform: "translate(-20px, 15px)",
             cursor: "pointer",
+            zIndex: 32
           }}/>
       </div>
     </header>

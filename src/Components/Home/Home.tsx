@@ -8,22 +8,22 @@ import Login from "./Login/Login";
 import Confetti from 'react-confetti'
 import "./style/style.css"
 
-type UserSigned = 
-| "no_pass"
-| "room_create"
-| "global"
+type UserSigned =
+  | "no_pass"
+  | "room_create"
+  | "global"
 
 const Home = () => {
-  const modals = useSelector((state: {modalReducer: State}) => state.modalReducer);
+  const modals = useSelector((state: { modalReducer: State }) => state.modalReducer);
   const [tada, setTada] = useState<boolean>(false)
   const [passUser, setPassUser] = useState<UserSigned>("no_pass")
   const dispatch = useDispatch()
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight
-  
+
   useEffect(() => {
-    if(passUser === "room_create") {
-      dispatch({type: "PRIVATE_ROOM", payload: true})
+    if (passUser === "room_create") {
+      dispatch({ type: "PRIVATE_ROOM", payload: true })
     }
   }, [passUser])
 
@@ -31,8 +31,8 @@ const Home = () => {
     const client_id = localStorage.getItem("client_id")
     const secret_token = sessionStorage.getItem("s_t")
 
-    if(client_id === null || secret_token === null){ 
-      dispatch({type: "NO_USER_ALERT", payload: true})
+    if (client_id === null || secret_token === null) {
+      dispatch({ type: "NO_USER_ALERT", payload: true })
       return
     }
 
@@ -40,37 +40,44 @@ const Home = () => {
   }
 
   return (
-	<>
-  {
-    tada &&
-    <Confetti 
-    width={screenWidth}
-    height={screenHeight}
-    gravity={1}
-    recycle={false}
-    run={tada}
-    onConfettiComplete={() => {
-      setTada(false)
-    }}
-    />
-  }
-  {modals.privateRoom && <CreateRoom closeModal={() => setPassUser("no_pass")}/>}
-  {modals.login && <Login />}
-  {modals.signUp && <SignUp runTada={(arg: boolean) => setTada(arg)}/>}
-  {modals.noUserAlert && <AlertBox />}
-  <main>
-    <h1>Connect With People</h1>
-    <div className="btns-wrapper">
-      <button onClick={() => checkUserAuth("room_create")}>Private room</button>
-      <button>
-      <div className="box arrow-bottom">
-        This feature is under the development 🔧
-      </div>
-        Random Person
-      </button>
-    </div>
-  </main>
-  </>
+    <>
+      {
+        tada &&
+        <Confetti
+          width={screenWidth}
+          height={screenHeight}
+          gravity={1}
+          recycle={false}
+          run={tada}
+          onConfettiComplete={() => {
+            setTada(false)
+          }}
+        />
+      }
+      {modals.privateRoom && <CreateRoom closeModal={() => setPassUser("no_pass")} />}
+      {modals.login && <Login />}
+      {modals.signUp && <SignUp runTada={(arg: boolean) => setTada(arg)} />}
+      {modals.noUserAlert && <AlertBox />}
+      <main>
+        <h1>Connect With People</h1>
+        <div className="btns-wrapper">
+          <button onClick={() => checkUserAuth("room_create")}>Private room</button>
+          <button>
+            <div className="box arrow-bottom">
+              This feature is under the development 🔧
+            </div>
+            Random Person
+          </button>
+        </div>
+      </main>
+      <a href="https://github.com/callmenikk/JetChat" target={"_blank"}>
+        <div className="github-log-wrapper">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="" draggable={false} style={{
+            width: "100%"
+          }} />
+        </div>
+      </a>
+    </>
   )
 }
 

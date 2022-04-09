@@ -1,0 +1,81 @@
+.container-rooms-modal {
+  width: 100%;
+  padding-top: 20px;
+  min-height: 200px;
+}
+
+@media screen and (max-width: 580px) {
+  .container-rooms-modal {
+    padding-top: 50px;
+  }
+}
+
+.container-rooms-modal .rooms-own-text {
+  width: 100%;
+  font-size: 1.5em;
+  font-weight: 500;
+  text-align: center;
+}
+
+.container-rooms-modal .rooms-own-text.dark {
+  color: #FFF;
+}
+
+.container-rooms-modal .rooms-catalog {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(200px, 2fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
+  width: 100%;
+  padding: 20px 0;
+  gap: 30px;
+  min-height: 200px;
+  place-items: center;
+}
+
+.container-rooms-modal .rooms-catalog .each-room-catalog {
+  width: 180px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  cursor: pointer;
+  height: 200px;
+  background-color: #d4d4d4;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+  border-radius: 15px;
+}
+
+.container-rooms-modal .rooms-catalog .each-room-catalog .image-frame {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.container-rooms-modal .rooms-catalog .each-room-catalog .image-frame img {
+  width: 100%;
+}
+
+.container-rooms-modal .rooms-catalog .each-room-catalog.dark {
+  background-color: #333333;
+}
+
+.container-rooms-modal .rooms-catalog .each-room-catalog:hover {
+  -webkit-transform: translateY(-20px);
+          transform: translateY(-20px);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+/*# sourceMappingURL=user-rooms.css.map */

@@ -1,0 +1,33 @@
+import {FC} from 'react'
+import { useNavigate } from 'react-router-dom';
+import  {useSelector} from "react-redux"
+
+export interface RoomCatalogProps {
+  room_name: string,
+  room_id: string,
+  room_icon: string
+}
+
+const RoomCatalog: FC<RoomCatalogProps> = ({room_icon, room_id, room_name}) => {
+  const navigate = useNavigate()
+  const darkTheme = useSelector(
+    (state: { themeReducer: boolean }) => state.themeReducer
+  );
+
+  return (
+    <div className={darkTheme ? 'each-room-catalog dark' : 'each-room-catalog'} onClick={() => navigate(`/room/${room_id}`)}>
+      <div className="image-frame">
+        <img src={room_icon} alt="" />
+      </div>
+      <p style={{
+        marginTop: "20px",
+        color: darkTheme ? "#FFF" : "#000",
+        fontWeight: 500,
+        fontSize: "0.9em",
+        textAlign: "center"
+      }}>{room_name.length < 15 ? room_name : `${room_name.slice(0, 15)}...`}</p>
+    </div>
+  )
+}
+
+export default RoomCatalog

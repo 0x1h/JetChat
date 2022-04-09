@@ -7,6 +7,7 @@ const port = 3001;
 const kickUser = require("./routes/High Orders/grantKickUser")
 const changePicture = require("./routes/Settings/changeProfile")
 const Signup = require("./routes/Global/SignupUser");
+const userRooms = require("./routes/Global/UserRooms")
 const banUser = require("./routes/High Orders/grantBanUser");
 const UserData = require("./routes/Client/UserData");
 const passwordChange = require("./routes/Settings/changePassword")
@@ -83,6 +84,7 @@ app.use("/", Signup);
 app.use("/", Login);
 
 app.use("/user", UserData);
+app.use("/client", userRooms)
 
 app.use("/room", createRoom);
 app.use("/room", joinRoom)

@@ -1,40 +1,46 @@
 @import "./_variables.scss";
 
-main{
+main {
 	width: 100%;
 	min-height: 100vh;
 	top: 0;
 	position: absolute;
-	@include Center(center, center); 
+	@include Center(center, center);
 	flex-direction: column;
-	padding: 0 20px; 
-	h1{
+	padding: 0 20px;
+
+	h1 {
 		background: -webkit-linear-gradient(45deg, $gradient__color-one, $gradient__color-two);
-    -webkit-background-clip: text;
+		-webkit-background-clip: text;
 		font-size: 5.6rem;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
 		text-align: center;
-		@media screen and(max-width: 592px){
+
+		@media screen and(max-width: 592px) {
 			font-size: 4rem;
 		}
-		@media screen and(max-width: 300px){
+
+		@media screen and(max-width: 300px) {
 			font-size: 3rem;
 		}
 	}
-	.btns-wrapper{
+
+	.btns-wrapper {
 		width: 600px;
 		min-height: 100px;
 		display: flex;
 		justify-content: space-between;
 		margin-top: 50px;
-		@media screen and(max-width: 615px){
+
+		@media screen and(max-width: 615px) {
 			flex-direction: column;
 			width: 100%;
 			align-items: center;
 			gap: 20px;
 		}
-		button{
+
+		button {
 			@include gradient__bg($gradient__color-one, $gradient__color-two);
 			width: 270px;
 			border-radius: 50px;
@@ -45,16 +51,19 @@ main{
 			color: #FFF;
 			border: none;
 			cursor: pointer;
-			&:nth-child(2){
+
+			&:nth-child(2) {
 				box-shadow: none;
 				background: gray;
-				&:hover{
-					.box{
-						opacity: 1;	
+
+				&:hover {
+					.box {
+						opacity: 1;
 					}
 				}
 			}
-			@media screen and(max-width: 417px){
+
+			@media screen and(max-width: 417px) {
 				width: 210px;
 				height: 90px;
 				font-size: 1.2em;
@@ -64,40 +73,41 @@ main{
 }
 
 .box {
-  width: 180px;
-  height: auto;
-  background-color: black;
+	width: 180px;
+	height: auto;
+	background-color: black;
 	transform: translateY(-150px);
-  color: #fff;
-  padding: 20px;
+	color: #fff;
+	padding: 20px;
 	transition: 0.1s ease-in;
-  position: absolute;
+	position: absolute;
 	opacity: 0;
 	font-size: 0.9rem;
-  margin: 40px;
+	margin: 40px;
 	font-weight: 300;
 	border-radius: 10px;
 }
-@media only screen and (min-width:240px) and (max-width: 768px){
-	.box{
-			display: block;
-			float: none;
-			margin: 40px auto;
+
+@media only screen and (min-width:240px) and (max-width: 768px) {
+	.box {
+		display: block;
+		float: none;
+		margin: 40px auto;
 	}
 }
 
 .box.arrow-bottom:after {
-  content: " ";
-  position: absolute;
-  right: 40%;
-  bottom: -15px;
-  border-top: 15px solid black;
-  border-right: 15px solid transparent;
-  border-left: 15px solid transparent;
-  border-bottom: none;
+	content: " ";
+	position: absolute;
+	right: 40%;
+	bottom: -15px;
+	border-top: 15px solid black;
+	border-right: 15px solid transparent;
+	border-left: 15px solid transparent;
+	border-bottom: none;
 }
 
-.response-warn{
+.response-warn {
 	width: 100%;
 	max-width: 300px;
 	background-color: #b92a2a;
@@ -110,7 +120,26 @@ main{
 	color: #FFF;
 	font-size: 0.8rem;
 	min-height: 50px;
-	&.green{
+
+	&.green {
 		background-color: rgb(43, 163, 39);
+	}
+}
+
+.github-log-wrapper {
+
+	width: 30px;
+	height: 30px;
+	background-color: #FFF;
+	border-radius: 7px;
+	padding: 2px;
+	position: absolute;
+	bottom: 0;
+	transform: translate(10px, -10px);
+	cursor: pointer;
+	transition: 0.3s;
+	&:hover{
+		transform: translate(10px, -15px);
+		box-shadow: 0 5px 5px #000;
 	}
 }

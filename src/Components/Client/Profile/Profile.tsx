@@ -2,6 +2,7 @@ import "./style/catalog_select.css"
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import ProfileAvatar from "./ProfileAvatar";
+import UserRooms from "./UserRooms";
 
 const Profile = () => {
   const navigate = useNavigate()
@@ -16,7 +17,8 @@ const Profile = () => {
       <div className={darkTheme ? "catalog dark" : "catalog "} onClick={() => navigate("/settings")}>Settings</div>
     </header>
     <ProfileAvatar />
-    </>
+    <UserRooms />
+    </> 
   )
 }
 

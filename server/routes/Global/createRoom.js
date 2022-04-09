@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const authenticateUser = require("../../middleware/authenticate");
+const roomSchema = require("../../models/RoomSchema");
 const { validateURL } = require("../../utils/validateURL")
 const fetch = require("node-fetch")
-const roomSchema = require("../../models/RoomSchema");
 
 router.post("/create", authenticateUser, async (req, res) => {
   const { room_id, room_name, room_icon, requestor } = req.body;
