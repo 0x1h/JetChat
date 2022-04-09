@@ -14,6 +14,12 @@ router.post("/create", authenticateUser, async (req, res) => {
       });
     }
 
+    if(room_id == null || !room_id.trim()){
+      return res.status(403).send({
+        err: "room id is empty"
+      })
+    }
+
     let isImage = false
 
     const validateURLstring = validateURL(room_icon)

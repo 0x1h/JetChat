@@ -12,8 +12,6 @@ const UserRooms = () => {
   const darkTheme = useSelector(
     (state: { themeReducer: boolean }) => state.themeReducer
   );
-
-  console.log(rooms);
   
 
   useEffect(() => {

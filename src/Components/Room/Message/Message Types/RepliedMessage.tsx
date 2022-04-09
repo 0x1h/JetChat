@@ -97,7 +97,7 @@ const RepliedMessage: FC<ReplyMessage> = ({
             }
           >
             <Twemoji options={{ className: "twemoji mini"}}>
-              {reply_message}
+              {reply_message.length > 32 ? reply_message.slice(0, 32) + "..." : reply_message}
             </Twemoji>
           </div>
         </div>

@@ -16,7 +16,7 @@
 nav {
   display: flex;
   align-items: center;
-  z-index: 9;
+  z-index: 22;
   width: 100%;
   padding: 0 1.2rem;
   position: relative;
@@ -97,6 +97,7 @@ nav {
     gap: 10px;
     width: 200px;
     right: 0;
+    z-index: 22 !important;
     height: 180px;
     padding: 10px 5px;
     border-radius: 10px 0 10px 10px;

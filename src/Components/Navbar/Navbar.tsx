@@ -150,9 +150,6 @@ const Navbar = () => {
         <div
           className={!darkTheme ? "dropped__menu" : "dropped__menu dark"}
           ref={settingsRef}
-          style={{
-            zIndex: 100
-          }}
         >
           {userData.isLogined ? (
             <NavbarProfile darkTheme={darkTheme} userData={userData} />

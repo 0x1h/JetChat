@@ -31,7 +31,12 @@ const limiter = rateLimit({
  
 const app = express();
 const http = require("http").createServer(app);
-const io = require("socket.io")(http, socketIoConfig);
+const io = require("socket.io")(http, {
+  cors: {
+    origin: "https://jetchat.netlify.app",
+    methods: ["GET", "POST"]
+  }
+});
  
 io.on("connection",  socket => {
   socket.on("join",  (room, userInfo) => {

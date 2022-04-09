@@ -41,6 +41,7 @@ const PrivateInputs: FC<PrivateInputProps> = ({
         value={roomForm.room_name}
         onChange={inputHandler}
         placeholder="Room Name*"
+        maxLength={32}
       />
       <button
         type="button"

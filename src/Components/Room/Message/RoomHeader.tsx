@@ -46,7 +46,7 @@ const RoomHeader: FC<{ darkTheme: boolean }> = ({ darkTheme }) => {
           <div className="skeleton"></div>
         ) : (
           <p className={darkTheme ? "room-name dark" : "room-name"} onClick={() => dispatch({type: "OPEN_SETTINGS"})}>
-            {roomData.room_name}
+            {roomData.room_name.length > 20 ? `${roomData.room_name.slice(0, 20)}...` : roomData.room_name}
           </p>
         )}
       </div>

@@ -1,6 +1,6 @@
 const socketIoConfig = {
 	cors: {
-		origin: "http://localhost:3000",
+		origin: "https://jetchat.netlify.app/",
 		methods: ["GET", "POST"],
 		enabledTransports: ["ws", "wss"],
 		transports: ['websocket']

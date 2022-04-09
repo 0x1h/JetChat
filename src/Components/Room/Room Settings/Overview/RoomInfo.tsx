@@ -71,6 +71,7 @@ const RoomInfo: FC<RoomInfoProps> = ({ unChanged, unChange, inputHandler }) => {
           value={unChange.room_name}
           name="room_name"
           onChange={inputHandler}
+          maxLength={32}
           autoComplete="off"
         />
         <label
