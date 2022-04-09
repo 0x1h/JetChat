@@ -89,6 +89,12 @@
   min-height: 50px;
   background-color: #b92a2a;
   border-radius: 7px;
+  &.success{
+    background-color: #52b92a;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+  }
   ul{
     width: 100%;
     padding: 10px 40px;

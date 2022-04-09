@@ -1,12 +1,10 @@
-const fetch = require("node-fetch")
-
 /**
  * @param {string} url
  * @description returns if inputed URL is really image or not
- * @returns {boolean}
+ * @returns {Boolean}
 */
 
-const validateURL = async (url) => {
+const validateURL = (url) => {
   if (url === undefined || url === null) return false
   if (!url.trim()) return false
 

@@ -9,6 +9,7 @@ const changePicture = require("./routes/Settings/changeProfile")
 const Signup = require("./routes/Global/SignupUser");
 const banUser = require("./routes/High Orders/grantBanUser");
 const UserData = require("./routes/Client/UserData");
+const passwordChange = require("./routes/Settings/changePassword")
 const deleteRoom  = require("./routes/High Orders/deleteRoom")
 const newUserJoin = require("./routes/Client/addUserRoom")
 const leaveUser = require("./routes/Client/leaveRoom")
@@ -96,5 +97,6 @@ app.use("/room", transferOwner)
 
 app.use("/settings", changePicture)
 app.use("/settings", changeUsername)
+app.use("/settings", passwordChange)
 
 app.use(limiter); 

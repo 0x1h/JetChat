@@ -1,6 +1,10 @@
 import { FormEvent, FC, useState, useEffect } from 'react'
 import { Input } from '../../Home/Sign up/SignUp';
 import { useSelector } from 'react-redux';
+import hostConfig from "../../../utils/hostconfig.json"
+import axios from 'axios';
+
+const {host} = hostConfig
 
 const ChangePassword: FC<{ isLoading: boolean }> = ({ isLoading }) => {
   const darkTheme = useSelector(
@@ -12,6 +16,7 @@ const ChangePassword: FC<{ isLoading: boolean }> = ({ isLoading }) => {
   })
   const [requestLoad, setRequstLoad] = useState(false)
   const [warns, setWarn] = useState<string[]>([])
+  const [success, setSuccess] = useState(false)
 
   useEffect(() => {
     
@@ -26,6 +31,36 @@ const ChangePassword: FC<{ isLoading: boolean }> = ({ isLoading }) => {
 
   const submitPassword = (e: FormEvent) => {
     e.preventDefault()
+
+    if(warns.length > 0 || !password.new_password.trim() || !password.old_password.trim() || requestLoad){
+      return
+    }
+
+
+    const requestor = JSON.parse(localStorage.getItem("client_id") as string)
+    const authToken = JSON.parse(sessionStorage.getItem("s_t") as string)
+    const {new_password, old_password} = password
+
+    setRequstLoad(true)
+    axios.put(`${host}/settings/change_password`, {
+      requestor, authToken, new_password, old_password
+    }).then((resp) => {
+      if(resp.data.success){
+        sessionStorage.setItem("s_t", JSON.stringify(resp.data.authToken))
+        setRequstLoad(false)
+
+        setSuccess(true)
+
+        setTimeout(() => {
+          setSuccess(false)
+        }, 2000)
+      }
+    })
+    .catch(error => {
+      const {err} = error.response.data
+      setWarn([err])
+      setRequstLoad(false)
+    })
   }
 
   const inputhandle = (e: Input) => {
@@ -37,9 +72,10 @@ const ChangePassword: FC<{ isLoading: boolean }> = ({ isLoading }) => {
         ...prev,
         [name]: value
       }
-
     })
   }
+
+  
   
 
   return (
@@ -65,7 +101,17 @@ const ChangePassword: FC<{ isLoading: boolean }> = ({ isLoading }) => {
               </ul>
               </div>
             }
-            <button className={warns.length ? 'upload-pass-btn': 'upload-pass-btn disabled'} type='submit' style={{ marginBottom: "150px" }}>Change Password</button>
+            {
+              success &&
+              <div className="password-warns success">
+                Successfully Changed
+              </div>
+            }
+            <button className={warns.length ? 'upload-pass-btn disabled': 'upload-pass-btn'} type='submit' style={{ marginBottom: "150px" }}>{
+              requestLoad 
+              ? <span className='loaderr'/>
+              : "Change Password" 
+            }</button>
           </>
       }
     </form>
