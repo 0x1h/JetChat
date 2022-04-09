@@ -15,24 +15,26 @@ import { roomSpecific } from "./Chat/roomSettings";
 import { PhotoHandler } from "./Settings/Photohandler";
 import { UsernameHandler } from "./Settings/Usernamehandler"
 import { menuToggler } from "./Chat/MenuCloseOpen";
+import { memberToggler } from "./Chat/MemberListToggle";
 import { combineReducers } from "redux"
 
 export const allReducers = combineReducers({
-	themeReducer: themeReducer,
-	loginReducer: loginReducer,
-	signReducer: signReducer,
-	modalReducer: modalReducer,
+	menu: menuToggler,
 	userData: userDataHandler,
-	loadErrHandler: loadErrHandler,
 	roomState: createRoomReducer,
 	chatData: clientReducer,
 	sentMessages: allMessages,
 	roomData: roomInfo,
-	optionModal: optionModal,
-	optionsHandle: optionsHandle,
-	roomSpecific: roomSpecific,
-	settingsModal: settingsModal,
-	PhotoHandler: PhotoHandler,
-	UsernameHandler: UsernameHandler,
-	menu: menuToggler
+	themeReducer,
+	loginReducer,
+	signReducer,
+	modalReducer,
+	loadErrHandler,
+	optionModal,
+	optionsHandle,
+	roomSpecific,
+	settingsModal,
+	PhotoHandler,
+	UsernameHandler,
+	memberToggler
 })

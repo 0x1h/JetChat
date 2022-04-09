@@ -29,18 +29,33 @@ button:focus {
 .current_online_users {
   width: 100%;
   max-width: 400px;
-  min-width: 400px;
   background: transparent;
   height: calc(100% - 70px);
   overflow-y: auto;
   -ms-flex-item-align: end;
       align-self: flex-end;
   padding: 70px 10px 0 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 @media screen and (max-width: 1000px) {
   .current_online_users {
-    display: none;
+    position: fixed;
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    right: 0;
+    z-index: 20;
+    background-color: #FFF !important;
+    -webkit-box-shadow: 0 10px 10px;
+            box-shadow: 0 10px 10px;
+  }
+  .current_online_users.dark {
+    background-color: #1a1a1a !important;
+  }
+  .current_online_users.open {
+    -webkit-transform: translateX(10%);
+            transform: translateX(10%);
   }
 }
 

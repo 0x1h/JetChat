@@ -108,9 +108,9 @@
   display: flex;
   height: 50px;
   right: 0;
+  // z-index: 21;
   top: 70px;
   width: 100%;
-  z-index: 6;
   position: fixed;
   border-radius: 0 0 8px 8px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
@@ -148,8 +148,12 @@
     }
   }
   .active__users-side {
-    max-width: 400px;
-    width: 100%;
+    width: 100px;
+    min-width: 100px;
+    display: none;
+    @media screen and(max-width: 1000px){
+      display: block;
+    }
   }
 }
 

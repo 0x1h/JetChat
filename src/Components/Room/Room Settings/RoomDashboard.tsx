@@ -12,7 +12,6 @@ const RoomDashboard = () => {
   const menuToggle = useSelector(
     (state: { menu: boolean }) => state.menu
   );
-  console.log(menuToggle);
   
   const roomSpecific = useSelector(
     (state: { roomSpecific: Settings }) => state.roomSpecific

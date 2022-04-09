@@ -3,14 +3,25 @@
 .current_online_users{
 	width: 100%;
 	max-width: 400px;
-	min-width: 400px;
 	background: transparent;
 	height: calc(100% - 70px);
 	overflow-y: auto;
 	align-self: flex-end;
 	padding: 70px 10px 0 10px;
+	transition: 0.3s;
 	@media screen and(max-width: 1000px){
-		display: none;
+		position: fixed;
+		transform: translateX(100%);
+		right: 0;
+		z-index: 20;
+		background-color: #FFF !important;
+		box-shadow: 0 10px 10px;
+		&.dark{
+			background-color: #1a1a1a !important;
+		}
+		&.open{
+			transform: translateX(10%);
+		}
 	}
 	.online-member{
 		width: 100%;
