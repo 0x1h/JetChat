@@ -47,9 +47,10 @@ router.post("/signup", async (req, res) => {
       }
 
       let isImage = false
-
+      
       const validateURLstring = validateURL(profile_src)
-
+      const randomNumber = Math.floor(Math.random() * 32) + 1
+      
       if(validateURLstring){
         await fetch(profile_src)
         .then(resp => {if(resp.ok) isImage = true})
@@ -59,14 +60,17 @@ router.post("/signup", async (req, res) => {
       const setImage = isImage ? profile_src : `/Avatars/Avatar-${randomNumber}.png`
       let ImageRGB = ""
 
-      await getAverageColor(setImage)
-			.then(color => {ImageRGB = color.rgb})
-      .catch(() => {ImageRGB = "rgb(136, 136, 136)"})
+      if(validateURLstring){
+        await getAverageColor(setImage)
+			  .then(color => {ImageRGB = color.rgb})
+        .catch(() => {ImageRGB = "rgb(136, 136, 136)"})
+      }else{
+        ImageRGB = "rgb(136, 136, 136)"
+      }
 
       const enc_pass = hashData(password);  
       const authToken = tokenGenerator();
 
-      const randomNumber = Math.floor(Math.random() * 32) + 1
 
       const newUser = UserScheme({
         username: username.toLowerCase(),
