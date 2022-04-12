@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import { useSelector, useDispatch } from 'react-redux'
 import hostConfig from "../../../../utils/hostconfig.json"
 import { ActionType } from "./MemberList"
-import { socket } from '../../Room'
+import { socket } from '../../../../App'
 import { useParams } from 'react-router-dom'
 import "./style/action_style.css"
 import axios from 'axios'

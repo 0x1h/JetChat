@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { State as AlertType } from "../../Hooks/Client/loadErrorHandle";
 import { useParams } from "react-router-dom";
 import { State as OptionState} from "../../Hooks/Chat/optionsModal";
-import { io } from "socket.io-client";
+import { socket } from "../../App";
 import hostConfig from "../../utils/hostconfig.json";
 import UsersDashboard from "./RoomUsers/UsersDashboard";
 import Options from "./Message/Options";
@@ -13,9 +13,6 @@ import Messages from "./Message/Messages";
 import Loader from "../Loader";
 import Confirm from "../Confirm";
 import "./style/style.css";
-
-const { host } = hostConfig;
-export const socket = io(host);
 
 const Room = () => {
   const loadErrHandle = useSelector(
@@ -58,7 +55,7 @@ const Room = () => {
           const { username, client_id, profile_src, createdAt } =
           await userInfo.data;
 
-          axios.put(`${host}/room/update_user/add/${roomId}`, {
+          axios.put(`${hostConfig.host}/room/update_user/add/${roomId}`, {
             authToken: authToken,
             requestor: client_id,
             username: username,

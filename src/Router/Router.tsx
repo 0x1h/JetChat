@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+import { socket } from "../App"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Home from "../Components/Home/Home"
 import Navbar from "../Components/Navbar/Navbar"
@@ -7,6 +9,16 @@ import Settings from "../Components/Client/Settings/Settings"
 import BrokenURL from "../Components/Home/BrokenURL"
 
 const Router = () => {
+
+	useEffect(() => {
+    socket.emit("connect-socket")
+
+    socket.on("success-connect", (alert) => {
+      console.log(alert)
+    })
+     
+  }, [])
+
   return (
 	<BrowserRouter>
 		<Navbar/>

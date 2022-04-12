@@ -11,11 +11,14 @@
 	display: flex;
 	transition: 0.3s ease;
 	&:active{
-		background: #3f3f3f;
+		background: #dfdfdf;
 	}
 	&.dark{
 		&:hover{
 			background: #252525;
+		}
+		&:active{
+			background: #333333;
 		}
 	}
 	.profile-picture{

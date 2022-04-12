@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { tokenGenerator } from "../../../utils/randomToken";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-import { socket } from "../Room";
+import { socket } from "../../../App";
 import 'emoji-mart/css/emoji-mart.css'
 
 const Client = () => {

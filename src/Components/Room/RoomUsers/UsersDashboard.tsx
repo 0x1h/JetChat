@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import ActiveUser from "./ActiveUser";
 import { useDispatch, useSelector } from "react-redux";
 import { State as RoomData } from "../../../Hooks/Chat/RoomData";
-import { socket } from "../Room";
+import { socket } from "../../../App";
 import { useParams } from "react-router-dom";
 import "./style/dashboard.css";
 

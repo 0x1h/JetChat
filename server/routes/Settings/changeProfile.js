@@ -15,7 +15,7 @@ router.put("/profile_change", authenticateUser, (req, res) => {
       })
     }
 
-    UserScheme.findOne({ client_id: requestor }, async (err, user) => {
+    UserScheme.findById(requestor, async (err, user) => {
       if (err || user == null) {
         return res.status(404).send({
           err: "user didn't found"

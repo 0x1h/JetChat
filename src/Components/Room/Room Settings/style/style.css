@@ -94,13 +94,13 @@ button:focus {
 }
 
 .room__settings-dashboard .room__settings-categories.dark .room_categories-btn.active:hover {
-  color: #FFF;
+  color: #000;
 }
 
 .room__settings-dashboard .room__settings-categories .room_categories-btn {
   background: transparent;
   cursor: pointer;
-  color: #000;
+  color: #fff;
   border: none;
   height: 50px;
   border-radius: 7px;

@@ -33,7 +33,7 @@ const app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http, {
   cors: {
-    origin: "https://jetchat.netlify.app",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"]
   }
 });
@@ -42,6 +42,11 @@ io.on("connection",  socket => {
   socket.on("join",  (room, userInfo) => {
     socket.join(room)
     socket.to(room).emit("join",userInfo)
+  })
+
+  socket.on("connect-socket", () => {
+    socket.broadcast.emit("success-connect", "connected")
+    console.log("beep")
   })
 
 	socket.on("send-message", async (msg, room) => {

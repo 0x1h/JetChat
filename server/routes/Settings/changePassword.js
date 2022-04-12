@@ -22,7 +22,7 @@ router.put("/change_password", authenticateUser, (req, res) => {
       })
     }
 
-    UserSchema.findOne({client_id: requestor}, (_, user) => {
+    UserSchema.findById(requestor, (err, user) => {
       if(old_password !== decryptData(user.password)){
         return res.status(403).send({
           err: "Password is incorrect"

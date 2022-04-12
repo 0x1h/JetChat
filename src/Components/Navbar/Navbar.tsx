@@ -91,8 +91,7 @@ const Navbar = () => {
 
           if (
             err === "User not found" ||
-            err === "Invalid Authentiction" ||
-            err === "Invalid arguments"
+            err === "Invalid Authentiction"
           ) {
             localStorage.removeItem("client_id");
             sessionStorage.removeItem("s_t");

@@ -2,7 +2,7 @@ import { FC, useEffect } from "react";
 import { State } from "../../../Hooks/Chat/RoomData";
 import { useSelector, useDispatch } from "react-redux";
 import { State as LoadState } from "../../../Hooks/Client/loadErrorHandle";
-import {socket} from "../Room"
+import {socket} from "../../../App"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
 import "./style/messages.css";

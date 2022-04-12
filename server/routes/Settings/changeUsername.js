@@ -13,9 +13,8 @@ router.put("/change_username", authenticateUser,(req, res) => {
       })
     }
 
-    UserScheme.findOne({client_id: requestor}, async (_, user) => {
-      const isUsernameExist = await UserScheme.findOne({username: new_username.trim()}).exec()
-      
+    UserScheme.findById(requestor, async (err, user) => {
+      const isUsernameExist = await UserScheme.findOne({username: new_username.trim()})
       if(isUsernameExist){
         return res.status(403).send({
           err: "Username is already taken"

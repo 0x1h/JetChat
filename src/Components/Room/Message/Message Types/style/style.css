@@ -43,12 +43,17 @@ button:focus {
 
 .just-message:active,
 .replied-message:active {
-  background: #3f3f3f;
+  background: #dfdfdf;
 }
 
 .just-message.dark:hover,
 .replied-message.dark:hover {
   background: #252525;
+}
+
+.just-message.dark:active,
+.replied-message.dark:active {
+  background: #333333;
 }
 
 .just-message .profile-picture,

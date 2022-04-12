@@ -4,7 +4,7 @@ import hostConfig from "../../../../utils/hostconfig.json"
 import axios from "axios"
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { socket } from "../../Room";
+import { socket } from "../../../../App";
 
 const ConfirmChanges: FC<{
   changes: boolean;
