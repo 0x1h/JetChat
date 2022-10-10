@@ -14,7 +14,7 @@ This is open-source web chatting app, you can there
 
 ## Built with
 
-This project uses
+This project uses 
 * **[Node.js](https://github.com/nodejs/node)**
 * **[Typescript](https://github.com/microsoft/TypeScript)**
 * **[React](https://github.com/facebook/react)**
