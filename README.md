@@ -8,7 +8,7 @@ This is open-source web chatting app, you can there
 * Create account
 * Create private rooms
 * Join in global chat 
-* kick users
+* kick users 
 * ban users
 * chat with people
 
