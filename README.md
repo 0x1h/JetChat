@@ -1,7 +1,7 @@
 <div align="center">
 	<img src="https://i.ibb.co/GRrgpSW/large-jetchat.png">
 </div>
-
+ 
 ## About Project
 This is open-source web chatting app, you can there
 
