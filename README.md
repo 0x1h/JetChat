@@ -12,7 +12,7 @@ This is open-source web chatting app, you can there
 * ban users
 * chat with people
 
-## Built with 
+## Built with  
 
 This project uses 
 * **[Node.js](https://github.com/nodejs/node)**
