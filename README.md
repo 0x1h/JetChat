@@ -16,7 +16,7 @@ This is open-source web chatting app, you can there
 
 This project uses 
 * **[Node.js](https://github.com/nodejs/node)**
-* **[Typescript](https://github.com/microsoft/TypeScript)**
+* **[Typescript](https://github.com/microsoft/TypeScript)** 
 * **[React](https://github.com/facebook/react)**
 * **[Socket.io](https://github.com/socketio/socket.io)**
 * **[MongoDB](https://github.com/mongodb/mongo)**
