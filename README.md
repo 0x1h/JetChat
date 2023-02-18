@@ -20,7 +20,7 @@ This project uses
 * **[React](https://github.com/facebook/react)**
 * **[Socket.io](https://github.com/socketio/socket.io)**
 * **[MongoDB](https://github.com/mongodb/mongo)**
-*  **[Mongoose](https://github.com/Automattic/mongoose)**
+*  **[Mongoose](https://github.com/Automattic/mongoose)** 
 *  **[Redux](https://github.com/reduxjs/redux)**
 
 <div>
